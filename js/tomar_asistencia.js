@@ -15,7 +15,7 @@ $(document).ready(function () {
         var usu = $("#usuario").val();
         var asig = $("#asignatura").val();
         var num = $("[name='check']").length;
-        var consulta = "insert into asistencia (id_profesor, id_alumno,id_asignatura, estado, fecha_hora) values ";
+        var consulta = "insert into asistencia (id_profesor, id_alumno,id_asignatura, estado, fecha_hora, justificacion) values ";
         var estado;
 
 if(asig != "") {
@@ -31,20 +31,20 @@ if(asig != "") {
         }
 
         if (i != num) {
-            consulta = consulta + "(" + usu + "," + est + "," + asig + "," + estado + ",'" + hora_actual + "'),";
+            consulta = consulta + "(" + usu + "," + est + "," + asig + "," + estado + ",'" + hora_actual + "',0),";
         }
         else {
-            consulta = consulta + "(" + usu + "," + est + "," + asig + "," + estado + ",'" + hora_actual + "');";
+            consulta = consulta + "(" + usu + "," + est + "," + asig + "," + estado + ",'" + hora_actual + "',0);";
         }
     }
-
+alert(consulta);
     $.ajax({
         type: "POST",
         url: "insertar_asistencia.php",
         data: {"consulta": consulta},
         success: function (data) {
             datos = data.split(";");
-            if (datos[2] == 1) {
+            if (datos[1] == 1) {
                 alert("si");
                 //window.location.href="ver_asistencia";
 
