@@ -1,0 +1,141 @@
+body{
+    background-color: #bebaba;
+}
+
+section#encabezado{
+    color: black;
+}
+.nav li:hover{
+    background-color: #8edaff;
+}
+.nav {
+    color: #0f0f0f;
+    font-family: Verdana;
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #985f0d;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+
+.dropdown-submenu{
+    background-color: #f5e79e;
+}
+
+.dropdown-menu{
+    background-color: #f5e79e;
+}
+
+table#tabla-horario {
+    background-color: #f7ecb5;
+    border: #34a9b6 2px solid;
+    font-family: Verdana;
+}
+
+table#tabla-horario tr {
+    border: #34a9b6 2px solid;
+}
+
+table#tabla-horario tr td{
+    border: #34a9b6 2px solid;
+}
+
+table#ver_notas tr{
+    border: #34a9b6 2px solid;
+}
+table#ver_notas td{
+    border: #34a9b6 2px solid;
+}
+
+section#principal {
+    margin: 0.25em auto;
+    text-align: center;
+    min-height: 530px;
+    padding: 10px;
+    align :center;
+}
+
+section#pie div{
+    text-align: right;
+    color: #f7ecb5;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-family: Verdana;
+    font-size: 12px;
+}
+
+table#ingresar thead tr td{
+    align:center;
+}
+
+table#ingresar tr td{
+    width: 70%
+}
+
+table#ingresar tr td td{
+    width: 30%
+}
+
+table#tabla-horario tr td td{
+    width: 30%;
+}
+
+table#tabla_mensajes {
+    background-color: #f7ecb5;
+}
+table#tabla_mensajes tr{
+    border: #34a9b6 2px solid;
+}
+table#tabla_mensajes tr td{
+    border: #34a9b6 2px solid;
+}
+
+tr#dato td{
+    width: 30%;
+}
+tr#dato td td{
+    width: 70%;
+}
