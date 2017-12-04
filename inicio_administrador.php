@@ -63,8 +63,7 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si"){
 
         echo"   </tbody>
             </table>
-        </div>
-    </div>";
+        </div>";
     }
 
     $sql2 = "SELECT * FROM reserva 
@@ -127,7 +126,7 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si"){
     }
 
     ?>
-
+    </div>
 
 </section>
 

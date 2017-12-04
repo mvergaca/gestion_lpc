@@ -33,11 +33,16 @@ include "conexion.php";
         <div class="col-sm-offset-2 col-sm-8">
             <?php
             echo"<input type='hidden' id='curso' value='$_GET[id]'>";
+            $sql2 = "SELECT * FROM curso WHERE id_curso = $_GET[id]";
+            $res2 = $dbcon->query($sql2);
+            while($datos2 = mysqli_fetch_array($res2)){
+                echo"<h3>$datos2[nombre_curso]</h3>";
+            }
+            $res2->close();
             ?>
             <table class="table table-bordered table-responsive" style="background-color: #f7ecb5;">
                 <thead>
                 <tr>
-                    <td style="border: #34a9b6 2px solid;"><label>Nombre Curso</label></td>
                     <td style="border: #34a9b6 2px solid;"><label>Alumno</label></td>
                     <td style="border: #34a9b6 2px solid;"><label>Ver</label></td>
                 </tr>
@@ -53,7 +58,6 @@ include "conexion.php";
                 while ($datos = mysqli_fetch_array($res)){
                     echo"
             <tr>
-                <td style='border: #34a9b6 2px solid;'>$datos[nombre_curso]</td>
                 <td style='border: #34a9b6 2px solid;'>$datos[nombre_usr] $datos[apellido_p_usr] $datos[apellido_m_usr]</td>   
                 <td style='border: #34a9b6 2px solid;'><input type='button' class='btn btn-success' value='Ver' onclick='ver_alumno($datos[id_alumno]);'></td>         
             </tr>

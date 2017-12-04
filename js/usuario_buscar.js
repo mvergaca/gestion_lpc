@@ -47,9 +47,6 @@ $(document).ready(function () {
             }
         });
     });
-    $("#rut").click(function () {
-        alert("SI");
-    });
 
 });
 

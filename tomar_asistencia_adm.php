@@ -21,7 +21,7 @@ include "conexion.php";
 
     <link rel="stylesheet" type="text/css" href="css/estilos.css">
 
-    <script src="js/tomar_asistencia.js" type="text/javascript"></script>
+    <script src="js/tomar_asistencia_adm.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -36,16 +36,18 @@ include "conexion.php";
     <div class="col-sm-offset-0 col-sm-12">
         <div class="col-sm-offset-3 col-sm-6" style="background-color: #f7ecb5;">
     <?php
-    $con = "select profesor.id_profesor from profesor 
+    $con = "select profesor.id_profesor , curso.nombre_curso from profesor 
             INNER JOIN curso ON curso.id_profesor = profesor.id_profesor
             WHERE curso.id_curso = $_GET[curso]";
     $res_con = $dbcon->query($con);
     while ($dat = mysqli_fetch_array($res_con)){
         $id_profe = $dat['id_profesor'];
+        echo"<h3>$dat[nombre_curso]</h3>";
     }
     $res_con->close();
     ?>
     <input type="hidden" id="usuario" value="<?php echo"$id_profe";?>">
+            <input type="hidden" id="curso" value="<?php echo"$_GET[curso]";?>">
             <div class="form-group col-sm-offset-0 col-sm-12" style="margin: 5px">
                 <label for="asignatura" class="col-sm-offset-3 col-sm-2">Asignatura</label>
                 <div class="col-sm-4">

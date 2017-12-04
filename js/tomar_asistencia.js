@@ -14,6 +14,7 @@ $(document).ready(function () {
 
         var usu = $("#usuario").val();
         var asig = $("#asignatura").val();
+        var curso = $("#curso").val();
         var num = $("[name='check']").length;
         var consulta = "insert into asistencia (id_profesor, id_alumno,id_asignatura, estado, fecha_hora, justificacion) values ";
         var estado;
@@ -45,8 +46,7 @@ alert(consulta);
         success: function (data) {
             datos = data.split(";");
             if (datos[1] == 1) {
-                alert("si");
-                //window.location.href="ver_asistencia";
+                window.location.href="ver_asistencia.php?curso="+curso+"&asi="+asig;
 
             }
             else {
