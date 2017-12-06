@@ -28,14 +28,14 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si"){
 <section id="principal">
     <?php
     $sql = "SELECT DISTINCT alumno.rut_usr, usuario.nombre_usr, usuario.apellido_p_usr, usuario.apellido_m_usr,
-                curso.id_curso, curso.nombre_curso, asistencia.fecha_hora
+                curso.id_curso, curso.nombre_curso
                 FROM asistencia 
                 INNER JOIN alumno ON alumno.id_alumno = asistencia.id_alumno
                 INNER JOIN usuario ON usuario.rut_usr = alumno.rut_usr
                 INNER JOIN lista ON lista.id_alumno = alumno.id_alumno
                 INNER JOIN curso ON curso.id_curso = lista.id_curso
                 WHERE asistencia.estado = 0 AND asistencia.justificacion = 0
-                ORDER BY usuario.nombre_usr";
+                ORDER BY curso.id_curso, usuario.nombre_usr";
 
     $res = $dbcon->query($sql);
     if(mysqli_num_rows($res)>0) {
@@ -48,7 +48,6 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si"){
                 <tr>
                     <td><label>Nombre</label></td>
                     <td><label>Curso</label></td>
-                    <td><label>Fecha</label></td>
                 </tr>
                 </thead>
                 <tbody>";
@@ -57,7 +56,6 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si"){
             echo "<tr>
                 <td>$datos[nombre_usr] $datos[apellido_p_usr] $datos[apellido_m_usr]</td>
                 <td>$datos[nombre_curso]</td>
-                <td>$datos[fecha_hora]</td>
             </tr>";
         }
 

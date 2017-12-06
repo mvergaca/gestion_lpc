@@ -4,3 +4,7 @@ $(document).ready(function () {
         window.location.href="tomar_asistencia_adm.php?curso="+curso;
     });
 });
+
+function ver_alumno(ref) {
+    window.location.href = "ver_alumno.php?id="+ref;
+}

@@ -43,6 +43,7 @@ include "conexion.php";
     ?>
 <input type="hidden" id="usuario" value="<?php echo"$id_profe";?>">
 <input type="hidden" id="asignatura" value="<?php echo"$_GET[asig]";?>">
+    <input type="hidden" id="curso" value="<?php echo"$_GET[curso]";?>">
     <div align="center">
         <table id="ingresar" class="table-bordered table-responsive" style="background-color: #f7ecb5;">
             <thead>

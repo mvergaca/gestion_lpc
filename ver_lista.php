@@ -53,7 +53,7 @@ include "conexion.php";
                 INNER JOIN usuario ON usuario.rut_usr = alumno.rut_usr
                 INNER JOIN curso ON curso.id_curso = lista.id_curso
                 INNER JOIN establecimiento ON establecimiento.id_establecimiento = curso.id_establecimiento
-                WHERE curso.id_curso = $_GET[id]";
+                WHERE curso.id_curso = $_GET[id] ORDER BY usuario.nombre_usr";
                 $res = $dbcon->query($sql);
                 while ($datos = mysqli_fetch_array($res)){
                     echo"

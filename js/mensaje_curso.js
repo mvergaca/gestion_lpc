@@ -9,7 +9,7 @@ $(document).ready(function () {
         if(curso != "") {
             if(mensaje != "") {
                 var consulta = "insert into mensaje (id_curso, id_profesor, id_asignatura, mensaje) values ("+curso+","+prof+","+asig+",'"+mensaje+"');";
-               alert(consulta);
+
                 $.ajax({
                     type: "POST",
                     url: "insertar_mensaje.php",

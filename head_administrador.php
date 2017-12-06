@@ -66,6 +66,7 @@
                         </li>
                         <li role="separator" class="divider"></li>
                         <li><a href="ingresar_nota_adm.php">Ingresar Notas</a></li>
+                        <li><a href="semestre.php">Semestres</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">

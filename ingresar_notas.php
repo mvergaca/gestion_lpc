@@ -33,8 +33,32 @@ include "conexion.php";
     <?php
     $curso = $_GET['curso'];
     $asignatura = $_GET['asig'];
+
+    $sql2 = "SELECT * FROM semestre WHERE inicio_semestre < CURRENT_DATE () AND fin_semestre > CURRENT_DATE ";
+    $res2 = $dbcon->query($sql2);
+    while ($datos2 = mysqli_fetch_array($res2)){
+        $nombre_semestre = $datos2["nombre_sem"];
+        $id_semestre = $datos2["id_semestre"];
+    }
+
+    $sql3 = "SELECT * FROM asignatura WHERE id_asignatura = $asigna";
+    $res3 = $dbcon->query($sql3);
+    while($datos3 = mysqli_fetch_array($res3)){
+        $nombre_asig = $datos3["nombre_asignatura"];
+    }
+
+    $sql4 = "SELECT * FROM curso WHERE id_curso = $curso";
+    $res4 = $dbcon->query($sql4);
+    while($datos4 = mysqli_fetch_array($res4)){
+        $nombre_curso = $datos4["nombre_curso"];
+    }
+
     echo"<input type='hidden' id='asig' value='$asignatura'>
          <input type='hidden' id='curso' value='$curso'>
+         <input type='hidden' id='semestre' value='$id_semestre'> 
+         
+         <h3>$nombre_asig $nombre_curso $nombre_semestre</h3>
+         
          <label >Detalle</label><input type='text' id='detalle' class='form-control' style='width: auto'><br>";
     $sql = "SELECT * FROM alumno 
             INNER JOIN lista ON alumno.id_alumno = lista.id_alumno
