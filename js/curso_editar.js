@@ -10,10 +10,10 @@ $(document).ready(function () {
             alert("Establecimiento y nombre de curso son obligatorios!");
         }
         if(sala == ""){
-            sala = null;
+            sala = "null";
         }
         if(profesor == ""){
-            profesor = null;
+            profesor = 'null';
         }
 
         $.ajax({
@@ -28,11 +28,13 @@ $(document).ready(function () {
             success: function (data) {
                 datos = data.split(";");
                 if(datos[1] == 1){
-                    alert("Curso creado exitosamente");
+                    alert(datos[2]);
+                    alert("Curso modificado exitosamente");
+                    window.location.href = "cursos_ver.php";
                 }
                 else{
-                    alert("Error al crear el curso");
-                    alert(datos[1]);
+                    alert("Error al modificar el curso");
+                    alert(datos[2]);
                 }
             }
         });

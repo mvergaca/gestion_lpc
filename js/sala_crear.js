@@ -1,12 +1,18 @@
 $(document).ready(function () {
     $("#agregar").click(function () {
         var nombre = $("#nombre").val();
+        var encargado = $("#encargado").val();
+
+        if(encargado == ""){
+            encargado = null;
+        }
 
         $.ajax({
             type: "POST",
             url: "insertar_sala.php",
             data: {
-                "nombre": nombre
+                "nombre": nombre,
+                "encargado":encargado
             },
             success: function (data) {
                 datos = data.split("|");

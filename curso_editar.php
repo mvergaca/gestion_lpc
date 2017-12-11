@@ -17,7 +17,7 @@ include "conexion.php";
     <link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.7/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/estilos.css">
 
-
+    <script src="js/curso_editar.js"></script>
 
 </head>
 <body>
@@ -30,7 +30,7 @@ include "conexion.php";
 
 <section id="principal">
     <div class="col-sm-offset-0 col-sm-12">
-        <form class="form-inline col-sm-offset-3 col-sm-6" style='background-color: #f7ecb5;'>
+        <div class="col-sm-offset-3 col-sm-6" style='background-color: #f7ecb5;'>
             <input type="hidden" id="curso" value="<?php echo"$_GET[id]";?>">
 <?php
 $con = "SELECT * FROM curso 
@@ -43,7 +43,8 @@ $re_con = $dbcon->query($con);
 while ($dat = mysqli_fetch_array($re_con)){
         echo"
             <div class='form-group col-sm-offset-0 col-sm-12' style='margin-top: 2%'>
-                <label for='establecimiento' class='col-sm-offset-0 col-sm-4'>Establecimiento</label>
+                <label for='establecimiento' class='col-sm-offset-2 col-sm-3'>Establecimiento</label>
+                <div class='col-sm-5'>
                 <select id='establecimiento' class='form-control'>
                     <option value='$dat[id_establecimiento]'>$dat[nombre]</option>";
 
@@ -54,29 +55,30 @@ while ($dat = mysqli_fetch_array($re_con)){
                     }
                 echo"    
                 </select>
+                </div>
             </div>
 
             <div class='form-group col-sm-offset-0 col-sm-12' style='margin-top: 2%'>
-                <label for='sala' class='col-sm-offset-0 col-sm-4'>Sala</label>
+                <label for='sala' class='col-sm-offset-2 col-sm-3'>Sala</label>
+                <div class='col-sm-5'>
                 <select id='sala' class='form-control'>
-                    <option value=''> - - - </option>
                     <option value='$dat[id_sala]'>$dat[nombre_sala]</option>
-                    <option value='1' >Sala 1</option>";
-
+                    <option value=''> - - - </option>";
                     $sql2 = "SELECT * FROM sala";
                     $res2 = $dbcon->query($sql2);
                     while ($datos2 = mysqli_fetch_array($res2)){
-                        echo"<option value='$datos2[id_sala]'>$datos[nombre_sala]</option>";
+                        echo"<option value='$datos2[id_sala]'>$datos2[nombre_sala]</option>";
                     }
                     $res2->close();
 
             echo"
                 </select>
+                </div>
             </div>
 
             <div class='form-group col-sm-offset-0 col-sm-12' style='margin-top: 2%'>
-                <label for='profesor' class='col-sm-offset-0 col-sm-4'>Profesor</label>
-                <div class='col-sm-4 form'>
+                <label for='profesor' class='col-sm-offset-2 col-sm-3'>Profesor</label>
+                <div class='col-sm-5'>
                     <select id='profesor' class='form-control' style='font-size: 12px'>
                         <option value='$dat[id_profesor]' >$dat[nombre_usr] $dat[apellido_p_usr] $dat[apellido_m_usr]</option>";
 
@@ -91,8 +93,10 @@ while ($dat = mysqli_fetch_array($re_con)){
             </div>
 
             <div class='form-group col-sm-offset-0 col-sm-12' style='margin-top: 2%'>
-                <label for='nombre' class='col-sm-offset-0 col-sm-4'>Nombre Curso</label>
+                <label for='nombre' class='col-sm-offset-2 col-sm-3'>Nombre Curso</label>
+                <div class='col-sm-5'>
                 <input type='text' id='nombre' class='form-control' value='$dat[nombre_curso]'>
+                </div>
             </div>
 
             <div class='form-group col-sm-offset-0 col-sm-12' style='margin-top: 2%'>
@@ -101,7 +105,7 @@ while ($dat = mysqli_fetch_array($re_con)){
 ";
 }
 ?>
-        </form>
+        </div>
     </div>
 </section>
 

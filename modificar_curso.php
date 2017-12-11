@@ -14,11 +14,12 @@ $curso = $_POST["curso"];
     $res = $dbcon -> query($sql);
 
     if(!$res){
-        echo";-1;;";
+        echo";-1;$sql;";
     }
     else{
-        echo ";1;;";
+        echo ";1;$sql;";
     }
+
     include "cerrar_conexion.php";
 }
 ?>

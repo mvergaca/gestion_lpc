@@ -62,9 +62,9 @@ include "conexion.php";
                         <table class='table table-bordered table-responsive'>
                             <thead>
                             <tr>
-                                <td class='col-sm-3'>Asignatura</td>
-                                <td class='col-sm-8'>Notas</td>
-                                <td class='col-sm-1'>Promedio</td>
+                                <td class='col-sm-3'><label>Asignatura</label></td>
+                                <td class='col-sm-8'><label>Notas</label></td>
+                                <td class='col-sm-1'><label>Promedio</label></td>
                             </tr>
                             </thead>
                             <tbody>";
@@ -93,7 +93,7 @@ include "conexion.php";
                                             if($notas[$j] != null) {
                                                 echo "<td class='col-sm-1'>$notas[$j]</td>";
                                                 $suma = $suma + $notas[$j];
-                                                $num_notas = $j;
+                                                $num_notas++;
 
                                             }
                                             else{
@@ -108,7 +108,7 @@ include "conexion.php";
 
                                         echo"</tr></table>
                                         </td>
-                                        <td>$prom</td>
+                                        <td><table class='table table-bordered'><tr><td>$prom</td></tr></table></td>
                                     </tr>";
                                 }
 

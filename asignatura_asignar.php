@@ -33,14 +33,15 @@ include "conexion.php";
     $sql = "SELECT * FROM curso WHERE id_curso = $_GET[curso]";
     $res = $dbcon->query($sql);
     while ($datos = mysqli_fetch_array($res)){
-        echo"<h3>$datos[nombre_curso]</h3>
-            <input type='hidden' id='curso' value='$datos[id_curso]'>";
+        $nombre_curso = $datos["nombre_curso"];
+        echo"<input type='hidden' id='curso' value='$datos[id_curso]'>";
     }
     ?>
-    <form class="form-inline">
-
-        <div style="margin: 5px">
-            <label for="asignatura">Asignatura</label>
+    <div class="col-sm-offset-3 col-sm-6" style="background-color: #f7ecb5;">
+        <?php echo"<h3>$nombre_curso</h3>"?>
+        <div class="col-sm-offset-0 col-sm-12" style="margin-top: 2%">
+            <label for="asignatura" class="col-sm-offset-2 col-sm-3">Asignatura</label>
+            <div class="col-sm-5">
             <select id="asignatura" class="form-control">
                 <option value=""> - - - </option>
                 <?php
@@ -51,10 +52,12 @@ include "conexion.php";
                 }
                 ?>
             </select>
+            </div>
         </div>
 
-        <div style="margin: 5px">
-            <label for="profesor">Profesor</label>
+        <div class="col-sm-offset-0 col-sm-12" style="margin-top: 2%">
+            <label for="profesor" class="col-sm-offset-2 col-sm-3">Profesor</label>
+            <div class="col-sm-5">
             <select id="profesor" class="form-control">
                 <option value=""> - - - </option>
                 <?php
@@ -67,18 +70,22 @@ include "conexion.php";
                 }
                 ?>
             </select>
+            </div>
         </div>
 
-        <div style="margin: 5px">
-            <label for="anio">Año</label>
+        <div class="col-sm-offset-0 col-sm-12" style="margin-top: 2%">
+            <label for="anio" class="col-sm-offset-2 col-sm-3">Año</label>
+            <div class="col-sm-5">
             <input type="text" id="anio" class="form-control">
+            </div>
         </div>
-        <div style="margin: 5px">
+
+        <div class="col-sm-offset-0 col-sm-12" style="margin-top: 2%; margin-bottom: 2%">
             <input type="button" class="btn btn-success" id="guardar" value="Guardar">
         </div>
-    </form>
+    </div>
 
-    <div id="asignadas" class="col-sm-offset-2 col-sm-8" >
+    <div id="asignadas" class="col-sm-offset-2 col-sm-8" style="margin-top: 2%">
         <table class="table table-responsive table-bordered" style="background-color: #f7ecb5;">
             <thead>
             <tr>

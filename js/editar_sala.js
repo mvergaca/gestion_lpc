@@ -1,14 +1,20 @@
 $(document).ready(function () {
     $("#guardar").click(function () {
-        var nombre = $("#asig").val();
+        var nombre = $("#nombre").val();
         var id = $("#id_as").val();
+        var encargado = $("#encargado").val();
+
+        if(encargado == ""){
+            encargado == null;
+        }
 
         $.ajax({
             type: "POST",
             url: "sala_editar.php",
             data: {
                 "nombre": nombre,
-                "id":id
+                "id":id,
+                "encargado":encargado
             },
             success: function (data) {
                 datos = data.split(";");

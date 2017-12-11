@@ -34,20 +34,18 @@ include "conexion.php";
             $sql = "SELECT * FROM curso WHERE id_curso = $_GET[id]";
             $res = $dbcon->query($sql);
             while ($datos = mysqli_fetch_array($res)){
-                echo"<h3><label>$datos[nombre_curso]</label></h3>";
+                $nombre_curso = $datos["nombre_curso"];
             }
 
-
-
         ?>
-        <form class="form-inline col-sm-offset-3 col-sm-6" style='background-color: #f7ecb5;'>
+        <div class="col-sm-offset-3 col-sm-6" style='background-color: #f7ecb5;'>
             <input type="hidden" id="curso" value="<?php echo"$_GET[id]";?>">
-
+            <?php echo"<h3>$nombre_curso</h3>";?>
             <div class=" form-group row col-sm-offset-0 col-sm-12" style="margin-top: 2%">
-                <div class="col-sm-offset-0 col-sm-4">
-                <label for="clase">Asignatura</label>
-                </div>
-                <div class="col-sm-6">
+
+                <label for="clase" class="col-sm-offset-3 col-sm-2">Asignatura</label>
+
+                <div class="col-sm-5">
                 <select id="clase" class="form-control">
                     <option value=""> - - - </option>
                     <?php
@@ -69,7 +67,8 @@ include "conexion.php";
 
 
             <div class=" form-group col-sm-offset-0 col-sm-12" style="margin-top: 2%">
-                <label for="horario" class="col-sm-offset-0 col-sm-4">Horario</label>
+                <label for="horario" class="col-sm-offset-3 col-sm-2">Horario</label>
+                <div class="col-sm-5">
                     <select id="horario" class="form-control" style="font-size: 12px">
                         <option value="" > - - - </option>
                         <?php
@@ -80,10 +79,12 @@ include "conexion.php";
                         }
                         ?>
                     </select>
+                </div>
             </div>
 
             <div class=" form-group col-sm-offset-0 col-sm-12" style="margin-top: 2%">
-                <label for="dia" class="col-sm-offset-0 col-sm-4">Dia</label>
+                <label for="dia" class="col-sm-offset-3 col-sm-2">Dia</label>
+                <div class="col-sm-5">
                 <select id="dia" class="form-control" style="font-size: 12px">
                     <option value="" > - - - </option>
                     <option value="lunes">Lunes</option>
@@ -92,13 +93,14 @@ include "conexion.php";
                     <option value="jueves">Jueves</option>
                     <option value="viernes">Viernes</option>
                 </select>
+                </div>
             </div>
 
 
             <div class="form-group col-sm-offset-0 col-sm-12" style="margin: 2%">
                 <input type="button" id="guardar" class="btn btn-success" value="Guardar">
             </div>
-        </form>
+        </div>
 
 
         <div id="alerta" class="form-group col-sm-offset-0 col-sm-12" style="margin-top: 2%"></div>

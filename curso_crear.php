@@ -30,10 +30,11 @@ include "conexion.php";
 
 <section id="principal">
     <div class="col-sm-offset-0 col-sm-12">
-        <form class="form-inline col-sm-offset-3 col-sm-6" style='background-color: #f7ecb5;'>
+        <div class=" col-sm-offset-3 col-sm-6" style='background-color: #f7ecb5;'>
 
             <div class=" form-group col-sm-offset-0 col-sm-12" style="margin-top: 2%">
-                <label for="establecimiento" class="col-sm-offset-0 col-sm-4">Establecimiento</label>
+                <label for="establecimiento" class="col-sm-offset-2 col-sm-3">Establecimiento</label>
+                <div class="col-sm-5">
                 <select id="establecimiento" class="form-control">
                     <?php
                     $sql = "SELECT * FROM establecimiento";
@@ -43,19 +44,28 @@ include "conexion.php";
                     }
                     ?>
                 </select>
+                </div>
             </div>
 
             <div class=" form-group col-sm-offset-0 col-sm-12" style="margin-top: 2%">
-                <label for="sala" class="col-sm-offset-0 col-sm-4">Sala</label>
+                <label for="sala" class="col-sm-offset-2 col-sm-3">Sala</label>
+                <div class="col-sm-5">
                 <select id="sala" class="form-control">
                     <option value=""> - - - </option>
-                    <option value="" >Sala 1</option>
+                    <?php
+                    $sql2 = "SELECT * FROM sala ORDER BY nombre_sala";
+                    $res2 = $dbcon->query($sql2);
+                    while($datos2 = mysqli_fetch_array($res2)){
+                        echo"<option value='$datos2[id_sala]'>$datos2[nombre_sala]</option>";
+                    }
+                    ?>
                 </select>
+                </div>
             </div>
 
             <div class=" form-group col-sm-offset-0 col-sm-12" style="margin-top: 2%">
-                <label for="profesor" class="col-sm-offset-0 col-sm-4">Profesor</label>
-                <div class="col-sm-4 form">
+                <label for="profesor" class="col-sm-offset-2 col-sm-3">Profesor</label>
+                <div class="col-sm-5 form">
                     <select id="profesor" class="form-control" style="font-size: 12px">
                         <option value="" > - - - </option>
                     <?php
@@ -70,15 +80,17 @@ include "conexion.php";
             </div>
 
             <div class=" form-group col-sm-offset-0 col-sm-12" style="margin-top: 2%">
-                <label for="nombre" class="col-sm-offset-0 col-sm-4">Nombre Curso</label>
+                <label for="nombre" class="col-sm-offset-2 col-sm-3">Nombre Curso</label>
+                <div class="col-sm-5">
                 <input type="text" id="nombre" class="form-control">
+                </div>
             </div>
 
             <div class="form-group col-sm-offset-0 col-sm-12" style="margin-top: 2%">
                 <input type="button" id="guardar" class="btn btn-success" value="Guardar">
             </div>
 
-        </form>
+        </div>
     </div>
 </section>
 
