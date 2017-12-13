@@ -24,7 +24,7 @@ include "conexion.php";
 
 <section id="encabezado">
     <?php
-    include "head_profesor.php";
+    include "head_alumno.php";
     ?>
 </section>
 
@@ -58,7 +58,7 @@ include "conexion.php";
                           WHERE alumno.id_alumno = $_GET[id] ORDER BY asignatura.nombre_asignatura";
                 $res3 = $dbcon->query($sql3);
 
-                        echo"
+                echo"
                         <table class='table table-bordered table-responsive'>
                             <thead>
                             <tr>
@@ -68,51 +68,51 @@ include "conexion.php";
                             </tr>
                             </thead>
                             <tbody>";
-                                while ($datos3 = mysqli_fetch_array($res3)){
-                                    echo"<tr>
+                while ($datos3 = mysqli_fetch_array($res3)){
+                    echo"<tr>
                                         <td>$datos3[nombre_asignatura]</td>
                                         <td>
                                             <table class='table table-bordered table-responsive'>
                                             <tr>";
-                                        $sql4 = "SELECT nota FROM nota 
+                    $sql4 = "SELECT nota FROM nota 
                                                   WHERE id_alumno = $_GET[id] AND id_asignatura = $datos3[id_asignatura]
                                                   AND id_semestre = $datos2[id_semestre]";
-                                        $res4 = $dbcon->query($sql4);
-                                        $notas = array(null,null,null,null,null,null,null,null,null,null);
-                                        $i = 0;
+                    $res4 = $dbcon->query($sql4);
+                    $notas = array(null,null,null,null,null,null,null,null,null,null);
+                    $i = 0;
 
-                                        while($datos4 = mysqli_fetch_array($res4)){
-                                            $notas[$i] = $datos4['nota'];
-                                            $i++;
-                                        }
+                    while($datos4 = mysqli_fetch_array($res4)){
+                        $notas[$i] = $datos4['nota'];
+                        $i++;
+                    }
 
-                                        $suma = 0;
-                                        $num_notas = 0;
+                    $suma = 0;
+                    $num_notas = 0;
 
-                                        for($j = 0; $j < 10; $j++){
-                                            if($notas[$j] != null) {
-                                                echo "<td class='col-sm-1'>$notas[$j]</td>";
-                                                $suma = $suma + $notas[$j];
-                                                $num_notas++;
+                    for($j = 0; $j < 10; $j++){
+                        if($notas[$j] != null) {
+                            echo "<td class='col-sm-1'>$notas[$j]</td>";
+                            $suma = $suma + $notas[$j];
+                            $num_notas++;
 
-                                            }
-                                            else{
-                                                echo "<td class='col-sm-1'></td>";
-                                            }
-                                        }
+                        }
+                        else{
+                            echo "<td class='col-sm-1'></td>";
+                        }
+                    }
 
-                                        if($num_notas == 0){
-                                            $num_notas = 1;
-                                        }
-                                        $prom = $suma/$num_notas;
+                    if($num_notas == 0){
+                        $num_notas = 1;
+                    }
+                    $prom = $suma/$num_notas;
 
-                                        echo"</tr></table>
+                    echo"</tr></table>
                                         </td>
                                         <td><table class='table table-bordered'><tr><td>$prom</td></tr></table></td>
                                     </tr>";
-                                }
+                }
 
-                            echo"</tbody>
+                echo"</tbody>
                         </table>
                       
                     </td>

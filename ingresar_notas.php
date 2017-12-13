@@ -32,7 +32,7 @@ include "conexion.php";
     <div align="center">
     <?php
     $curso = $_GET['curso'];
-    $asignatura = $_GET['asig'];
+    $asigna = $_GET['asig'];
 
     $sql2 = "SELECT * FROM semestre WHERE inicio_semestre < CURRENT_DATE () AND fin_semestre > CURRENT_DATE ";
     $res2 = $dbcon->query($sql2);
@@ -53,7 +53,7 @@ include "conexion.php";
         $nombre_curso = $datos4["nombre_curso"];
     }
 
-    echo"<input type='hidden' id='asig' value='$asignatura'>
+    echo"<input type='hidden' id='asig' value='$asigna'>
          <input type='hidden' id='curso' value='$curso'>
          <input type='hidden' id='semestre' value='$id_semestre'> 
          

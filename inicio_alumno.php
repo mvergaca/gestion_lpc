@@ -27,6 +27,12 @@ include "conexion.php";
 </section>
 
 <section id="principal">
+    <div class="col-sm-offset-0 col-sm-12">
+
+        <div class="col-sm-offset-2 col-sm-8">
+
+        </div>
+
     <div id="horario">
         <h2 align="center">Horario</h2>
         <table id="tabla-horario" class="table-responsive table-bordered col-sm-offset-2 col-sm-8">
@@ -51,6 +57,7 @@ include "conexion.php";
                 echo "<td>$datos2[hora_inicio] - $datos2[hora_fin] </td>";
 
                 for($i = 1; $i<=5; $i++) {
+
                     $sql = "SElECT * FROM horario
                      LEFT JOIN distribucion ON horario.id_horario = distribucion.id_horario
                      LEFT JOIN clase ON distribucion.id_clase = clase.id_clase
@@ -59,6 +66,7 @@ include "conexion.php";
                      LEFT JOIN alumno ON alumno.id_alumno = lista.id_alumno
                      LEFT JOIN asignatura ON clase.id_asignatura = asignatura.id_asignatura
                      WHERE alumno.rut_usr = '$_SESSION[rut_usr]' AND horario.id_horario = $datos2[id_horario] AND distribucion.dia = '$dias[$i]' ORDER BY horario.id_horario";
+
                     $res = $dbcon->query($sql) or die("no se pudo mostrar horario" . mysqli_error());
 
                     if(mysqli_num_rows($res) > 0){
@@ -77,6 +85,8 @@ include "conexion.php";
             $res2 ->close();
             ?>
         </table><br><br>
+    </div>
+        
     </div>
 </section>
 

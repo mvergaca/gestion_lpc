@@ -102,7 +102,7 @@
                                     <ul class=\"dropdown-menu\">
                                         <li><a  href=\"tomar_asistencia.php?curso=$dato_as2[id_curso]&asig=$dato_as2[id_asignatura]\">Tomar asistencia</a></li>
                                         <li><a href=\"observacion.php?curso=$dato_as2[id_curso]&asig=$dato_as2[id_asignatura]\">Observacion alumno</a></li>
-                                        <li><a href=\"#\">Ver Asistencia</a></li>
+                                        <li><a href=\"ver_asistencia.php?curso=$dato_as2[id_curso]&asi=$dato_as2[id_asignatura]\">Ver Asistencia</a></li>
                                     </ul>
                                 </li>";
                                 }

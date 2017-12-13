@@ -26,136 +26,39 @@
 
                     <ul class="dropdown-menu">
                         <?php
-                        $sql = "select * from curso";
+                        $sql = "SELECT * FROM asignatura 
+                                INNER JOIN clase ON asignatura.id_asignatura = clase.id_asignatura
+                                INNER JOIN curso ON curso.id_curso = clase.id_curso
+                                INNER JOIN lista ON lista.id_curso = curso.id_curso
+                                INNER JOIN alumno ON alumno.id_alumno = lista.id_alumno
+                                INNER JOIN usuario ON usuario.rut_usr = alumno.rut_usr
+                                WHERE usuario.rut_usr = '$_SESSION[rut_usr]'
+                                ORDER BY asignatura.nombre_asignatura";
                         $res = $dbcon -> query($sql);
 
                         while($dato = mysqli_fetch_array($res)){
                             echo "
-                        <li class=\"dropdown-submenu\"><a>$dato[nombre_curso]</a>
+                        <li class=\"dropdown-submenu\"><a>$dato[nombre_asignatura]</a>
                             <ul class=\"dropdown-menu\">
-                                <li><a href=\"ver_clase.php?curso=$dato[id_curso]\">Asignatura 1</a></li>
-                                <li><a href=\"ver_clase.php?curso=$dato[id_curso]\">Asignatura 2</a></li>
-                                <li><a href=\"ver_clase.php?curso=$dato[id_curso]\">Asignatura 3</a></li>
+                                <li><a href=\"ver_notas.php?id=$dato[id_alumno]\">Notas</a></li>
+                                <li><a href=\"#\">Material Estudiantil</a></li>
+                                <li><a href=\"#\">Mensajes</a></li>
                             </ul>
                         </li>
                         ";
                         }
                         $res->close();
                         ?>
-
-                        <!--<li class="dropdown-submenu"><a>Cuarto A</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="ver_clase.php">Asignatura 1</a></li>
-                                <li><a href="ver_clase.php">Asignatura 2</a></li>
-                                <li><a href="ver_clase.php">Asignatura 3</a></li>
-                            </ul>
-                        </li>-->
                     </ul>
                 </li>
 
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" style="color: #0f0f0f" data-toggle="dropdown"
-                       role="button" aria-haspopup="true" aria-expanded="false"><b>Notas</b>
-                        <span class="caret"></span></a>
+                <li><a href="inicio_alumno.php" style="color: #0f0f0f"><b>Anotaciones</b></a></li>
 
-                    <ul class="dropdown-menu">
-                        <?php
-                        $sql2 = "select * from curso";
-                        $res2 = $dbcon -> query($sql2);
-                        while ($dato2 = mysqli_fetch_array($res2)){
-                            echo"
-                        <li class=\"dropdown-submenu\"><a>$dato2[nombre_curso]</a>
-                            <ul class=\"dropdown-menu\">
-                            
-                                <li class=\"dropdown-submenu\"><a>Asignatura 1</a>
-                                    <ul class=\"dropdown-menu\">
-                                        <li><a  href=\"tomar_asistencia.php?curso=$dato2[id_curso]\">Tomar asistencia</a></li>
-                                        <li><a href=\"#\">Observacion alumno</a></li>
-                                    </ul>
-                                </li>
-                                
-                                <li class=\"dropdown-submenu\"><a>Asignatura 2</a>
-                                    <ul class=\"dropdown-menu\">
-                                        <li><a  href=\"tomar_asistencia.php?curso=$dato2[id_curso]\">Tomar asistencia</a></li>
-                                        <li><a href=\"#\">Observacion alumno</a></li>
-                                    </ul >
-                                </li >
-                                
-                                <li class=\"dropdown-submenu\"><a>Asignatura 3</a>
-                                    <ul class=\"dropdown-menu\">
-                                        <li><a  href=\"tomar_asistencia.php?curso=$dato2[id_curso]\">Tomar asistencia</a></li>
-                                        <li><a href=\"#\">Observacion alumno</a></li>
-                                    </ul >
-                                </li >
-                            </ul>
-                        </li>
-                        ";
-                        }
-                        $res2->close();
-                        ?>
 
-                        <!--<li class="dropdown-submenu">Primero A</a>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-submenu"><a>Asignatura 1</a>
-                                    <ul class="dropdown-menu">
-                                        <li href="#"><a>Tomar asistencia</a></li>
-                                        <li href="#"><a>Observacion alumno</a></li>
-                                    </ul>
-                                </li>
-                                <li href="#"><a>Asignatura 2</a></li>
-                                <li href="#"><a>Asignatura 3</a></li>
-                            </ul>
-                        </li>-->
-                    </ul>
-                </li>
-
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" style="color: #0f0f0f" data-toggle="dropdown"
-                       role="button" aria-haspopup="true" aria-expanded="false"><b>Observaciones</b>
-                        <span class="caret"></span></a>
-
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-submenu"><a>Primero A</a>
-                            <ul class="dropdown-menu">
-                                <li href="#"><a>Asignatura 1</a></li>
-                                <li href="#"><a>Asignatura 2</a></li>
-                                <li href="#"><a>Asignatura 3</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown-submenu"><a>Segundo A</a>
-                            <ul class="dropdown-menu">
-                                <li href="#"><a>Asignatura 1</a></li>
-                                <li href="#"><a>Asignatura 2</a></li>
-                                <li href="#"><a>Asignatura 3</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown-submenu"><a>Tercero A</a>
-                            <ul class="dropdown-menu">
-                                <li href="#"><a>Asignatura 1</a></li>
-                                <li href="#"><a>Asignatura 2</a></li>
-                                <li href="#"><a>Asignatura 3</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown-submenu"><a>Cuarto A</a>
-                            <ul class="dropdown-menu">
-                                <li href="#"><a>Asignatura 1</a></li>
-                                <li href="#"><a>Asignatura 2</a></li>
-                                <li href="#"><a>Asignatura 3</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
 
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-
-                <form class="navbar-form navbar-left">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
 
                 <a class="navbar-brand" style="color: #0f0f0f" href="#"><?php echo$_SESSION['nombre']." ".$_SESSION['apellido_p']." ".$_SESSION['apellido_m'];?></a>
 

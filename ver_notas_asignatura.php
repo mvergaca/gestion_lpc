@@ -27,57 +27,98 @@ include "conexion.php";
 </section>
 
 <section id="principal">
-    <div align="center">
-        <?php
-        $curso = $_GET["curso"];
-        $sql = "SELECT * FROM usuario
-        INNER JOIN alumno ON alumno.rut_usr = usuario.rut_usr
-        INNER JOIN lista ON lista.id_alumno = alumno.id_alumno
-        INNER JOIN curso ON curso.id_curso = lista.id_curso
-        WHERE curso.id_curso = $curso";
-
-        $res = $dbcon->query($sql);
-
-        $sql3 = "SELECT * FROM curso
-                  INNER JOIN clase ON clase.id_curso = curso.id_curso
-                  INNER JOIN asignatura ON asignatura.id_asignatura = clase.id_asignatura
-                  WHERE curso.id_curso = $_GET[curso] AND asignatura.id_asignatura = $_GET[asig]";
-        $res3 = $dbcon->query($sql3);
-        while($datos3 = mysqli_fetch_array($res3)){
-            $cur = $datos3["nombre_curso"];
-            $asi = $datos3["nombre_asignatura"];
-        }
-
-
-        echo"<label><h3>$asi - $cur</h3></label>
-            <table id='ver_notas' class='table-bordered table-responsive' style='background: #f7ecb5;'>
-                <thead>
-                <tr>
-                    <td align='center'><b>Alumno</b></td>
-                                      
-                </tr>
-                </thead>";
-        while ($datos = mysqli_fetch_array($res)){
-            echo"<tr>
-                <td align='center'>$datos[nombre_usr] $datos[apellido_p_usr] $datos[apellido_m_usr]</td>";
-
-            $sql2 = "SELECT * FROM nota
-                    WHERE nota.id_alumno = $datos[id_alumno]";
-            $res2 = $dbcon->query($sql2);
-            $suma = 0;
-            $can = mysqli_num_rows($res2);if($can == 0)$can=1;
-            while ($datos2 = mysqli_fetch_array($res2)){
-                echo"<td align='center' style='width: 30px'>$datos2[nota]</td>";
-                $suma = $suma + $datos2['nota'];
+    <div class="col-sm-offset-0 col-sm-12">
+        <div class="col-sm-offset-2 col-sm-8" style="background-color: #f7ecb5;">
+            <?php
+            $sql = "SELECT * FROM asignatura WHERE id_asignatura = $_GET[asig]";
+            $res = $dbcon->query($sql);
+            while($datos = mysqli_fetch_array($res)){
+                $asignatura = $datos["nombre_asignatura"];
             }
-            $div = $suma/$can;
-            $prom = number_format($div,1,".",",");
-            echo"<td align='center' style='width: 30px; background: greenyellow' >$prom</td>
-            </tr>";
-        }
-        $res->close();
-        echo"</table>"
-        ?>
+
+            $sql2 = "SELECT * FROM curso WHERE id_curso = $_GET[curso]";
+            $res2 = $dbcon->query($sql2);
+            while ($datos2 = mysqli_fetch_array($res2)){
+                $curso = $datos2["nombre_curso"];
+            }
+
+            $sql3 = "SELECT * FROM semestre WHERE anio = YEAR(NOW())";
+            $res3 = $dbcon->query($sql3);
+            while ($datos3 = mysqli_fetch_array($res3)) {
+                $semestre = $datos3["nombre_sem"];
+                $id_semestre = $datos3["id_semestre"];
+
+                echo "<h3>$asignatura - $curso - $semestre</h3>";
+
+                $sql4 = "SELECT * FROM alumno
+                      INNER JOIN usuario ON usuario.rut_usr = alumno.rut_usr
+                      INNER JOIN lista ON lista.id_alumno = alumno.id_alumno
+                      INNER JOIN curso ON curso.id_curso = lista.id_curso
+                      WHERE curso.id_curso = $_GET[curso]";
+                $res4 = $dbcon->query($sql4);
+
+                echo "<table class='table table-bordered table-responsive'>
+                    <thead>
+                    <tr>
+                        <td class='col-sm-5'><label>Nombre</label></td>
+                        <td class='col-sm-6'><label>Notas</label></td>
+                        <td class='col-sm-1'><label>Promedio</label></td>
+                    </tr>
+                    </thead>
+                    <tbody>";
+
+                while ($datos4 = mysqli_fetch_array($res4)) {
+                    echo "<tr>
+                    <td>$datos4[nombre_usr] $datos4[apellido_p_usr] $datos4[apellido_m_usr]</td>
+                    <td>
+                    <table class='table table-bordered table-responsive'>
+                    <tr>";
+
+                    $sql5 = "SELECT * FROM nota WHERE id_alumno = $datos4[id_alumno] AND id_asignatura = $_GET[asig] 
+                          AND id_semestre = $id_semestre";
+                    $res5 = $dbcon->query($sql5);
+
+                    $notas = array(null, null, null, null, null, null, null, null, null, null);
+                    $i = 0;
+
+                    while ($datos5 = mysqli_fetch_array($res5)) {
+                        $notas[$i] = $datos5['nota'];
+                        $i++;
+                    }
+
+                    $suma = 0;
+                    $num_notas = 0;
+
+                    for ($j = 0; $j < 10; $j++) {
+                        if ($notas[$j] != null) {
+                            echo "<td class='col-sm-1'>$notas[$j]</td>";
+                            $suma = $suma + $notas[$j];
+                            $num_notas++;
+
+                        } else {
+                            echo "<td class='col-sm-1'></td>";
+                        }
+                    }
+
+                    if ($num_notas == 0) {
+                        $num_notas = 1;
+                    }
+                    $prom = $suma / $num_notas;
+
+                    $prom2 = number_format($prom, 2, '.', ',');
+
+                    echo "</tr>
+                    </table>
+                    </td>
+                    <td><table class='table table-bordered'><tr><td>$prom2</td></tr></table></td>
+                </tr>";
+
+                }
+
+                echo "</tbody></table>";
+            }
+            ?>
+        </div>
     </div>
 </section>
 

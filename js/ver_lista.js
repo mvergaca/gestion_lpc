@@ -6,5 +6,5 @@ $(document).ready(function () {
 });
 
 function ver_alumno(ref) {
-    window.location.href = "ver_alumno.php?id="+ref;
+    window.location.href = "ver_alumno_adm.php?id="+ref;
 }
