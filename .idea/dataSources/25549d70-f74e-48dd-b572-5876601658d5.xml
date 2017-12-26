@@ -1554,382 +1554,392 @@
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="373" parent="247" name="mensaje">
+    <column id="373" parent="247" name="fecha_mensaje">
       <Position>5</Position>
+      <DataType>date|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="374" parent="247" name="mensaje">
+      <Position>6</Position>
       <DataType>varchar(300)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="374" parent="247" name="fk_mensaje_reference_curso">
+    <index id="375" parent="247" name="fk_mensaje_reference_curso">
       <ColNames>id_curso</ColNames>
     </index>
-    <index id="375" parent="247" name="fk_mensaje_reference_profesor">
+    <index id="376" parent="247" name="fk_mensaje_reference_profesor">
       <ColNames>id_profesor</ColNames>
     </index>
-    <index id="376" parent="247" name="fk_mensaje_reference_asignatu">
+    <index id="377" parent="247" name="fk_mensaje_reference_asignatu">
       <ColNames>id_asignatura</ColNames>
     </index>
-    <key id="377" parent="247" name="PRIMARY">
+    <key id="378" parent="247" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_mensaje</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="378" parent="248" name="id_nota">
+    <column id="379" parent="248" name="id_nota">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="379" parent="248" name="id_asignatura">
+    <column id="380" parent="248" name="id_asignatura">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="380" parent="248" name="id_alumno">
+    <column id="381" parent="248" name="id_alumno">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="381" parent="248" name="id_semestre">
+    <column id="382" parent="248" name="id_semestre">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="382" parent="248" name="nota">
+    <column id="383" parent="248" name="nota">
       <Position>5</Position>
       <DataType>decimal(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="383" parent="248" name="detalle">
+    <column id="384" parent="248" name="detalle">
       <Position>6</Position>
       <DataType>varchar(50)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="384" parent="248" name="fecha_nota">
+    <column id="385" parent="248" name="fecha_nota">
       <Position>7</Position>
       <DataType>date|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="385" parent="248" name="fk_nota_reference_asignatu">
+    <index id="386" parent="248" name="fk_nota_reference_asignatu">
       <ColNames>id_asignatura</ColNames>
     </index>
-    <index id="386" parent="248" name="fk_nota_reference_alumno">
+    <index id="387" parent="248" name="fk_nota_reference_alumno">
       <ColNames>id_alumno</ColNames>
     </index>
-    <index id="387" parent="248" name="fk_nota_reference_semestre">
+    <index id="388" parent="248" name="fk_nota_reference_semestre">
       <ColNames>id_semestre</ColNames>
     </index>
-    <key id="388" parent="248" name="PRIMARY">
+    <key id="389" parent="248" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_nota</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="389" parent="249" name="id_observacion">
+    <column id="390" parent="249" name="id_observacion">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="390" parent="249" name="id_profesor">
+    <column id="391" parent="249" name="id_profesor">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="391" parent="249" name="id_alumno">
+    <column id="392" parent="249" name="id_alumno">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="392" parent="249" name="observacion">
+    <column id="393" parent="249" name="observacion">
       <Position>4</Position>
       <DataType>varchar(500)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="393" parent="249" name="fecha_hora">
+    <column id="394" parent="249" name="fecha_hora">
       <Position>5</Position>
       <DataType>timestamp|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="394" parent="249" name="fk_observac_reference_profesor">
+    <column id="395" parent="249" name="tipo_obs">
+      <Position>6</Position>
+      <DataType>tinyint(4)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="396" parent="249" name="fk_observac_reference_profesor">
       <ColNames>id_profesor</ColNames>
     </index>
-    <index id="395" parent="249" name="fk_observac_reference_alumno">
+    <index id="397" parent="249" name="fk_observac_reference_alumno">
       <ColNames>id_alumno</ColNames>
     </index>
-    <key id="396" parent="249" name="PRIMARY">
+    <key id="398" parent="249" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_observacion</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="397" parent="250" name="id_profesor">
+    <column id="399" parent="250" name="id_profesor">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="398" parent="250" name="rut_usr">
+    <column id="400" parent="250" name="rut_usr">
       <Position>2</Position>
       <DataType>varchar(12)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="399" parent="250" name="id_establecimiento">
+    <column id="401" parent="250" name="id_establecimiento">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="400" parent="250" name="especialidad">
+    <column id="402" parent="250" name="especialidad">
       <Position>4</Position>
       <DataType>varchar(30)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="401" parent="250" name="fk_profesor_reference_usuario">
+    <index id="403" parent="250" name="fk_profesor_reference_usuario">
       <ColNames>rut_usr</ColNames>
     </index>
-    <index id="402" parent="250" name="fk_profesor_reference_establec">
+    <index id="404" parent="250" name="fk_profesor_reference_establec">
       <ColNames>id_establecimiento</ColNames>
     </index>
-    <key id="403" parent="250" name="PRIMARY">
+    <key id="405" parent="250" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_profesor</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="404" parent="251" name="id_reserva">
+    <column id="406" parent="251" name="id_reserva">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="405" parent="251" name="id_profesor">
+    <column id="407" parent="251" name="id_profesor">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="406" parent="251" name="id_sala">
+    <column id="408" parent="251" name="id_sala">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="407" parent="251" name="fecha_reserva">
+    <column id="409" parent="251" name="fecha_reserva">
       <Position>4</Position>
       <DataType>date|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="408" parent="251" name="inicio_reserva">
+    <column id="410" parent="251" name="inicio_reserva">
       <Position>5</Position>
       <DataType>time|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="409" parent="251" name="fin_reserva">
+    <column id="411" parent="251" name="fin_reserva">
       <Position>6</Position>
       <DataType>time|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="410" parent="251" name="fk_reserva_reference_profesor">
+    <index id="412" parent="251" name="fk_reserva_reference_profesor">
       <ColNames>id_profesor</ColNames>
     </index>
-    <index id="411" parent="251" name="fk_reserva_reference_sala">
+    <index id="413" parent="251" name="fk_reserva_reference_sala">
       <ColNames>id_sala</ColNames>
     </index>
-    <key id="412" parent="251" name="PRIMARY">
+    <key id="414" parent="251" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_reserva</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="413" parent="252" name="id_retiro">
+    <column id="415" parent="252" name="id_retiro">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="414" parent="252" name="id_alumno">
+    <column id="416" parent="252" name="id_alumno">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="415" parent="252" name="fecha_retiro">
+    <column id="417" parent="252" name="fecha_retiro">
       <Position>3</Position>
       <DataType>date|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="416" parent="252" name="fk_retirado_reference_alumno">
+    <index id="418" parent="252" name="fk_retirado_reference_alumno">
       <ColNames>id_alumno</ColNames>
     </index>
-    <key id="417" parent="252" name="PRIMARY">
+    <key id="419" parent="252" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_retiro</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="418" parent="253" name="id_sala">
+    <column id="420" parent="253" name="id_sala">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="419" parent="253" name="nombre_sala">
+    <column id="421" parent="253" name="nombre_sala">
       <Position>2</Position>
       <DataType>varchar(20)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="420" parent="253" name="encargado">
+    <column id="422" parent="253" name="encargado">
       <Position>3</Position>
-      <DataType>int(11)|0</DataType>
+      <DataType>varchar(12)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="421" parent="253" name="PRIMARY">
+    <key id="423" parent="253" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_sala</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="422" parent="254" name="id_secretaria">
+    <column id="424" parent="254" name="id_secretaria">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="423" parent="254" name="rut_usr">
+    <column id="425" parent="254" name="rut_usr">
       <Position>2</Position>
       <DataType>varchar(12)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="424" parent="254" name="id_establecimiento">
+    <column id="426" parent="254" name="id_establecimiento">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="425" parent="254" name="fk_secretar_reference_usuario">
+    <index id="427" parent="254" name="fk_secretar_reference_usuario">
       <ColNames>rut_usr</ColNames>
     </index>
-    <index id="426" parent="254" name="fk_secretar_reference_establec">
+    <index id="428" parent="254" name="fk_secretar_reference_establec">
       <ColNames>id_establecimiento</ColNames>
     </index>
-    <key id="427" parent="254" name="PRIMARY">
+    <key id="429" parent="254" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_secretaria</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="428" parent="255" name="id_semestre">
+    <column id="430" parent="255" name="id_semestre">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="429" parent="255" name="inicio_semestre">
+    <column id="431" parent="255" name="inicio_semestre">
       <Position>2</Position>
       <DataType>date|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="430" parent="255" name="fin_semestre">
+    <column id="432" parent="255" name="fin_semestre">
       <Position>3</Position>
       <DataType>date|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="431" parent="255" name="anio">
+    <column id="433" parent="255" name="anio">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="432" parent="255" name="nombre_sem">
+    <column id="434" parent="255" name="nombre_sem">
       <Position>5</Position>
-      <DataType>varchar(15)|0</DataType>
+      <DataType>varchar(20)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="433" parent="255" name="PRIMARY">
+    <key id="435" parent="255" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_semestre</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="434" parent="256" name="rut_usr">
+    <column id="436" parent="256" name="rut_usr">
       <Position>1</Position>
       <DataType>varchar(12)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="435" parent="256" name="pass_usr">
+    <column id="437" parent="256" name="pass_usr">
       <Position>2</Position>
       <DataType>varchar(50)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="436" parent="256" name="nombre_usr">
+    <column id="438" parent="256" name="nombre_usr">
       <Position>3</Position>
       <DataType>varchar(50)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="437" parent="256" name="apellido_p_usr">
+    <column id="439" parent="256" name="apellido_p_usr">
       <Position>4</Position>
       <DataType>varchar(50)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="438" parent="256" name="apellido_m_usr">
+    <column id="440" parent="256" name="apellido_m_usr">
       <Position>5</Position>
       <DataType>varchar(50)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="439" parent="256" name="fecha_n_usr">
+    <column id="441" parent="256" name="fecha_n_usr">
       <Position>6</Position>
       <DataType>date|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="440" parent="256" name="genero_usr">
+    <column id="442" parent="256" name="genero_usr">
       <Position>7</Position>
       <DataType>varchar(1)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="441" parent="256" name="telefono_usr">
+    <column id="443" parent="256" name="telefono_usr">
       <Position>8</Position>
       <DataType>varchar(12)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="442" parent="256" name="correo_usr">
+    <column id="444" parent="256" name="correo_usr">
       <Position>9</Position>
       <DataType>varchar(50)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="443" parent="256" name="direccion_usr">
+    <column id="445" parent="256" name="direccion_usr">
       <Position>10</Position>
       <DataType>varchar(100)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="444" parent="256" name="comuna_usr">
+    <column id="446" parent="256" name="comuna_usr">
       <Position>11</Position>
       <DataType>varchar(50)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="445" parent="256" name="PRIMARY">
+    <key id="447" parent="256" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>rut_usr</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="446" parent="257" name="id_utp">
+    <column id="448" parent="257" name="id_utp">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="447" parent="257" name="rut_usr">
+    <column id="449" parent="257" name="rut_usr">
       <Position>2</Position>
       <DataType>varchar(12)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="448" parent="257" name="id_establecimiento">
+    <column id="450" parent="257" name="id_establecimiento">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="449" parent="257" name="fk_utp_reference_usuario">
+    <index id="451" parent="257" name="fk_utp_reference_usuario">
       <ColNames>rut_usr</ColNames>
     </index>
-    <index id="450" parent="257" name="fk_utp_reference_establec">
+    <index id="452" parent="257" name="fk_utp_reference_establec">
       <ColNames>id_establecimiento</ColNames>
     </index>
-    <key id="451" parent="257" name="PRIMARY">
+    <key id="453" parent="257" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_utp</ColNames>
       <Primary>1</Primary>
