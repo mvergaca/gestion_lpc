@@ -30,7 +30,7 @@ include "conexion.php";
 
 <section id="principal">
     <div   class="col-sm-offset-0 col-sm-12">
-        <div class="col-sm-offset-2 col-sm-8">
+        <div class="col-sm-offset-2 col-sm-8" style="background-color: #f7ecb5;">
             <?php
             echo"<input type='hidden' id='curso' value='$_GET[id]'>";
             $sql2 = "SELECT * FROM curso WHERE id_curso = $_GET[id]";
@@ -40,7 +40,7 @@ include "conexion.php";
             }
             $res2->close();
             ?>
-            <table class="table table-bordered table-responsive" style="background-color: #f7ecb5;">
+            <table class="table table-bordered table-responsive" >
                 <thead>
                 <tr>
                     <td style="border: #34a9b6 2px solid;"><label>Alumno</label></td>

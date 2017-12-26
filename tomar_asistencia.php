@@ -33,6 +33,7 @@ include "conexion.php";
 </section>
 
 <section id="principal">
+<div class="col-sm-offset-0 col-sm-12">
     <?php
     $con = "select id_profesor from profesor WHERE rut_usr = '$_SESSION[rut_usr]'";
     $res_con = $dbcon->query($con);
@@ -40,12 +41,28 @@ include "conexion.php";
         $id_profe = $dat['id_profesor'];
     }
     $res_con->close();
+
+    $sql2 = "SELECT * FROM curso WHERE id_curso = $_GET[curso]";
+    $res2 = $dbcon->query($sql2);
+    while ($datos2 = mysqli_fetch_array($res2)){
+        $nombre_cur = $datos2['nombre_curso'];
+    }
+    $res2->close();
+
+    $sql3 = "SELECT * FROM asignatura WHERE id_asignatura = $_GET[asig]";
+    $res3 = $dbcon->query($sql3);
+    while ($datos3 = mysqli_fetch_array($res3)){
+        $nombre_asi = $datos3['nombre_asignatura'];
+    }
+    $res3->close();
     ?>
 <input type="hidden" id="usuario" value="<?php echo"$id_profe";?>">
 <input type="hidden" id="asignatura" value="<?php echo"$_GET[asig]";?>">
     <input type="hidden" id="curso" value="<?php echo"$_GET[curso]";?>">
-    <div align="center">
-        <table id="ingresar" class="table-bordered table-responsive" style="background-color: #f7ecb5;">
+
+    <div class="col-sm-offset-2 col-sm-8" style="background-color: #f7ecb5;">
+        <?php  echo"<h3>$nombre_cur $nombre_asi</h3>";?>
+        <table id="ingresar" class="table table-bordered table-responsive">
             <thead>
             <tr>
                 <td align="center" style='border: #34a9b6 2px solid;'><b>Alumno</b></td>
@@ -73,9 +90,10 @@ include "conexion.php";
     }
     $res->close();
     ?>
-        </table><br>
-        <input type="button" id="guardar" class="btn btn-info" value="Guardar" onclick=""><br>
+        </table>
+        <input type="button" id="guardar" class="btn btn-info" value="Guardar" style="margin: 2%"><br>
     </div>
+</div>
 </section><br>
 
 <section id="pie" class="col-sm-offset-0 col-sm-12">

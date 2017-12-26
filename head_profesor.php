@@ -1,5 +1,3 @@
-
-
 <nav class="navbar navbar-default" style="background-color: #34a9b6;">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -100,9 +98,10 @@
                                     echo "
                                 <li class=\"dropdown-submenu\"><a>$dato_as2[nombre_asignatura]</a>
                                     <ul class=\"dropdown-menu\">
-                                        <li><a  href=\"tomar_asistencia.php?curso=$dato_as2[id_curso]&asig=$dato_as2[id_asignatura]\">Tomar asistencia</a></li>
+                                        <li><a href=\"tomar_asistencia.php?curso=$dato_as2[id_curso]&asig=$dato_as2[id_asignatura]\">Tomar asistencia</a></li>
                                         <li><a href=\"observacion.php?curso=$dato_as2[id_curso]&asig=$dato_as2[id_asignatura]\">Observacion alumno</a></li>
                                         <li><a href=\"ver_asistencia.php?curso=$dato_as2[id_curso]&asi=$dato_as2[id_asignatura]\">Ver Asistencia</a></li>
+                                        <li><a href=\"ver_observaciones.php?curso=$dato_as2[id_curso]&asi=$dato_as2[id_asignatura]\">Ver Observaciones</a></li>
                                     </ul>
                                 </li>";
                                 }

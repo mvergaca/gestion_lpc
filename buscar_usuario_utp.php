@@ -17,19 +17,20 @@ include "conexion.php";
     <link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.7/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/estilos.css">
 
-    <script src="js/usuario_buscar.js"></script>
+    <script src="js/buscar_usuario_utp.js"></script>
+
 </head>
 <body>
 
 <section id="encabezado">
     <?php
-    include "head_administrador.php";
+    include "head_utp.php";
     ?>
 </section>
 
 <section id="principal">
     <div class="col-sm-offset-0 col-sm-12">
-        <div class="col-sm-offset-2 col-sm-8" style="background-color: #f7ecb5">
+        <div id="usr" class="col-sm-offset-2 col-sm-8" style="background-color: #f7ecb5">
 
             <div>
                 <div class=" form-group col-sm-offset-0 col-sm-12" style="margin-top: 2%">
@@ -44,10 +45,10 @@ include "conexion.php";
                 </div>
             </div>
 
-            <div id="resultado" class="col-sm-offset-2 col-sm-8" style="margin-top: 3%" align="center">
+            <div id="resultado" class="col-sm-offset-2 col-sm-8" style="margin-top: 3%">
 
             </div>
-       </div>
+        </div>
 
     </div>
 </section>

@@ -38,10 +38,11 @@ include "conexion.php";
             <input type='hidden' id='clase' value='$_GET[id]'>";
         }
         ?>
-        <form class="form-inline col-sm-offset-2 col-sm-8" style="background-color: #f7ecb5">
+        <div class="col-sm-offset-2 col-sm-8" style="background-color: #f7ecb5">
 
-            <div style="margin: 5px">
-                <label for="asignatura">Asignatura</label>
+            <div class="col-sm-offset-0 col-sm-12" style="margin: 5px">
+                <label for="asignatura" class="col-sm-offset-3 col-sm-2">Asignatura</label>
+                <div class="col-sm-4">
                 <select id="asignatura" class="form-control">
                     <?php
                     $sql4 ="SELECT * FROM clase 
@@ -60,10 +61,12 @@ include "conexion.php";
                     }
                     ?>
                 </select>
+                </div>
             </div>
 
-            <div style="margin: 5px">
-                <label for="profesor">Profesor</label>
+            <div class="col-sm-offset-0 col-sm-12" style="margin: 5px">
+                <label for="profesor" class="col-sm-offset-3 col-sm-2">Profesor</label>
+                <div class="col-sm-4">
                 <select id="profesor" class="form-control">
                     <?php
                     $sql5 ="SELECT * FROM clase 
@@ -86,16 +89,19 @@ include "conexion.php";
                     }
                     ?>
                 </select>
+                </div>
             </div>
 
-            <div style="margin: 5px">
-                <label for="anio">Año</label>
+            <div class="col-sm-offset-0 col-sm-12" style="margin: 5px">
+                <label for="anio" class="col-sm-offset-3 col-sm-2">Año</label>
+                <div class="col-sm-4">
                 <input type="text" id="anio" class="form-control" value="<?php echo"$anio";?>">
+                </div>
             </div>
-            <div style="margin: 5px">
+            <div class="col-sm-offset-0 col-sm-12" style="margin: 5px">
                 <input type="button" class="btn btn-success" id="guardar" value="Guardar">
             </div>
-        </form>
+        </div>
     </div>
 </section>
 

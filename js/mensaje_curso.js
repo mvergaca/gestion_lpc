@@ -5,34 +5,46 @@ $(document).ready(function () {
         var mensaje = $("#mensaje").val();
         var asig = $("#asignatura").val();
         var prof = $("#prof").val();
+        var fecha = $("#fecha").val();
 
-        if(curso != "") {
-            if(mensaje != "") {
-                var consulta = "insert into mensaje (id_curso, id_profesor, id_asignatura, mensaje) values ("+curso+","+prof+","+asig+",'"+mensaje+"');";
+        var date = new Date();
 
-                $.ajax({
-                    type: "POST",
-                    url: "insertar_mensaje.php",
-                    data: {"consulta":consulta},
-                    success: function (data) {
-                        datos = data.split(";");
-                        if(datos[1] == 1){
-                            alert(datos[2]);
-                            $(location).attr('href','ver_clase.php?curso='+curso+'&asigna='+asig);
+        var dia = date.getDate();
+        var mes = date.getMonth()+1;
+        var anio = date.getFullYear();
+
+        var f_actual = anio+"-"+mes+"-"+dia;
+
+        if(f_actual <= fecha) {
+            if (curso != "") {
+                if (mensaje != "") {
+                    var consulta = "insert into mensaje (id_curso, id_profesor, id_asignatura, fecha_mensaje, mensaje) values (" + curso + "," + prof + "," + asig + ",'" + fecha + "','" + mensaje + "');";
+
+                    $.ajax({
+                        type: "POST",
+                        url: "insertar_mensaje.php",
+                        data: {"consulta": consulta},
+                        success: function (data) {
+                            datos = data.split(";");
+                            if (datos[1] == 1) {
+                                $(location).attr('href', 'ver_clase.php?curso=' + curso + '&asigna=' + asig);
+                            }
+                            else {
+                                alert("no se pudo guardar el mensaje");
+                            }
                         }
-                        else{
-                            alert(datos[2]);
-                            alert("no se pudo guardar el mensaje");
-                        }
-                    }
-                });
+                    });
+                }
+                else {
+                    alert("Por favor escriba un mensaje");
+                }
             }
-            else{
-                alert("Por favor escriba una observacion");
+            else {
+                alert("Seleccione un curso");
             }
         }
         else{
-            alert("Seleccione un curso");
+            alert("Ingrese una fecha mayor a la de hoy");
         }
 
     });

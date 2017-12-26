@@ -60,17 +60,17 @@ include "conexion.php";
                 echo "<table class='table table-bordered table-responsive'>
                     <thead>
                     <tr>
-                        <td class='col-sm-5'><label>Nombre</label></td>
-                        <td class='col-sm-6'><label>Notas</label></td>
-                        <td class='col-sm-1'><label>Promedio</label></td>
+                        <td class='col-sm-4' style='border: #34a9b6 2px solid;'><label>Nombre</label></td>
+                        <td class='col-sm-7' style='border: #34a9b6 2px solid;'><label>Notas</label></td>
+                        <td class='col-sm-1' style='border: #34a9b6 2px solid;'><label>Promedio</label></td>
                     </tr>
                     </thead>
                     <tbody>";
 
                 while ($datos4 = mysqli_fetch_array($res4)) {
                     echo "<tr>
-                    <td>$datos4[nombre_usr] $datos4[apellido_p_usr] $datos4[apellido_m_usr]</td>
-                    <td>
+                    <td style='border: #34a9b6 2px solid;'>$datos4[nombre_usr] $datos4[apellido_p_usr] $datos4[apellido_m_usr]</td>
+                    <td style='border: #34a9b6 2px solid;'>
                     <table class='table table-bordered table-responsive'>
                     <tr>";
 
@@ -110,7 +110,7 @@ include "conexion.php";
                     echo "</tr>
                     </table>
                     </td>
-                    <td><table class='table table-bordered'><tr><td>$prom2</td></tr></table></td>
+                    <td style='border: #34a9b6 2px solid;'><table class='table table-bordered'><tr><td>$prom2</td></tr></table></td>
                 </tr>";
 
                 }

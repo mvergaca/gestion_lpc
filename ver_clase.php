@@ -28,6 +28,7 @@ include "conexion.php";
 </section>
 
 <section id="principal">
+    <div class="col-sm-offset-0 col-sm-12">
     <?php
     $sql2 = "SELECT * FROM curso
              INNER JOIN clase ON clase.id_curso = curso.id_curso
@@ -40,15 +41,15 @@ include "conexion.php";
     }
     $res2 ->close();
     ?>
-    <label>Mensajes <?php echo"$asig $curso"; ?> </label>
-    <div align="center">
-        <div class="col-sm-offset-2 col-sm-8 col-xs-offset-0 col-xs-12">
-        <table class=" table table-bordered table-responsive" id="tabla_mensajes" style="background-color: #f7ecb5;">
+        <div class="col-sm-offset-2 col-sm-8 col-xs-offset-0 col-xs-12" style="background-color: #f7ecb5;">
+            <h4>Mensajes <?php echo"$asig $curso"; ?> </h4>
+        <table class=" table table-bordered table-responsive" id="tabla_mensajes">
             <thead>
             <tr>
-                <td style="width: 60%" align="center"><label>Mensaje</label></td>
-                <td style="width: 20%" align="center"><label>Modificar</label></td>
-                <td style="width: 20%" align="center"><label>Eliminar</label></td>
+                <td class="col-sm-8"><label>Mensaje</label></td>
+                <td class="col-sm-2"><label>Fecha</label></td>
+                <td class="col-sm-1"><label>Modificar</label></td>
+                <td class="col-sm-1"><label>Eliminar</label></td>
             </tr>
             </thead>
 
@@ -57,13 +58,15 @@ include "conexion.php";
                 INNER JOIN profesor ON profesor.id_profesor = mensaje.id_profesor
                 INNER JOIN asignatura ON asignatura.id_asignatura = mensaje.id_asignatura
                 INNER JOIN curso ON curso.id_curso = mensaje.id_curso
-                WHERE profesor.rut_usr = '$_SESSION[rut_usr]'";
+                WHERE profesor.rut_usr = '$_SESSION[rut_usr]' AND mensaje.fecha_mensaje >= CURDATE()
+                ORDER BY mensaje.fecha_mensaje";
         $res = $dbcon -> query($sql);
         $i = 1;
         while ($datos = mysqli_fetch_array($res)){
             echo"<tr id='fila_$i'>
                     <input type='hidden' name='mensaje' id='mensaje_$i' value='$datos[id_mensaje]'>
-                    <td><textarea id='texto_$i' name='texto' class='col-sm-offset-0 col-sm-12 col-xs-offset-0 col-xs-12'>$datos[mensaje]</textarea></td>
+                    <td><textarea id='texto_$i' name='texto' class='form-control'>$datos[mensaje]</textarea></td>
+                    <td>$datos[fecha_mensaje]</td>
                     <td align='center'><input type='button' id='modificar_$i' class='btn btn-info' value='Modificar' onclick='modificar($i);'>
                     <input type='button' id='guardar_$i' name='guardar' value='Guardar' class='btn btn-success' onclick='guardar($i);'></td>
                     <td align='center'><input type='button' id='eliminar_$i' class='btn btn-danger' value='Eliminar' onclick='eliminar($i);'></td>

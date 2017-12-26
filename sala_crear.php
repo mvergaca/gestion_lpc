@@ -29,8 +29,8 @@ include "conexion.php";
 
 <section id="principal" style="min-height: 540px;">
     <div class="col-sm-offset-0 col-sm-12">
-        <div class="col-sm-offset-2 col-sm-8" style="background-color: #f7ecb5">
-            <div id="form" class="form-group col-sm-offset-0 col-sm-12">
+        <div class="col-sm-offset-2 col-sm-8" style="background-color: #f7ecb5;">
+            <div id="form" class="form-group col-sm-offset-0 col-sm-12" style="margin-top: 2%">
 
 
                     <div class="form-group col-sm-offset-0 col-sm-12">

@@ -22,7 +22,7 @@ include "conexion.php";
 
 <section id="encabezado">
     <?php
-    include "head_administrador.php";
+    include "head_utp.php";
     ?>
 </section>
 
@@ -42,80 +42,81 @@ include "conexion.php";
                 $curso = $datos2["nombre_curso"];
             }
 
-            $sql3 = "SELECT * FROM semestre WHERE inicio_semestre <= CURRENT_DATE () AND fin_semestre >= CURRENT_DATE ()";
+            $sql3 = "SELECT * FROM semestre WHERE anio = YEAR(NOW())";
             $res3 = $dbcon->query($sql3);
-            while ($datos3 = mysqli_fetch_array($res3)){
+            while ($datos3 = mysqli_fetch_array($res3)) {
                 $semestre = $datos3["nombre_sem"];
                 $id_semestre = $datos3["id_semestre"];
-            }
-            echo"<h3>$asignatura - $curso - $semestre</h3>";
 
-            $sql4 = "SELECT * FROM alumno
+                echo "<h3>$asignatura - $curso - $semestre</h3>";
+
+                $sql4 = "SELECT * FROM alumno
                       INNER JOIN usuario ON usuario.rut_usr = alumno.rut_usr
                       INNER JOIN lista ON lista.id_alumno = alumno.id_alumno
                       INNER JOIN curso ON curso.id_curso = lista.id_curso
                       WHERE curso.id_curso = $_GET[curso]";
-            $res4 = $dbcon->query($sql4);
+                $res4 = $dbcon->query($sql4);
 
-            echo"<table class='table table-bordered table-responsive'>
+                echo "<table class='table table-bordered table-responsive'>
                     <thead>
                     <tr>
-                        <td class='col-sm-5'><label>Nombre</label></td>
-                        <td class='col-sm-6'><label>Notas</label></td>
-                        <td class='col-sm-1'><label>Promedio</label></td>
+                        <td class='col-sm-4' style='border: #34a9b6 2px solid;'><label>Nombre</label></td>
+                        <td class='col-sm-7' style='border: #34a9b6 2px solid;'><label>Notas</label></td>
+                        <td class='col-sm-1' style='border: #34a9b6 2px solid;'><label>Promedio</label></td>
                     </tr>
                     </thead>
                     <tbody>";
 
-            while ($datos4 = mysqli_fetch_array($res4)){
-                echo"<tr>
-                    <td>$datos4[nombre_usr] $datos4[apellido_p_usr] $datos4[apellido_m_usr]</td>
-                    <td>
+                while ($datos4 = mysqli_fetch_array($res4)) {
+                    echo "<tr>
+                    <td style='border: #34a9b6 2px solid;'>$datos4[nombre_usr] $datos4[apellido_p_usr] $datos4[apellido_m_usr]</td>
+                    <td style='border: #34a9b6 2px solid;'>
                     <table class='table table-bordered table-responsive'>
                     <tr>";
 
-                $sql5 = "SELECT * FROM nota WHERE id_alumno = $datos4[id_alumno] AND id_asignatura = $_GET[asig] 
+                    $sql5 = "SELECT * FROM nota WHERE id_alumno = $datos4[id_alumno] AND id_asignatura = $_GET[asig] 
                           AND id_semestre = $id_semestre";
-                $res5 = $dbcon->query($sql5);
+                    $res5 = $dbcon->query($sql5);
 
-                $notas = array(null,null,null,null,null,null,null,null,null,null);
-                $i = 0;
+                    $notas = array(null, null, null, null, null, null, null, null, null, null);
+                    $i = 0;
 
-                while($datos5 = mysqli_fetch_array($res5)){
-                    $notas[$i] = $datos5['nota'];
-                    $i++;
-                }
-
-                $suma = 0;
-                $num_notas = 0;
-
-                for($j = 0; $j < 10; $j++){
-                    if($notas[$j] != null) {
-                        echo "<td class='col-sm-1'>$notas[$j]</td>";
-                        $suma = $suma + $notas[$j];
-                        $num_notas++;
-
+                    while ($datos5 = mysqli_fetch_array($res5)) {
+                        $notas[$i] = $datos5['nota'];
+                        $i++;
                     }
-                    else{
-                        echo "<td class='col-sm-1'></td>";
+
+                    $suma = 0;
+                    $num_notas = 0;
+
+                    for ($j = 0; $j < 10; $j++) {
+                        if ($notas[$j] != null) {
+                            echo "<td class='col-sm-1'>$notas[$j]</td>";
+                            $suma = $suma + $notas[$j];
+                            $num_notas++;
+
+                        } else {
+                            echo "<td class='col-sm-1'></td>";
+                        }
                     }
-                }
 
-                if($num_notas == 0){
-                    $num_notas = 1;
-                }
-                $prom = $suma/$num_notas;
-                $prom2 = number_format($prom, 1, ',', ' ');
+                    if ($num_notas == 0) {
+                        $num_notas = 1;
+                    }
+                    $prom = $suma / $num_notas;
 
-                    echo"</tr>
+                    $prom2 = number_format($prom, 1, '.', ',');
+
+                    echo "</tr>
                     </table>
                     </td>
-                    <td><table class='table table-bordered'><tr><td>$prom2</td></tr></table></td>
+                    <td style='border: #34a9b6 2px solid;'><table class='table table-bordered'><tr><td>$prom2</td></tr></table></td>
                 </tr>";
 
-            }
+                }
 
-        echo"</tbody></table";
+                echo "</tbody></table>";
+            }
             ?>
         </div>
     </div>

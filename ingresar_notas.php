@@ -29,7 +29,8 @@ include "conexion.php";
 </section>
 
 <section id="principal">
-    <div align="center">
+    <div class="col-sm-offset-0 col-sm-12">
+    <div class="col-sm-offset-2 col-sm-8" style='background-color: #f7ecb5;'>
     <?php
     $curso = $_GET['curso'];
     $asigna = $_GET['asig'];
@@ -57,9 +58,13 @@ include "conexion.php";
          <input type='hidden' id='curso' value='$curso'>
          <input type='hidden' id='semestre' value='$id_semestre'> 
          
-         <h3>$nombre_asig $nombre_curso $nombre_semestre</h3>
-         
-         <label >Detalle</label><input type='text' id='detalle' class='form-control' style='width: auto'><br>";
+         <h3>$nombre_asig - $nombre_curso - $nombre_semestre</h3>
+         <div class='col-sm-offset-0 col-sm-12' style='margin: 2%'>
+            <label class='col-sm-offset-4 col-sm-1'>Detalle</label>
+            <div class='col-sm-3'>
+               <input type='text' id='detalle' class='form-control'>
+            </div>
+         </div>";
     $sql = "SELECT * FROM alumno 
             INNER JOIN lista ON alumno.id_alumno = lista.id_alumno
             INNER JOIN curso ON lista.id_curso = curso.id_curso
@@ -67,11 +72,11 @@ include "conexion.php";
             WHERE curso.id_curso = $curso";
     $res = $dbcon->query($sql);
 
-    echo"<table id='ingresar' class='table-bordered table-responsive' style='background-color: #f7ecb5;'>
+    echo"<table id='ingresar' class='table table-bordered table-responsive'>
             <thead>
                 <tr>
-                    <td align='center'><b>Alumno</b></td>
-                    <td align='center'><b>Nota</b></td>
+                    <td align='center' style='border: #34a9b6 2px solid;'><b>Alumno</b></td>
+                    <td align='center' style='border: #34a9b6 2px solid;'><b>Nota</b></td>
                 </tr>
             </thead>";
     $i = 1;
@@ -79,17 +84,20 @@ include "conexion.php";
                 echo"
                     <tr>
                     <input type='hidden' id='est_$i' value='$datos[id_alumno]'>
-                        <td align='center'>$datos[nombre_usr] $datos[apellido_p_usr] $datos[apellido_m_usr]</td>
-                        <td align='center'><input name='nota' type='number' min='1' max='7' id='nota_$i' value='1' style='width: auto'></td>
+                        <td align='center' style='border: #34a9b6 2px solid;'>$datos[nombre_usr] $datos[apellido_p_usr] $datos[apellido_m_usr]</td>
+                        <td align='center' style='border: #34a9b6 2px solid;'><input name='nota' type='number' min='1' max='7' id='nota_$i' value='1' style='width: auto'></td>
                     </tr>
                 ";
                 $i++;
             }
-    echo"</table><br><br>
-         <input type='button' id='guardar_notas' class='btn btn-info' value='Guardar'>";
+    echo"</table>
+    <div class='col-sm-offset-0 col-sm-12' style='margin: 2%'>
+         <input type='button' id='guardar_notas' class='btn btn-info' value='Guardar'>
+    </div>";
+
     ?>
     </div>
-
+    </div>
 </section>
 
 <section id="pie" class="col-sm-offset-0 col-sm-12">

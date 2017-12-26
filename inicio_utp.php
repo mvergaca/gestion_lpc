@@ -27,10 +27,53 @@ include "conexion.php";
 
 <section id="principal">
 
+    <?php
+    $sql = "SELECT DISTINCT alumno.rut_usr, usuario.nombre_usr, usuario.apellido_p_usr, usuario.apellido_m_usr,
+                curso.id_curso, curso.nombre_curso, asistencia.fecha_hora
+                FROM asistencia 
+                INNER JOIN alumno ON alumno.id_alumno = asistencia.id_alumno
+                INNER JOIN usuario ON usuario.rut_usr = alumno.rut_usr
+                INNER JOIN lista ON lista.id_alumno = alumno.id_alumno
+                INNER JOIN curso ON curso.id_curso = lista.id_curso
+                WHERE asistencia.estado = 0 AND asistencia.justificacion = 0
+                ORDER BY curso.id_curso, usuario.nombre_usr";
+
+    $res = $dbcon->query($sql);
+    if(mysqli_num_rows($res)>0) {
+        echo "
+    <div class='col-sm-offset-0 col-sm-12'>
+        <div id='inasistencias' class='col-sm-offset-2 col-sm-8 alert-danger'>
+            <h3>Inasistencias</h3>
+            <table class='table table-bordered table-responsive'>
+                <thead>
+                <tr>
+                    <td><label>Nombre</label></td>
+                    <td><label>Curso</label></td>
+                    <td><label>Fecha</label></td>
+                </tr>
+                </thead>
+                <tbody>";
+
+        while ($datos = mysqli_fetch_array($res)) {
+            echo "<tr>
+                <td>$datos[nombre_usr] $datos[apellido_p_usr] $datos[apellido_m_usr]</td>
+                <td>$datos[nombre_curso]</td>
+                <td>$datos[fecha_hora]</td>
+            </tr>";
+        }
+
+        echo"   </tbody>
+            </table>
+        </div>";
+    }
+
+
+    ?>
+    </div>
 
 </section>
 
-<section id="pie">
+<section id="pie" class="col-sm-offset-0 col-sm-12">
     <?php
     include "footer.php";
     ?>

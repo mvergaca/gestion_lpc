@@ -26,18 +26,24 @@ include "conexion.php";
 </section>
 
 <section id="principal" style="min-height: 540px;">
-    <div id="horario">
+    <div class="col-sm-offset-0 col-sm-12">
+    <div id="horario" class="col-sm-offset-1 col-sm-10" style='background-color: #f7ecb5;'>
         <?php
-        $sql3 = "SELECT * FROM usuario WHERE rut_usr = '$_GET[rut]'";
+        $sql3 = "SELECT * FROM usuario 
+                  LEFT JOIN profesor ON profesor.rut_usr = usuario.rut_usr
+                  LEFT JOIN alumno ON alumno.rut_usr = usuario.rut_usr
+                  WHERE usuario.rut_usr = '$_GET[rut]'";
         $res3 = $dbcon -> query($sql3);
         while($datos3 = mysqli_fetch_array($res3)){
             $nombre = $datos3["nombre_usr"];
             $apellido_p = $datos3["apellido_p_usr"];
             $apellido_m = $datos3["apellido_m_usr"];
+            $prof = $datos3["id_profesor"];
+            $alu = $datos3["id_alumno"];
         }
-        echo"<h4 align=\"center\">Horario de $nombre $apellido_p $apellido_m</h4>";
+        echo"<h4>Horario de $nombre $apellido_p $apellido_m</h4>";
         ?>
-        <table id="tabla-horario" class="table-responsive table-bordered col-sm-offset-2 col-sm-8">
+        <table id="tabla-horario" class=" table table-responsive table-bordered">
             <thead>
             <tr>
                 <td style="width: 20%"><b>Horario</b></td>
@@ -59,13 +65,25 @@ include "conexion.php";
                 echo "<td>$datos2[hora_inicio] - $datos2[hora_fin] </td>";
 
             for($i = 1; $i<=5; $i++) {
-                $sql = "SElECT * FROM horario
+                if($prof != null) {
+                    $sql = "SElECT * FROM horario
                      LEFT JOIN distribucion ON horario.id_horario = distribucion.id_horario
                      LEFT JOIN clase ON distribucion.id_clase = clase.id_clase
                      LEFT JOIN profesor ON clase.id_profesor = profesor.id_profesor
                      LEFT JOIN curso ON clase.id_curso = curso.id_curso
                      LEFT JOIN asignatura ON clase.id_asignatura = asignatura.id_asignatura
                      WHERE profesor.rut_usr = '$_GET[rut]' AND horario.id_horario = $datos2[id_horario] AND distribucion.dia = '$dias[$i]' ORDER BY horario.id_horario";
+                }
+                else{
+                    $sql = "SElECT * FROM horario
+                     LEFT JOIN distribucion ON horario.id_horario = distribucion.id_horario
+                     LEFT JOIN clase ON distribucion.id_clase = clase.id_clase
+                     LEFT JOIN curso ON clase.id_curso = curso.id_curso
+                     LEFT JOIN lista ON lista.id_curso = curso.id_curso
+                     LEFT JOIN alumno ON alumno.id_alumno = lista.id_alumno
+                     LEFT JOIN asignatura ON clase.id_asignatura = asignatura.id_asignatura
+                     WHERE alumno.rut_usr = '$_GET[rut]' AND horario.id_horario = $datos2[id_horario] AND distribucion.dia = '$dias[$i]' ORDER BY horario.id_horario";
+                }
                 $res = $dbcon->query($sql) or die("no se pudo mostrar horario" . mysqli_error());
 
                 if(mysqli_num_rows($res) > 0){
@@ -85,7 +103,7 @@ include "conexion.php";
             ?>
         </table><br><br>
     </div>
-
+    </div>
 </section>
 
 <section id="pie">

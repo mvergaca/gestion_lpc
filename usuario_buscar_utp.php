@@ -79,19 +79,20 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si") {
         while ($dat = mysqli_fetch_array($res)){
             $rut = $dat["rut_usr"];
 
-                $rut_usr = $dat["rut_usr"];
-                $nombre =$dat["nombre_usr"];
-                $apellido_p =$dat["apellido_p_usr"];
-                $apellido_m =$dat["apellido_m_usr"];
-                $fecha_n =$dat["fecha_n_usr"];
-                $genero =$dat["genero_usr"];
-                $telefono =$dat["telefono_usr"];
-                $correo =$dat["correo_usr"];
-                $direccion =$dat["direccion_usr"];
-                $comuna =$dat["comuna_usr"];
+            $rut_usr = $dat["rut_usr"];
+            $nombre =$dat["nombre_usr"];
+            $apellido_p =$dat["apellido_p_usr"];
+            $apellido_m =$dat["apellido_m_usr"];
+            $fecha_n =$dat["fecha_n_usr"];
+            $genero =$dat["genero_usr"];
+            $telefono =$dat["telefono_usr"];
+            $correo =$dat["correo_usr"];
+            $direccion =$dat["direccion_usr"];
+            $comuna =$dat["comuna_usr"];
         }
 
-        echo"|1|<table class='table table-responsive table-bordered'>
+        echo"|1|            
+                    <table class='table table-responsive table-bordered'>
                         <tr id='dato'>
                             <td style='border: #34a9b6 2px solid;'>
                             <label>Rut</label>
@@ -179,17 +180,17 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si") {
                             <td style='border: #34a9b6 2px solid;'>
                                 $tipo_usuario
                             </td>
-                        </tr>";
-
-        echo"</table>
+                        </tr>
+                    </table>
+                    
+                    
             <div style='margin-bottom: 3%' class='col-sm-offset-0 col-sm-12'>";
 
-            if(strcmp($tipo_usuario,"Alumno") == 0 || strcmp($tipo_usuario,"Profesor") == 0){
-                echo"<input type='button' class='btn btn-success' value='Ver' id='ver'>";
-            }
-            echo"<input type='hidden' id='id_usr' value='$rut'>
-            <input type='button' class='btn btn-info' value='Editar' id='editar'>
-            <input type='button' class='btn btn-danger' value='Eliminar' id='eliminar'>
+                if(strcmp($tipo_usuario,"Alumno") == 0 || strcmp($tipo_usuario,"Profesor") == 0){
+                    echo"<input type='button' class='btn btn-success' value='Ver' id='ver'>
+                        <input type='hidden' id='id_usr' value='$rut'>";
+                }
+                echo"
             </div>|";
     }
     else{

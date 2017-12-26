@@ -42,7 +42,7 @@
                             <ul class=\"dropdown-menu\">
                                 <li><a href=\"ver_notas.php?id=$dato[id_alumno]\">Notas</a></li>
                                 <li><a href=\"#\">Material Estudiantil</a></li>
-                                <li><a href=\"#\">Mensajes</a></li>
+                                <li><a href=\"mensaje_clase.php?asig=$dato[id_asignatura]\">Mensajes</a></li>
                             </ul>
                         </li>
                         ";
@@ -52,7 +52,7 @@
                     </ul>
                 </li>
 
-                <li><a href="inicio_alumno.php" style="color: #0f0f0f"><b>Anotaciones</b></a></li>
+                <li><a href="observaciones_alumno.php" style="color: #0f0f0f"><b>Anotaciones</b></a></li>
 
 
 

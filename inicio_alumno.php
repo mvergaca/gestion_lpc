@@ -29,13 +29,9 @@ include "conexion.php";
 <section id="principal">
     <div class="col-sm-offset-0 col-sm-12">
 
-        <div class="col-sm-offset-2 col-sm-8">
-
-        </div>
-
-    <div id="horario">
+    <div id="horario" class="col-sm-offset-1 col-sm-10" style='background-color: #f7ecb5;'>
         <h2 align="center">Horario</h2>
-        <table id="tabla-horario" class="table-responsive table-bordered col-sm-offset-2 col-sm-8">
+        <table id="tabla-horario" class="table-responsive table-bordered">
             <thead>
             <tr>
                 <td style="width: 20%"><b>Horario</b></td>
@@ -85,8 +81,7 @@ include "conexion.php";
             $res2 ->close();
             ?>
         </table><br><br>
-    </div>
-        
+        </div>
     </div>
 </section>
 

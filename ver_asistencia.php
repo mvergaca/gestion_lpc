@@ -30,6 +30,7 @@ include "conexion.php";
 </section>
 
 <section id="principal">
+    <div class="col-sm-offset-0 col-sm-12">
     <?php
     $con = "select * from curso 
             INNER JOIN clase ON clase.id_curso = curso.id_curso
@@ -37,14 +38,17 @@ include "conexion.php";
             WHERE curso.id_curso = $_GET[curso] AND asignatura.id_asignatura = $_GET[asi]";
     $res_con = $dbcon->query($con);
     while ($dat = mysqli_fetch_array($res_con)){
-         echo"<h3>$dat[nombre_asignatura] $dat[nombre_curso]</h3>";
+         $nombre_cur = $dat['nombre_asignatura'];
+         $nombre_asi = $dat['nombre_curso'];
     }
     $res_con->close();
     $dia = date('Y');
     $año="$dia-01-01 00:00:00";
     ?>
-    <div align="center">
-        <table id="ingresar" class="table-bordered table-responsive" style="background-color: #f7ecb5;">
+    <div class="col-sm-offset-2 col-sm-8"  style="background-color: #f7ecb5;">
+
+        <?php echo"<h3>$nombre_cur $nombre_asi</h3>";?>
+        <table id="ingresar" class="table table-bordered table-responsive">
             <thead>
             <tr>
                 <td align="center" style='border: #34a9b6 2px solid;'><b>Alumnos</b></td>
@@ -91,7 +95,8 @@ include "conexion.php";
             ?>
         </table>
     </div>
-</section><br>
+    </div>
+</section>
 
 <section id="pie" class="col-sm-offset-0 col-sm-12">
     <?php

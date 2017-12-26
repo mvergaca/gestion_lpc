@@ -28,8 +28,27 @@ include "conexion.php";
 </section>
 
 <section id="principal">
-    <div align="center">
+    <div class="col-sm-offset-0 col-sm-12">
+    <div class="col-sm-offset-2 col-sm-8" style='background-color: #f7ecb5;'>
+
         <?php
+
+        $sql3 = "SELECT * FROM curso WHERE id_curso = $_GET[curso]";
+        $res3 = $dbcon->query($sql3);
+        while($datos3 = mysqli_fetch_array($res3)){
+            $nombre_curso = $datos3['nombre_curso'];
+        }
+
+        $sql4 = "SELECT * FROM asignatura WHERE id_asignatura = $_GET[asig]";
+        $res4 = $dbcon->query($sql4);
+        while($datos4 = mysqli_fetch_array($res4)){
+            $nombre_asig = $datos4['nombre_asignatura'];
+        }
+
+        echo"<h3>$nombre_asig - $nombre_curso</h3>
+                <input type='hidden' id='curso' value='$_GET[curso]'>
+                <input type='hidden' id='asig' value='$_GET[asig]'>";
+
         $curso = $_GET['curso'];
         $asignatura = $_GET['asig'];
         $sql = "SELECT * FROM profesor
@@ -41,26 +60,45 @@ include "conexion.php";
         }
         $res -> close();
         ?>
-        <div class="col-sm-offset-4 col-sm-4">
-        <label>Alumnos</label><select id="alumnos" class="form-control">
-            <option value="">Alumnos</option>
-            <?php
-            $sql2 = "SELECT * FROM alumno
+        <div class="col-sm-offset-0 col-sm-12" style="margin: 1%">
+            <label class="col-sm-offset-4 col-sm-1">Alumnos</label>
+            <div class="col-sm-4">
+            <select id="alumnos" class="form-control">
+                <option value="">Alumnos</option>
+                <?php
+                $sql2 = "SELECT * FROM alumno
                       INNER JOIN usuario ON usuario.rut_usr = alumno.rut_usr
                       INNER JOIN lista ON lista.id_alumno = alumno.id_alumno
                       WHERE lista.id_curso = $curso";
-            $res2 = $dbcon->query($sql2);
-            while($datos2 = mysqli_fetch_array($res2)){
-                echo"<option value='$datos2[id_alumno]'>$datos2[nombre_usr] $datos2[apellido_p_usr] $datos2[apellido_m_usr]</option>";
-            }
-            ?>
-        </select></div>
-        <div class="col-sm-offset-1 col-sm-10">
-            <textarea id="observacion" class="col-sm-offset-3 col-sm-6 col-xs-offset-0 col-xs-12" style="margin-top: 2%;height: 100px"></textarea>
+                $res2 = $dbcon->query($sql2);
+                while($datos2 = mysqli_fetch_array($res2)){
+                    echo"<option value='$datos2[id_alumno]'>$datos2[nombre_usr] $datos2[apellido_p_usr] $datos2[apellido_m_usr]</option>";
+                }
+                ?>
+            </select>
+            </div>
         </div>
-<div class="col-sm-offset-4 col-sm-4" style="margin-top: 2%">
+        <div class="col-sm-offset-0 col-sm-12">
+
+            <label class="col-sm-offset-4 col-sm-1" >Positiva</label>
+            <div class="col-sm-1">
+                <input type="radio" id="positiva" name="tipo" checked>
+            </div>
+
+
+            <label class="col-sm-1" >Negativa</label>
+            <div class="col-sm-1">
+                <input type="radio" id="negativa" name="tipo">
+            </div>
+        </div>
+        <div class="col-sm-offset-0 col-sm-12" style="margin: 1%">
+            <textarea id="observacion" class="form-control" style="height: 100px"></textarea>
+        </div>
+<div class="col-sm-offset-4 col-sm-4" style="margin-top: 1%">
         <input type="button" id="guardar" value="Guardar" class="btn btn-info">
 </div>
+    </div>
+
     </div>
 </section>
 

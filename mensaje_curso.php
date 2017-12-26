@@ -28,7 +28,9 @@ include "conexion.php";
 </section>
 
 <section id="principal">
-    <div align="center">
+    <div class="col-sm-offset-0 col-sm-12">
+        <div class="col-sm-offset-2 col-sm-8" style="background-color: #f7ecb5;">
+            <h3>Mensaje al Curso</h3>
         <?php
         $curso = $_GET['curso'];
         $asignatura = $_GET['asigna'];
@@ -42,8 +44,11 @@ include "conexion.php";
         ?>
         <input type="hidden" id="prof" value="<?php echo"$profesor";?>">
         <input type="hidden" id="asignatura" value="<?php echo"$asignatura";?>">
-        <div class="col-sm-offset-4 col-sm-4">
-            <label>Cursos</label><select id="cursos" class="form-control">
+
+        <div class="col-sm-offset-0 col-sm-12" style="margin: 1%">
+            <label class="col-sm-offset-4 col-sm-1">Cursos</label>
+            <div class="col-sm-4">
+            <select id="cursos" class="form-control">
                 <?php
                 $sql2 = "SELECT DISTINCT curso.id_curso, curso.nombre_curso, asignatura.nombre_asignatura FROM curso
                       INNER JOIN clase ON clase.id_curso = curso.id_curso 
@@ -56,14 +61,24 @@ include "conexion.php";
                 }
                 ?>
             </select>
+            </div>
         </div>
-        <div class="col-sm-offset-1 col-sm-10">
-            <textarea id="mensaje" class="col-sm-offset-3 col-sm-6 col-xs-offset-0 col-xs-12" style="margin-top: 2%;height: 100px"></textarea>
+            <div class="col-sm-offset-0 col-sm-12" style="margin: 1%">
+                <label class="col-sm-offset-4 col-sm-1">Fecha</label>
+                <div class="col-sm-4">
+                    <input id="fecha" type="date" class="form-control">
+                </div>
+            </div>
+
+        <div class="col-sm-offset-0 col-sm-12" style="margin: 1%">
+            <textarea id="mensaje" class="form-control" style="height: 200px"></textarea>
         </div>
-        <div class="col-sm-offset-4 col-sm-4" style="margin-top: 2%">
+
+        <div class="col-sm-offset-0 col-sm-12" style="margin: 1%">
             <input type="button" id="guardar" value="Guardar" class="btn btn-info">
         </div>
 
+        </div>
     </div>
 </section>
 

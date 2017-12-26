@@ -16,35 +16,35 @@
 <div class="col-sm-offset-0 col-sm-12">
 
     <div align="center" style="margin-top: 5%">
-        <img src="imagenes/logo_lpc.png">
+        <img src="imagenes/LOGO%20LPC.png">
     </div>
-
-    <form class="form-horizontal col-sm-offset-2 col-sm-8" name="login" action="procesar_login.php" method="post" style="margin-top: 5%">
-        <div class="form-group">
-            <label for="inputUsuario3" class="col-sm-5  control-label">Rut</label>
-            <div class="col-sm-3">
+<div class="col-sm-offset-4 col-sm-4" style="border: #cb9234 2px solid">
+    <form class="form-horizontal col-sm-offset-0 col-sm-12" name="login" action="procesar_login.php" method="post" style="margin-top: 1%">
+        <div class="form-group col-sm-offset-0 col-sm-12">
+            <label for="inputUsuario3" class="col-sm-offset-1 col-sm-3  control-label">Rut</label>
+            <div class="col-sm-7">
                 <input type="text" class="form-control" id="inputUsuario3" placeholder="11111111-1" name="user">
             </div>
         </div>
-        <div class="form-group">
-            <label for="inputPassword3" class="col-sm-5  control-label">Contraseña</label>
-            <div class="col-sm-3">
+        <div class="form-group col-sm-offset-0 col-sm-12">
+            <label for="inputPassword3" class="col-sm-offset-1 col-sm-3  control-label">Contraseña</label>
+            <div class="col-sm-7">
                 <input type="password" class="form-control" id="inputPassword3" placeholder="Ingrese Contraseña" name="pass">
             </div>
         </div>
-        <div class="form-group">
-            <div class="col-sm-offset-5 col-sm-4">
-                    <label>
+        <div class="form-group col-sm-offset-0 col-sm-12">
+                    <label class="col-sm-offset-3">
                         <a href="#">¿Olvidaste tu contraseña?</a>
                     </label>
-            </div>
+
         </div>
-        <div class="form-group">
-            <div class="col-sm-offset-5 col-sm-10 col-xs-offset-5 col-xs-7">
+        <div class="form-group col-sm-offset-5 col-sm-12">
+            <div class="col-sm-offset-4 col-sm-3">
                 <button type="submit" class="btn btn-default">Entrar</button>
             </div>
         </div>
     </form>
+    <div>
 </div>
 </section>
 

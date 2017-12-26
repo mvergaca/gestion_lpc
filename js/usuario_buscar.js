@@ -31,7 +31,7 @@ $(document).ready(function () {
                             success: function (data) {
                                 datos = data.split(";");
                                 if(datos[1] == 1){
-                                    $("#resultado").html("no se ha encontrado informacion asociada a ese rut");
+                                    $("#resultado").html("<label class='label-danger'>No se ha encontrado informacion asociada a ese rut</label>");
                                 }
                                 else{
                                     alert("No se pudo eliminar el usuario");
@@ -42,7 +42,7 @@ $(document).ready(function () {
 
                 }
                 else{
-                    $("#resultado").html("no se ha encontrado informacion asociada a ese rut");
+                    $("#resultado").html("<label class='label-danger'>no se ha encontrado informacion asociada a ese rut</label>");
                 }
             }
         });
