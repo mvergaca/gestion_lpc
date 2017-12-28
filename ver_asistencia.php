@@ -43,7 +43,7 @@ include "conexion.php";
     }
     $res_con->close();
     $dia = date('Y');
-    $año="$dia-01-01 00:00:00";
+    $año="$dia-01-01";
     ?>
     <div class="col-sm-offset-2 col-sm-8"  style="background-color: #f7ecb5;">
 
@@ -70,7 +70,7 @@ include "conexion.php";
             <tr><input type='hidden' id='id_estudiante_$i' value='$datos[id_alumno]'>
                 <td align='center' style='border: #34a9b6 2px solid;'>$datos[nombre_usr] $datos[apellido_p_usr] $datos[apellido_m_usr]</td>
                 <td align='center' style='border: #34a9b6 2px solid;'>";
-                    $sql2 ="SELECT * FROM asistencia WHERE id_alumno = $datos[id_alumno] AND id_asignatura = $_GET[asi] AND fecha_hora > '$año'";
+                    $sql2 ="SELECT * FROM asistencia WHERE id_alumno = $datos[id_alumno] AND id_asignatura = $_GET[asi] AND fecha > '$año'";
                     $res2 = $dbcon->query($sql2);
                     $asis = 0;
                     $total = 0;

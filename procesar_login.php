@@ -15,6 +15,7 @@ if(isset($_POST["user"]) && isset($_POST["pass"])){
                     ap.id_apoderado AS id_ap,
                     asi.id_asistente AS id_asi,
                     dir.id_director AS id_dir,
+                    ins.id_inspector AS id_ins,
                     prof.id_profesor AS id_prof,
                     sec.id_secretaria AS id_sec,
                     utp.id_utp AS id_utp
@@ -24,6 +25,7 @@ if(isset($_POST["user"]) && isset($_POST["pass"])){
             LEFT JOIN apoderado ap ON us.rut_usr = ap.rut_usr
             LEFT JOIN asistente asi ON us.rut_usr = asi.rut_usr
             LEFT JOIN director dir ON us.rut_usr = dir.rut_usr
+            LEFT JOIN inspector ins ON us.rut_usr = ins.rut_usr
             LEFT JOIN profesor prof ON us.rut_usr = prof.rut_usr
             LEFT JOIN secretaria sec ON us.rut_usr = sec.rut_usr
             LEFT JOIN utp ON us.rut_usr = utp.rut_usr
@@ -69,6 +71,9 @@ if(isset($_POST["user"]) && isset($_POST["pass"])){
         if($datos['id_utp'] != NULL){
             $_SESSION['tipo_usuario'] = '8';
         }
+        if($datos['id_ins'] != NULL){
+            $_SESSION['tipo_usuario'] = '9';
+        }
     }
 
     mysqli_free_result($result);
@@ -96,6 +101,9 @@ if(isset($_POST["user"]) && isset($_POST["pass"])){
     }
     if(isset($_SESSION['tipo_usuario']) && $_SESSION['tipo_usuario'] == "8"){
         header("Location: inicio_utp.php");
+    }
+    if(isset($_SESSION['tipo_usuario']) && $_SESSION['tipo_usuario'] == "9"){
+        header("Location: inicio_inspector.php");
     }
     if($_SESSION['conectado'] != "si"){
         $_SESSION['conectado'] = "no";

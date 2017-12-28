@@ -30,7 +30,7 @@ include "conexion.php";
 <div class="col-sm-offset-0 col-sm-12">
     <div id="horario" class="col-sm-offset-1 col-sm-10" style='background-color: #f7ecb5;'>
         <h2>Horario</h2>
-        <table id="tabla-horario" class="table table-responsive table-bordered col-sm-offset-2 col-sm-8">
+        <table id="tabla-horario" class="table table-responsive table-bordered">
             <thead>
             <tr>
                 <td style="width: 20%"><b>Horario</b></td>

@@ -10,13 +10,14 @@ $(document).ready(function () {
         var H = tiempo.getHours();
         var M = tiempo.getMinutes();
         var S = tiempo.getSeconds();
-        var hora_actual = Anio + "-" + parseInt(Mes + 1) + "-" + Dia + " " + H + "-" + M + "-" + S;
+        var fecha_actual = Anio + "-" + parseInt(Mes + 1) + "-" + Dia;
+        var hora_actual = H + ":" + M + ":" + S;
 
         var usu = $("#usuario").val();
         var asig = $("#asignatura").val();
         var curso = $("#curso").val();
         var num = $("[name='check']").length;
-        var consulta = "insert into asistencia (id_profesor, id_alumno,id_asignatura, estado, fecha_hora, justificacion) values ";
+        var consulta = "insert into asistencia (id_profesor, id_alumno,id_asignatura, estado, fecha, hora, justificacion) values ";
         var estado;
 
         if(asig != "") {
@@ -32,10 +33,10 @@ $(document).ready(function () {
                 }
 
                 if (i != num) {
-                    consulta = consulta + "(" + usu + "," + est + "," + asig + "," + estado + ",'" + hora_actual + "',0),";
+                    consulta = consulta + "(" + usu + "," + est + "," + asig + "," + estado + ",'"+fecha_actual+"','" + hora_actual + "',0),";
                 }
                 else {
-                    consulta = consulta + "(" + usu + "," + est + "," + asig + "," + estado + ",'" + hora_actual + "',0);";
+                    consulta = consulta + "(" + usu + "," + est + "," + asig + "," + estado + ",'"+fecha_actual+"','" + hora_actual + "',0);";
                 }
             }
             alert(consulta);

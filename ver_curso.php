@@ -124,7 +124,7 @@ include "conexion.php";
     </div>
 </section>
 
-<section id="pie">
+<section id="pie" class="col-sm-offset-0 col-sm-12">
     <?php
     include "footer.php";
     ?>

@@ -28,7 +28,7 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si"){
 <section id="principal">
     <?php
     $sql = "SELECT DISTINCT alumno.rut_usr, usuario.nombre_usr, usuario.apellido_p_usr, usuario.apellido_m_usr,
-                curso.id_curso, curso.nombre_curso, asistencia.fecha_hora
+                curso.id_curso, curso.nombre_curso, asistencia.fecha
                 FROM asistencia 
                 INNER JOIN alumno ON alumno.id_alumno = asistencia.id_alumno
                 INNER JOIN usuario ON usuario.rut_usr = alumno.rut_usr
@@ -57,7 +57,7 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si"){
             echo "<tr>
                 <td>$datos[nombre_usr] $datos[apellido_p_usr] $datos[apellido_m_usr]</td>
                 <td>$datos[nombre_curso]</td>
-                <td>$datos[fecha_hora]</td>
+                <td>$datos[fecha]</td>
             </tr>";
         }
 
@@ -126,6 +126,9 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si"){
     }
 
     ?>
+    </div>
+    <div class="col-sm-offset-0 col-sm-12">
+        <a href="reporte_general.php">descarga</a>
     </div>
 
 </section>
