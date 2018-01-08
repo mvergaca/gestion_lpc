@@ -66,7 +66,38 @@ include "conexion.php";
             </table>
         </div>";
     }
+    $sql3 = "SELECT * FROM usuario
+              LEFT JOIN asistente ON asistente.rut_usr = usuario.rut_usr
+              LEFT JOIN alumno ON alumno.rut_usr = usuario.rut_usr
+              LEFT JOIN caso_social ON caso_social.id_alumno = alumno.id_alumno
+              WHERE caso_social.estado = 1 
+              ORDER BY caso_social.fecha, caso_social.hora";
+    $res3 = $dbcon->query($sql3);
+    if(mysqli_num_rows($res3)>0){
+        echo"
+        <div id=\"casos_sociales\" class=\"col-sm-offset-2 col-sm-8 alert-warning\">
+        <h3>Casos sociales nuevos</h3>
+            <table class='table table-bordered table-responsive'>
+                <thead>
+                <tr>
+                    <td><label>Alumno</label></td>
+                    <td><label>Fecha</label></td>
+                </tr>
+                </thead>
+                <tbody>";
 
+        while ($datos3 = mysqli_fetch_array($res3)) {
+            echo "<tr>
+                    <td>$datos3[nombre_usr] $datos3[apellido_p_usr] $datos3[apellido_m_usr]</td>
+                    <td>$datos3[fecha]</td>
+                </tr>";
+        }
+
+        echo"   </tbody>
+            </table>
+        </div>
+        ";
+    }
 
     ?>
     </div>

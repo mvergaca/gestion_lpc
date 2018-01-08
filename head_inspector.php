@@ -15,8 +15,11 @@
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
 
             <ul class="nav navbar-nav navbar-left navbar-header" style="margin-left: 3%">
-                <li><a href="inicio_utp.php" style="color: #0f0f0f"><b>Inicio</b></a></li>
-                <li><a href="buscar_usuario_utp.php" style="color: #0f0f0f"><b>Buscar</b></a></li>
+
+                <li><a href="inicio_inspector.php" style="color: #0f0f0f"><b>Inicio</b></a></li>
+
+                <li><a href="buscar_usuario_ins.php" style="color: #0f0f0f"><b>Buscar</b></a></li>
+
                 <li class="dropdown" >
                     <a href="#" class="dropdown-toggle" style="color: #0f0f0f" data-toggle="dropdown"
                        role="button" aria-haspopup="true" aria-expanded="false"><b>Cursos</b>
@@ -29,7 +32,7 @@
 
                         while($dato = mysqli_fetch_array($res)){
                             echo "
-                            <li><a href='ver_curso.php?curso=$dato[id_curso]'>$dato[nombre_curso]</a></li>
+                            <li><a href='ver_curso_ins.php?curso=$dato[id_curso]'>$dato[nombre_curso]</a></li>
                             ";
                         }
                         $res->close();
@@ -60,7 +63,7 @@
                                 echo "
                                 <li class=\"dropdown-submenu\"><a>$dato_as2[nombre_asignatura]</a>
                                     <ul class=\"dropdown-menu\">
-                                        <li><a href=\"ver_notas_asig.php?curso=$dato2[id_curso]&asig=$dato_as2[id_asignatura]\">Ver Notas</a></li>
+                                        <li><a href=\"ver_notas_ins.php?curso=$dato2[id_curso]&asig=$dato_as2[id_asignatura]\">Ver Notas</a></li>
                                     </ul>
                                 </li>";
                             }
@@ -74,7 +77,7 @@
                     </ul>
                 </li>
 
-                <li><a href="lista_profesores.php" style="color: #0f0f0f"><b>Profesores</b></a></li>
+                <li><a href="lista_profesores_ins.php" style="color: #0f0f0f"><b>Profesores</b></a></li>
 
 
             </ul>
@@ -93,8 +96,8 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class=" navbar-btn glyphicon glyphicon-align-justify"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Editar Perfil</a></li>
-                        <li><a href="#">Cambiar Contraseña</a></li>
+                        <li><a href="ver_perfil_inspector.php">Ver Perfil</a></li>
+                        <li><a href="modificar_pass_inspector.php">Cambiar Contraseña</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="cerrar_sesion.php">Cerrar Sesion</a></li>
                     </ul>

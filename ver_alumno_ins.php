@@ -10,28 +10,21 @@ include "conexion.php";
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="content-type" content="text/html">
-    <title>Inicio Utp</title>
+    <title>Inicio Inspector</title>
 
     <script src="js/jquery-3.2.1.js"></script>
     <script src="css/bootstrap-3.3.7/js/bootstrap.js"></script>
     <link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.7/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/estilos.css">
 
-    <script>
-        $(document).ready(function () {
-            $("#reporte").click(function () {
-                var alumno = $("#alumno").val();
-                window.location.href = "reporte_general.php?id="+alumno;
-            });
-        });
-    </script>
+
 
 </head>
 <body>
 
 <section id="encabezado">
     <?php
-    include "head_utp.php";
+    include "head_inspector.php";
     ?>
 </section>
 
@@ -48,9 +41,7 @@ include "conexion.php";
             }
             $res->close();
 
-            echo"<input type='button' id='reporte' class='btn btn-success' value='Descargar Reporte'>
-                <input type='hidden' value='$_GET[id]' id='alumno'>
-                <table class='table table-bordered table-responsive'>";
+            echo"<table class='table table-bordered table-responsive'>";
 
             $sql2 = "SELECT * FROM semestre WHERE anio = YEAR(NOW()) ORDER BY nombre_sem";
             $res2 = $dbcon->query($sql2);

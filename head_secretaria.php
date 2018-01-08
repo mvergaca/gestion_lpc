@@ -50,8 +50,8 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class=" navbar-btn glyphicon glyphicon-align-justify"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Editar Perfil</a></li>
-                        <li><a href="#">Cambiar Contraseña</a></li>
+                        <li><a href="ver_perfil_secretaria.php">Ver Perfil</a></li>
+                        <li><a href="modificar_pass_secretaria.php">Cambiar Contraseña</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="cerrar_sesion.php">Cerrar Sesion</a></li>
                     </ul>

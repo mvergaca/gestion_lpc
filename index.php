@@ -20,7 +20,7 @@
     </div>
 <div class="col-sm-offset-4 col-sm-4" style="border: #cb9234 2px solid">
     <form class="form-horizontal col-sm-offset-0 col-sm-12" name="login" action="procesar_login.php" method="post" style="margin-top: 1%">
-        <div class="form-group col-sm-offset-0 col-sm-12">
+        <div class="form-group col-sm-offset-0 col-sm-12" style="margin-top: 3%;">
             <label for="inputUsuario3" class="col-sm-offset-1 col-sm-3  control-label">Rut</label>
             <div class="col-sm-7">
                 <input type="text" class="form-control" id="inputUsuario3" placeholder="11111111-1" name="user">

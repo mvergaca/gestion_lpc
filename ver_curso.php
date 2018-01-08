@@ -10,7 +10,7 @@ include "conexion.php";
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Inicio Profesor</title>
+    <title>Inicio Utp</title>
 
     <script src="js/jquery-3.2.1.js"></script>
     <script src="css/bootstrap-3.3.7/js/bootstrap.js"></script>
@@ -61,12 +61,14 @@ include "conexion.php";
                 </thead>
                 <tbody>";
 
+            $anio = DATE('Y');
+            $date = "$anio-01-01";
             while($datos = mysqli_fetch_array($res)){
                 echo"
         <tr>
             <td style='border: #34a9b6 2px solid;'>$datos[nombre_usr] $datos[apellido_p_usr] $datos[apellido_m_usr]</td>
             <td style='border: #34a9b6 2px solid;'>";
-                $sql2 = "SELECT * FROM asistencia WHERE id_alumno = $datos[id_alumno] AND fecha_hora > '2017-01-01 00:00:00' AND fecha_hora <= NOW()";
+                $sql2 = "SELECT * FROM asistencia WHERE id_alumno = $datos[id_alumno] AND fecha > '$date' AND fecha <= NOW()";
                 $res2 = $dbcon->query($sql2);
 
                 $total = 0;
