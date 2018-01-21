@@ -5,8 +5,9 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si") {
 
     $id_asig = $_POST['id'];
     $nombre = $_POST['nombre'];
+    $promediable = $_POST['promediable'];
 
-    $sql = "UPDATE asignatura SET nombre_asignatura = '$nombre' WHERE id_asignatura = $id_asig";
+    $sql = "UPDATE asignatura SET nombre_asignatura = '$nombre',promediable = $promediable WHERE id_asignatura = $id_asig";
 
     $res = $dbcon ->query($sql);
 

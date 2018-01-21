@@ -14,44 +14,46 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
 
-            <ul class="nav navbar-nav navbar-left">
-                <li><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Link</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+            <ul class="nav navbar-nav navbar-left navbar-header" style="margin-left: 3%">
+                <li><a href="inicio_asistente.php" style="color: #0f0f0f"><b>Inicio</b></a></li>
+                <li><a href="buscar_usuario_asi.php" style="color: #0f0f0f"><b>Buscar</b></a></li>
+                <li class="dropdown" >
+                    <a href="#" class="dropdown-toggle" style="color: #0f0f0f" data-toggle="dropdown"
+                       role="button" aria-haspopup="true" aria-expanded="false"><b>Cursos</b>
+                        <span class="caret"></span></a>
+
                     <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
+                        <?php
+                        $sql = "SELECT * FROM curso ORDER BY id_curso";
+                        $res = $dbcon -> query($sql);
+
+                        while($dato = mysqli_fetch_array($res)){
+                            echo "
+                            <li><a href='ver_curso_asi.php?curso=$dato[id_curso]'>$dato[nombre_curso]</a></li>
+                            ";
+                        }
+                        $res->close();
+                        ?>
                     </ul>
                 </li>
 
-                <li><a href="#">Link</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+
+                <li class="dropdown" >
+                    <a href="#" class="dropdown-toggle" style="color: #0f0f0f" data-toggle="dropdown"
+                       role="button" aria-haspopup="true" aria-expanded="false"><b>Casos sociales</b>
+                        <span class="caret"></span></a>
+
                     <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
+                        <li><a href="crear_caso_social.php">Crear caso social</a></li>
+                        <li><a href="ver_casos_sociales.php">Casos sociales pendientes</a></li>
+                        <li><a href="buscar_casos_sociales.php">Buscar caso social</a></li>
                     </ul>
                 </li>
+
 
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-
-                <form class="navbar-form navbar-left">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
 
                 <a class="navbar-brand" style="color: #0f0f0f" href="#"><?php echo$_SESSION['nombre']." ".$_SESSION['apellido_p']." ".$_SESSION['apellido_m'];?></a>
 

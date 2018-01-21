@@ -2,12 +2,19 @@ $(document).ready(function () {
     $("#agregar").click(function () {
         var nombre = $("#asig").val();
 
+        if($("#si").is(":checked")){
+            var promediable = 1;
+        }else{
+            var promediable = 0;
+        }
+
         if(nombre != "") {
             $.ajax({
                 type: "POST",
                 url: "insertar_asignatura.php",
                 data: {
-                    "nombre": nombre
+                    "nombre": nombre,
+                    "promediable":promediable
                 },
                 success: function (data) {
                     datos = data.split("|");
@@ -16,6 +23,7 @@ $(document).ready(function () {
                         $("#lista").html(datos[2]);
                     }
                     else {
+                        alert(datos[2]);
                         alert("No se pudo agregar la asignatura");
                     }
                 }

@@ -58,6 +58,7 @@
                                                     <li><a href=\"ver_clase.php?curso=$dato_as[id_curso]&asigna=$dato_as[id_asignatura]\">Ver Clase</a></li>
                                                     <li><a href=\"mensaje_curso.php?curso=$dato_as[id_curso]&asigna=$dato_as[id_asignatura]\">Mensaje al curso</a></li>
                                                     <li><a href=\"material_estudio.php?curso=$dato_as[id_curso]&asigna=$dato_as[id_asignatura]\">Material de estudio</a></li>
+                                                    <li><a href=\"archivos_publicados.php?curso=$dato_as[id_curso]&asigna=$dato_as[id_asignatura]\">Material publicado</a></li>
                                                 </ul>
                                           </li>";
                                 }

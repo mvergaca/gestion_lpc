@@ -3,12 +3,19 @@ $(document).ready(function () {
         var nombre = $("#asig").val();
         var id = $("#id_as").val();
 
+        if($("#si").is(":checked")){
+            var promediable = 1;
+        }else{
+            var promediable = 0;
+        }
+
         $.ajax({
             type: "POST",
             url: "asignatura_editar.php",
             data: {
                 "nombre": nombre,
-                "id":id
+                "id":id,
+                "promediable":promediable
             },
             success: function (data) {
                 datos = data.split(";");

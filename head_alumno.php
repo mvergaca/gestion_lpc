@@ -41,7 +41,7 @@
                         <li class=\"dropdown-submenu\"><a>$dato[nombre_asignatura]</a>
                             <ul class=\"dropdown-menu\">
                                 <li><a href=\"ver_notas.php?id=$dato[id_alumno]\">Notas</a></li>
-                                <li><a href=\"#\">Material Estudiantil</a></li>
+                                <li><a href=\"material_estudiantil.php?asig=$dato[id_asignatura]\">Material de estudio</a></li>
                                 <li><a href=\"mensaje_clase.php?asig=$dato[id_asignatura]\">Mensajes</a></li>
                             </ul>
                         </li>

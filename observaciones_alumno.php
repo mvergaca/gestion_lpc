@@ -45,16 +45,16 @@ include "conexion.php";
                         INNER JOIN usuario ON usuario.rut_usr = profesor.rut_usr
                         INNER JOIN alumno ON alumno.id_alumno = observacion.id_alumno
                         INNER JOIN lista ON lista.id_alumno = alumno.id_alumno
-                        WHERE alumno.rut_usr = '$_SESSION[rut_usr]' AND lista.anio = 2017";
+                        WHERE alumno.rut_usr = '$_SESSION[rut_usr]' ";
 
                 $res = $dbcon -> query($sql);
 
                 while($datos = mysqli_fetch_array($res)){
                     echo"
                     <tr>
-                        <td>$datos[nombre_usr] $datos[apellidpo_p_usr] $datos[apellidpo_m_usr]</td>
+                        <td>$datos[nombre_usr] $datos[apellido_p_usr] $datos[apellido_m_usr]</td>
                         <td>$datos[observacion]</td>
-                        <td>$datos[fecha_hora]</td>
+                        <td>$datos[fecha]</td>
                     </tr>
                     ";
                 }

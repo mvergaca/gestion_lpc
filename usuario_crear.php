@@ -94,6 +94,7 @@ include "conexion.php";
                 <option value="apoderado">Apoderado</option>
                 <option value="asistente">Asistente</option>
                 <option value="director">Director</option>
+                <option value="inspector">Inspector</option>
                 <option value="profesor">Profesor</option>
                 <option value="secretaria">Secretaria</option>
                 <option value="utp">Utp</option>

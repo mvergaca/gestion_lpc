@@ -29,24 +29,43 @@ include "conexion.php";
 
 <section id="principal" style="min-height: 540px;">
     <div class="col-sm-offset-0 col-sm-12">
-        <h3>Editar asignatura</h3>
-        <?php
+        <div class="col-sm-offset-2 col-sm-8" style="background-color: #f7ecb5">
+            <h3>Editar asignatura</h3>
+            <?php
             $sql = "SELECT * FROM asignatura WHERE id_asignatura = $_GET[id]";
             $res = $dbcon->query($sql);
             while($dat=mysqli_fetch_array($res)){
                 $nombre = $dat['nombre_asignatura'];
+                $prome = $dat['promediable'];
             }
             $res->close();
             echo"<input type='hidden' id='id_as' value='$_GET[id]'>";
-        ?>
-        <div class="col-sm-offset-2 col-sm-8" style="background-color: #f7ecb5">
+            ?>
+
             <div id="form" class="form-group col-sm-offset-0 col-sm-12">
                 <form class="form-inline">
-                    <label for="asig" class="control-label col-sm-offset-0 col-sm-12">Nombre Asignatura</label>
-                    <div class="col-sm-offset-4 col-sm-4">
-                        <input type="text" class="form-control" id="asig" value="<?php echo"$nombre";?>">
+                    <div class="col-sm-offset-0 col-sm-12" style="margin-bottom: 1%">
+                        <label for="asig" class="control-label col-sm-offset-0 col-sm-12">Nombre Asignatura</label>
+                        <div class="col-sm-offset-4 col-sm-4">
+                            <input type="text" class="form-control" id="asig" value="<?php echo"$nombre";?>">
+                        </div>
                     </div>
-                    <div class="col-sm-offset-0 col-sm-12">
+
+                    <div class="col-sm-offset-0 col-sm-12" style="margin-bottom: 1%">
+                        <label class="col-sm-offset-4 col-sm-3">Promediable</label>
+                        <div class="col-sm-1">
+                            <input type="radio" name="prom" id="si" <?php if($prome == 1){echo"checked";}?>>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-offset-0 col-sm-12" style="margin-bottom: 1%">
+                        <label class="col-sm-offset-4 col-sm-3">No Promediable</label>
+                        <div class="col-sm-1">
+                            <input type="radio" name="prom" id="no" <?php if($prome == 0){echo"checked";}?>>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-offset-0 col-sm-12" style="margin-bottom: 1%">
                         <input type="button" class="btn btn-success" id="guardar" value="Guardar" style="margin: 5px">
                     </div>
                 </form>

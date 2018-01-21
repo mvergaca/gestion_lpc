@@ -37,6 +37,9 @@ else{
     if(strcmp($tipo_usuario,'director') == 0){
         $sql2 = "INSERT INTO director (rut_usr) VALUES ('$rut')";
     }
+    if(strcmp($tipo_usuario,'inspector') == 0){
+        $sql2 = "INSERT INTO inspector (rut_usr) VALUES ('$rut')";
+    }
     if(strcmp($tipo_usuario,'profesor') == 0){
         $sql2 = "INSERT INTO profesor (rut_usr) VALUES ('$rut')";
     }

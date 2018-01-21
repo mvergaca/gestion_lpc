@@ -4,8 +4,9 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si") {
     include "conexion.php";
 
     $nombre = $_POST["nombre"];
+    $promediable = $_POST["promediable"];
 
-    $sql = "INSERT INTO asignatura (nombre_asignatura) VALUES ('$nombre')";
+    $sql = "INSERT INTO asignatura (nombre_asignatura, promediable) VALUES ('$nombre',$promediable)";
 
     $resu = $dbcon ->query($sql);
 
@@ -14,10 +15,11 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si") {
         <table class=\"table table-bordered table-responsive\">
                 <thead>
                 <tr>
-                    <td><label>N°</label></td>
-                    <td><label>Nombre Asignatura</label></td>
-                    <td><label>Editar</label></td>
-                    <td><label>Eliminar</label></td>
+                    <td class='col-sm-1'><label>N°</label></td>
+                    <td class='col-sm-6'><label>Nombre Asignatura</label></td>
+                    <td class='col-sm-1'><label>Promediable</label></td>
+                    <td class='col-sm-2'><label>Editar</label></td>
+                    <td class='col-sm-2'><label>Eliminar</label></td>
                 </tr>
                 </thead>
                 <tbody>";
@@ -29,6 +31,7 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si") {
                     echo"<tr>
                             <td>$i</td>
                             <td>$datos[nombre_asignatura]</td>
+                            <td>";if($datos['promediable'] == 1){echo"Si";}else{echo"No";}echo"</td>
                             <td><input type='button' class='btn btn-info' value='Editar' onclick='editar_asignatura($datos[id_asignatura], $i);'></td>
                             <td><input type='button' class='btn btn-danger' value='Eliminar' onclick='eliminar_asignatura($datos[id_asignatura], $i);'></td>
                          </tr>";
@@ -40,7 +43,7 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si") {
         ||";
     }
     else{
-        echo"|-1||";
+        echo"|-1|$sql|";
     }
     $resu->close();
     include "cerrar_conexion.php";
