@@ -79,6 +79,17 @@
 
                 <li><a href="lista_profesores_ins.php" style="color: #0f0f0f"><b>Profesores</b></a></li>
 
+                <li class="dropdown" >
+                    <a href="#" class="dropdown-toggle" style="color: #0f0f0f" data-toggle="dropdown"
+                       role="button" aria-haspopup="true" aria-expanded="false"><b>Retiros</b>
+                        <span class="caret"></span></a>
+
+                    <ul class="dropdown-menu">
+                        <li><a href='retirar_alumno_ins.php'>Retirar</a></li>
+                        <li><a href='ver_retiros.php'>Retiros del dia</a></li>
+                    </ul>
+                </li>
+
 
             </ul>
 

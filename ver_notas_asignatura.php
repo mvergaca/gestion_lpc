@@ -105,7 +105,7 @@ include "conexion.php";
                     }
                     $prom = $suma / $num_notas;
 
-                    $prom2 = number_format($prom, 2, '.', ',');
+                    $prom2 = number_format($prom, 1, '.', ',');
 
                     echo "</tr>
                     </table>

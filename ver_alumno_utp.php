@@ -21,7 +21,7 @@ include "conexion.php";
         $(document).ready(function () {
             $("#reporte").click(function () {
                 var alumno = $("#alumno").val();
-                window.location.href = "reporte_general.php?id="+alumno;
+                window.location.href = "reporte_alumno.php?id="+alumno;
             });
         });
     </script>
@@ -64,7 +64,7 @@ include "conexion.php";
                           INNER JOIN curso ON curso.id_curso = clase.id_curso
                           INNER JOIN lista ON lista.id_curso = curso.id_curso
                           INNER JOIN alumno ON alumno.id_alumno = lista.id_alumno
-                          WHERE alumno.id_alumno = $_GET[id] ORDER BY asignatura.nombre_asignatura";
+                          WHERE alumno.id_alumno = $_GET[id] AND clase.anio = YEAR(NOW()) ORDER BY asignatura.nombre_asignatura";
                 $res3 = $dbcon->query($sql3);
 
                 echo"

@@ -26,10 +26,10 @@ if(asig != "") {
         var verif = $("#asistencia_" + i).prop('checked');
 
         if (verif) {
-            estado = 1;
+            estado = 0;
         }
         else {
-            estado = 0;
+            estado = 1;
         }
 
         if (i != num) {

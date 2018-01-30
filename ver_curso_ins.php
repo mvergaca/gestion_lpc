@@ -21,6 +21,9 @@ include "conexion.php";
         function ver_alumno(ref) {
             window.location.href = "ver_alumno_ins.php?id="+ref;
         }
+        function citacion(ref) {
+            window.location.href = "crear_citacion.php?id="+ref;
+        }
     </script>
 
 </head>
@@ -57,6 +60,7 @@ include "conexion.php";
                     <td style='border: #34a9b6 2px solid;'><label>% Asistencia</label></td>
                     <td style='border: #34a9b6 2px solid;'><label>Promedio</label></td>
                     <td style='border: #34a9b6 2px solid;'><label>Ver</label></td>
+                    <td style='border: #34a9b6 2px solid;'><label>Citacion</label></td>
                 </tr>
                 </thead>
                 <tbody>";
@@ -114,6 +118,7 @@ include "conexion.php";
                 echo"$general2";
                 echo"</td>
                 <td style='border: #34a9b6 2px solid;'><input type='button' value='Ver' class='btn btn-success' onclick='ver_alumno($datos[id_alumno])'></td>
+                <td style='border: #34a9b6 2px solid;'><input type='button' value='Citacion' class='btn btn-danger' onclick='citacion($datos[id_alumno])'></td>
         </tr>
         ";
             }

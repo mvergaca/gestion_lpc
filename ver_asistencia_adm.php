@@ -71,7 +71,7 @@ include "conexion.php";
                 $asis = 0;
                 $total = 0;
                 while ($datos2 = mysqli_fetch_array($res2)){
-                    if($datos2['estado'] == 1){
+                    if($datos2['estado'] == 0){
                         $asis = $asis+1;
                     }
                     $total = $total+1;

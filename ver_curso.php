@@ -40,7 +40,7 @@ include "conexion.php";
                 INNER JOIN lista ON curso.id_curso = lista.id_curso
                 INNER JOIN alumno ON lista.id_alumno = alumno.id_alumno
                 INNER JOIN usuario ON alumno.rut_usr = usuario.rut_usr
-                WHERE curso.id_curso = $_GET[curso]";
+                WHERE curso.id_curso = $_GET[curso] ORDER BY usuario.nombre_usr";
             $res = $dbcon->query($sql);
 
             $sql3 = "SELECT * FROM curso
@@ -119,9 +119,15 @@ include "conexion.php";
             }
 
             echo"</tbody>
-            </table>";
+            </table>
 
+            <div class='col-sm-offset-0 col-sm-12' style='margin-bottom: 1%'>
+                <a href='reporte_curso.php?curso=$_GET[curso]'><button class='btn btn-info'>Reporte curso</button></a>
+            </div>
+            ";
             ?>
+
+
         </div>
     </div>
 </section>
