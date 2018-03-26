@@ -35,7 +35,10 @@ include "conexion.php";
     $curso = $_GET['curso'];
     $asigna = $_GET['asig'];
 
-    $sql2 = "SELECT * FROM semestre WHERE inicio_semestre < CURRENT_DATE () AND fin_semestre > CURRENT_DATE ";
+    $nombre_semestre = "";
+    $id_semestre = "";
+
+    $sql2 = "SELECT * FROM semestre WHERE inicio_semestre < CURRENT_DATE () AND fin_semestre > CURRENT_DATE ()";
     $res2 = $dbcon->query($sql2);
     while ($datos2 = mysqli_fetch_array($res2)){
         $nombre_semestre = $datos2["nombre_sem"];

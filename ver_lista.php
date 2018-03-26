@@ -66,15 +66,17 @@ include "conexion.php";
 
                 ?>
             </table>
+            <div class="col-sm-offset-2 col-sm-8" style="margin-bottom: 2%">
+                <?php
+                if(mysqli_num_rows($res)>0) {
+                    echo "<input type=\"button\" class=\"btn btn-warning\" id=\"asistencia\" value=\"Tomar asistencia\">
+                        <a href='reporte_curso.php?curso=$_GET[id]'><button class=\"btn btn-info\" id=\"reporte\">Descargar reporte</button></a>";
+                }
+                $res->close();
+                ?>
+            </div>
         </div>
-        <div class="col-sm-offset-2 col-sm-8">
-            <?php
-            if(mysqli_num_rows($res)>0) {
-                echo "<input type=\"button\" class=\"btn btn-success\" id=\"asistencia\" value=\"Tomar asistencia\">";
-            }
-            $res->close();
-            ?>
-        </div>
+
     </div>
 </section>
 

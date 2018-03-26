@@ -103,7 +103,7 @@ include "conexion.php";
         </div>
 
         <div class="form-group col-sm-offset-0 col-sm-12" style="margin-top: 2%">
-            <input type="button" id="guardar" class="btn btn-success" value="Guardar">
+            <input type="button" id="guardar" class="btn btn-success" value="Guardar" style="margin-bottom: 2%">
         </div>
 
     </form>

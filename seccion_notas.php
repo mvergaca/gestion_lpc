@@ -12,7 +12,7 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si") {
             INNER JOIN lista ON alumno.id_alumno = lista.id_alumno
             INNER JOIN curso ON lista.id_curso = curso.id_curso
             INNER JOIN usuario ON alumno.rut_usr=usuario.rut_usr
-            WHERE curso.id_curso = $curso";
+            WHERE curso.id_curso = $curso ORDER BY usuario.nombre_usr";
     $res = $dbcon -> query($sql);
 
     $sql4 = "SELECT * FROM curso WHERE id_curso = $curso";
@@ -43,14 +43,19 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si") {
          <input type='hidden' id='curso' value='$curso'>
          <input type='hidden' id='semestre' value='$id_semestre'>
          <h3>$nombre_asig $nombre_curso $nombre_semestre</h3>
-         <label >Detalle</label><input type='text' id='detalle' class='form-control' style='width: auto'><br>
-    
-
-        <table id='ingresar' class='table-bordered table-responsive' style='background-color: #f7ecb5;'>
+         <div class='col-sm-offset-0 col-sm-12'>
+            <div class='col-sm-offset-3 col-sm-2'>
+                <label>Detalle</label>
+            </div>
+            <div class='col-sm-3'>
+                <input type='text' id='detalle' class='form-control' style='width: auto'><br>
+            </div>
+        </div>
+        <table id='ingresar' class='table table-bordered table-responsive'>
             <thead>
                 <tr>
-                    <td align='center'><b>Alumno</b></td>
-                    <td align='center'><b>Nota</b></td>
+                    <td align='center'><label>Alumno</label></td>
+                    <td align='center'><label>Nota</label></td>
                 </tr>
             </thead>";
 
@@ -65,7 +70,7 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si") {
                 ";
                 $i++;
             }
-    echo"</table><br><br>
+    echo"</table>
          <input type='button' id='guardar_notas' class='btn btn-info' value='Guardar' onclick='guardar_notas();'>
     
         

@@ -41,7 +41,10 @@ include "conexion.php";
             }
             $res->close();
 
-            echo"<table class='table table-bordered table-responsive'>";
+            echo"
+            <a href='reporte_alumno.php?id=$_GET[id]'><button class='btn btn-info'>Descargar reporte</button></a>
+            <div class='col-sm-offset-0 col-sm-12 table-responsive'>
+            <table class='table table-bordered table-responsive'>";
 
             $sql2 = "SELECT * FROM semestre WHERE anio = YEAR(NOW()) ORDER BY nombre_sem";
             $res2 = $dbcon->query($sql2);
@@ -119,7 +122,8 @@ include "conexion.php";
                 </tr>";
             }
 
-            echo"</table>";
+            echo"</table>
+            </div>";
             ?>
 
         </div>

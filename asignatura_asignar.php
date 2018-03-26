@@ -85,7 +85,7 @@ include "conexion.php";
         </div>
     </div>
 
-    <div id="asignadas" class="col-sm-offset-2 col-sm-8" style="margin-top: 2%">
+    <div id="asignadas" class="col-sm-offset-2 col-sm-8 table-responsive" style="margin-top: 2%">
         <table class="table table-responsive table-bordered" style="background-color: #f7ecb5;">
             <thead>
             <tr>

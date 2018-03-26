@@ -29,13 +29,14 @@ include "conexion.php";
 </section>
 
 <section id="principal" style="min-height: 540px;">
-<div class="col-sm-offset-0 col-sm-12">
-    <form class="form-inline col-sm-offset-3 col-sm-6" style="background-color: #f7ecb5">
-    <div class=" form-group row col-sm-offset-0 col-sm-12" style="margin-top: 2%">
-        <div>
+<div class="col-sm-offset-0 col-sm-12" >
+    <div class="col-sm-offset-2 col-sm-8" style='background-color: #f7ecb5;'>
+
+    <div class=" col-sm-offset-0 col-sm-12" style="margin-top: 2%">
+        <div class="col-sm-offset-4 col-sm-2">
             <label for="curso">Curso</label>
         </div>
-        <div>
+        <div class="col-sm-3">
             <select id="curso" class="form-control" onchange="cargar_asignaturas();">
                 <option value=""> - - - </option>
                 <?php
@@ -50,11 +51,11 @@ include "conexion.php";
         </div>
     </div>
 
-    <div class=" form-group row col-sm-offset-0 col-sm-12" style="margin-top: 2%">
-        <div>
+    <div class="col-sm-offset-0 col-sm-12" style="margin-top: 2%">
+        <div class="col-sm-offset-4 col-sm-2">
             <label for="asignatura">Asignatura</label>
         </div>
-        <div>
+        <div class="col-sm-3">
             <select id="asignatura" class="form-control">
                 <option value=""> - - - </option>
             </select>
@@ -63,9 +64,9 @@ include "conexion.php";
     <div>
         <input type="button" class="btn btn-info" value="Buscar" style="margin: 5px" onclick="mostrar_curso();">
     </div>
-    </form>
-    <div id="notas" class="col-sm-offset-2 col-sm-8" align="center">
+    <div id="notas" class="col-sm-offset-0 col-sm-12" >
 
+    </div>
     </div>
 </div>
 </section>

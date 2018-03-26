@@ -30,7 +30,7 @@ include "conexion.php";
 
 <section id="principal">
     <div   class="col-sm-offset-0 col-sm-12">
-        <div class="col-sm-offset-2 col-sm-8">
+        <div class="col-sm-offset-2 col-sm-8 table-responsive">
         <table class="table table-bordered table-responsive" style="background-color: #f7ecb5;">
             <thead>
             <tr>

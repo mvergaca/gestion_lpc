@@ -105,7 +105,7 @@ include "conexion.php";
 
         <div id="alerta" class="form-group col-sm-offset-0 col-sm-12" style="margin-top: 2%"></div>
 
-        <div id="mostrar" class="form-group col-sm-offset-0 col-sm-12" style="margin-top: 2%">
+        <div id="mostrar" class="form-group col-sm-offset-0 col-sm-12 table-responsive" style="margin-top: 2%">
 
             <table id="tabla-horario" class="table-responsive table-bordered col-sm-offset-2 col-sm-8">
                 <thead>

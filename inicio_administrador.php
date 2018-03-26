@@ -16,6 +16,13 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si"){
     <script src="css/bootstrap-3.3.7/js/bootstrap.js"></script>
     <link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.7/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/estilos.css">
+
+    <script type="text/javascript">
+        function cambiar(ref) {
+            var rut = $("#rut_"+ref).val();
+            window.location.href = "cambiar_con_adm.php?rut="+rut;
+        }
+    </script>
 </head>
 <body>
 
@@ -26,6 +33,88 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si"){
 </section>
 
 <section id="principal">
+
+    <div class='col-sm-offset-0 col-sm-12'>
+        <?php
+        $sql4 = "SELECT DISTINCT usuario.rut_usr, usuario.nombre_usr, usuario.apellido_p_usr, usuario.apellido_m_usr,
+                            administrador.id_administrador, alumno.id_alumno, apoderado.id_apoderado,asistente.id_asistente,
+                            director.id_director, inspector.id_inspector, profesor.id_profesor, secretaria.id_secretaria,utp.id_utp FROM recupera
+                            INNER JOIN usuario ON usuario.rut_usr = recupera.rut_usr
+                            LEFT JOIN administrador ON administrador.rut_usr = recupera.rut_usr
+                            LEFT JOIN alumno ON alumno.rut_usr = recupera.rut_usr
+                            LEFT JOIN apoderado ON apoderado.rut_usr = recupera.rut_usr
+                            LEFT JOIN asistente ON asistente.rut_usr = recupera.rut_usr
+                            LEFT JOIN director ON director.rut_usr = recupera.rut_usr
+                            LEFT JOIN inspector ON inspector.rut_usr = recupera.rut_usr
+                            LEFT JOIN profesor ON profesor.rut_usr = recupera.rut_usr
+                            LEFT JOIN secretaria ON secretaria.rut_usr = recupera.rut_usr
+                            LEFT JOIN utp ON utp.rut_usr = recupera.rut_usr
+                            WHERE recupera.estado = 1 ORDER BY nombre_usr";
+
+        $res4 = $dbcon -> query($sql4);
+        if(mysqli_num_rows($res4) > 0) {
+            echo "
+        <div class='col-sm-offset-2 col-sm-8 alert-success'>
+            <h3>Solicitudes de recuperacion de contraseña</h3>
+            <table class='table table-responsive table-bordered'>
+                <thead>
+                <tr>
+                    <td class='col-sm-7'><label>Nombre</label></td>
+                    <td class='col-sm-3'><label>Tipo usuario</label></td>
+                    <td class='col-sm-2'><label>Accion</label></td>
+                </tr>
+                </thead>
+                <tbody>";
+
+            $tipo_usuario = "";
+            $i=1;
+            while ($datos4 = mysqli_fetch_array($res4)) {
+                if ($datos4['id_administrador'] != null) {
+                    $tipo_usuario = "administrador";
+                }
+                if ($datos4['id_alumno'] != null) {
+                    $tipo_usuario = "alumno";
+                }
+                if ($datos4['id_apoderado'] != null) {
+                    $tipo_usuario = "apoderado";
+                }
+                if ($datos4['id_asistente'] != null) {
+                    $tipo_usuario = "asistente";
+                }
+                if ($datos4['id_director'] != null) {
+                    $tipo_usuario = "director";
+                }
+                if ($datos4['id_inspector'] != null) {
+                    $tipo_usuario = "inspector";
+                }
+                if ($datos4['id_profesor'] != null) {
+                    $tipo_usuario = "profesor";
+                }
+                if ($datos4['id_secretaria'] != null) {
+                    $tipo_usuario = "secretaria";
+                }
+                if ($datos4['id_utp'] != null) {
+                    $tipo_usuario = "utp";
+                }
+
+                echo "
+                        <tr>
+                            <td>$datos4[nombre_usr] $datos4[apellido_p_usr] $datos4[apellido_m_usr]</td>
+                            <td>$tipo_usuario</td>
+                            <td>
+                                <input type='hidden' id='rut_$i' value='$datos4[rut_usr]'>
+                                <input type='button' class='btn btn-info' value='Cambiar' onclick='cambiar($i)'>
+                            </td>
+                        </tr>
+                        ";
+                $i++;
+            }
+            echo"
+            </tbody >
+            </table >
+        </div>";
+        }
+        ?>
     <?php
     $sql = "SELECT DISTINCT alumno.rut_usr, usuario.nombre_usr, usuario.apellido_p_usr, usuario.apellido_m_usr,
                 curso.id_curso, curso.nombre_curso, asistencia.fecha
@@ -40,7 +129,7 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si"){
     $res = $dbcon->query($sql);
     if(mysqli_num_rows($res)>0) {
         echo "
-    <div class='col-sm-offset-0 col-sm-12'>
+    
         <div id='inasistencias' class='col-sm-offset-2 col-sm-8 alert-danger'>
             <h3>Inasistencias</h3>
             <table class='table table-bordered table-responsive'>

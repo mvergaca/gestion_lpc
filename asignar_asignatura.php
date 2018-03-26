@@ -23,7 +23,7 @@ else {
 
         echo "|1|
 
-        <table class=\"table table-responsive table-bordered\" style=\"background-color: #f7ecb5;\">
+        <table class=\"table table-responsive table-bordered\" style=\"background-color: #f7ecb5; display: block; overflow-x: auto;\">
             <thead>
             <tr>
                 <th>Asignatura</th>
