@@ -180,6 +180,89 @@ include "conexion.php";
                 ";
                 ?>
 
+                <h3>Informacion del apoderado suplente</h3>
+                <?php
+                $sql3 = "SELECT * FROM alumno
+                        INNER JOIN apoderado ON apoderado.id_apoderado = alumno.id_suplente
+                        INNER JOIN usuario ON usuario.rut_usr = apoderado.rut_usr
+                        WHERE alumno.id_alumno = $_GET[id]";
+
+                $res3 = $dbcon->query($sql3);
+
+                $rut_ap = null;
+                $nombre_ap = null;
+                $apellido_p_ap = null;
+                $apellido_m_ap = null;
+                $fecha_n_ap = null;
+                $genero_ap = null;
+                $telefono_ap = null;
+                $correo_ap = null;
+                $direccion_ap = null;
+                $comuna_ap = null;
+
+                while($datos3 = mysqli_fetch_array($res3)){
+                    $rut_ap = $datos3['rut_usr'];
+                    $nombre_ap = $datos3['nombre_usr'];
+                    $apellido_p_ap = $datos3['apellido_p_usr'];
+                    $apellido_m_ap = $datos3['apellido_m_usr'];
+                    $fecha_n_ap = $datos3['fecha_n_usr'];
+                    $genero_ap = $datos3['genero_usr'];
+                    $telefono_ap = $datos3['telefono_usr'];
+                    $correo_ap = $datos3['correo_usr'];
+                    $direccion_ap = $datos3['direccion_usr'];
+                    $comuna_ap = $datos3['comuna_usr'];
+
+                }
+                $res3->close();
+
+
+
+                echo"
+                <table class='table table-bordered table-responsive'>
+                    <tr>
+                        <td class='col-sm-4'><label>Rut</label></td>
+                        <td class='col-sm-8'>$rut_ap</td>
+                    </tr>
+                    <tr>
+                        <td class='col-sm-4'><label>Nombre</label></td>
+                        <td class='col-sm-8'>$nombre_ap</td>
+                    </tr>
+                    <tr>
+                        <td class='col-sm-4'><label>Apellido paterno</label></td>
+                        <td class='col-sm-8'>$apellido_p_ap</td>
+                    </tr>
+                    <tr>
+                        <td class='col-sm-4'><label>Apellido materno</label></td>
+                        <td class='col-sm-8'>$apellido_m_ap</td>
+                    </tr>
+                    <tr>
+                        <td class='col-sm-4'><label>Fecha nacimiento</label></td>
+                        <td class='col-sm-8'>$fecha_n_ap</td>
+                    </tr>
+                    <tr>
+                        <td class='col-sm-4'><label>Genero</label></td>
+                        <td class='col-sm-8'>$genero_ap</td>
+                    </tr>
+                    <tr>
+                        <td class='col-sm-4'><label>Telefono</label></td>
+                        <td class='col-sm-8'>$telefono_ap</td>
+                    </tr>
+                    <tr>
+                        <td class='col-sm-4'><label>Correo</label></td>
+                        <td class='col-sm-8'>$correo_ap</td>
+                    </tr>
+                    <tr>
+                        <td class='col-sm-4'><label>Direccion</label></td>
+                        <td class='col-sm-8'>$direccion_ap</td>
+                    </tr>
+                    <tr>
+                        <td class='col-sm-4'><label>Comuna</label></td>
+                        <td class='col-sm-8'>$comuna_ap</td>
+                    </tr>
+                </table>
+                ";
+                ?>
+
             </div>
             <div class="col-sm-offset-0 col-sm-12">
                 <h3>Horario</h3>

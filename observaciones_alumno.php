@@ -40,12 +40,14 @@ include "conexion.php";
                 </thead>
                 <tbody>
                 <?php
+                $fecha = date('Y')."-01-01";
+
                 $sql = "SELECT * FROM observacion
                         INNER JOIN profesor ON profesor.id_profesor = observacion.id_profesor
                         INNER JOIN usuario ON usuario.rut_usr = profesor.rut_usr
                         INNER JOIN alumno ON alumno.id_alumno = observacion.id_alumno
                         INNER JOIN lista ON lista.id_alumno = alumno.id_alumno
-                        WHERE alumno.rut_usr = '$_SESSION[rut_usr]' ";
+                        WHERE alumno.rut_usr = '$_SESSION[rut_usr]' AND observacion.fecha > $fecha";
 
                 $res = $dbcon -> query($sql);
 

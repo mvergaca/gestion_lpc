@@ -54,7 +54,7 @@ include "conexion.php";
                       INNER JOIN usuario ON usuario.rut_usr = alumno.rut_usr
                       INNER JOIN lista ON lista.id_alumno = alumno.id_alumno
                       INNER JOIN curso ON curso.id_curso = lista.id_curso
-                      WHERE curso.id_curso = $_GET[curso]";
+                      WHERE curso.id_curso = $_GET[curso] ORDER BY usuario.nombre_usr";
                 $res4 = $dbcon->query($sql4);
 
                 echo "<table class='table table-bordered table-responsive'>

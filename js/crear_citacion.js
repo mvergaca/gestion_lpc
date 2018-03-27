@@ -7,12 +7,24 @@ $(document).ready(function () {
         var ins = $("#ins").val();
         var date = new Date();
 
-        var actual = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
+        var anio_actual = date.getFullYear();
+        var mes_actual = date.getMonth()+1;
+        var dia_actual = date.getDate();
+
+        if(mes_actual < 10){
+            mes_actual = "0"+mes_actual;
+        }
+        if(dia_actual < 10){
+            dia_actual = "0"+dia_actual;
+        }
+
+        var actual = anio_actual+"-"+mes_actual+"-"+dia_actual;
+
 
 alert(actual+"| |"+fecha);
 
         if(fecha != "" && hora != "" && detalle != ""){
-        //   if(fecha > actual) {
+           if(fecha > actual) {
                 $.ajax({
                     type: "POST",
                     url: "guardar_citacion.php",
@@ -33,10 +45,10 @@ alert(actual+"| |"+fecha);
                         }
                     }
                 });
-           /*}
+           }
             else{
                 alert("La fecha debe ser mayor a la de hoy");
-            }*/
+            }
         }
         else{
             alert("Todos los campos son necesarios");

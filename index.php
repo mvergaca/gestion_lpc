@@ -18,7 +18,7 @@
     </script>
 </head>
 
-<body background="imagenes/LPC.PNG" style="background-size: cover" class="img-responsive ">
+<body background="imagenes/LPC.PNG" style="background-size: cover" class="img-responsive img">
 
 <section id="principal">
 <div class="col-sm-offset-0 col-sm-12">

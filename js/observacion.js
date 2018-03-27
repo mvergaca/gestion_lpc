@@ -13,27 +13,18 @@ $("#guardar").click(function () {
         var tipo = 0;
     }
 
-    var tiempo = new Date();
-
-    var dia = tiempo.getDate();
-    var mes = tiempo.getMonth();
-    var anio = tiempo.getFullYear();
-
-    var hora = tiempo.getHours();
-    var min = tiempo.getMinutes();
-    var sec = tiempo.getSeconds();
-
-    var actual = anio+"-"+mes+"-"+dia+" "+hora+":"+min+":"+sec;
-
 
     if(alumno != "") {
         if (observacion != "") {
-            var consulta = "insert into observacion (id_profesor, id_alumno, observacion, fecha_hora, tipo_obs) values (" + profesor + "," + alumno + ",'" + observacion + "','"+actual+"',"+tipo+");";
 
             $.ajax({
                 type: "POST",
                 url: "insertar_observacion.php",
-                data: {"consulta":consulta},
+                data: {"alumno":alumno,
+                    "observacion":observacion,
+                    "profesor":profesor,
+                    "tipo":tipo
+                },
                 success: function (data) {
                     datos = data.split(";");
                     if(datos[1] == 1){

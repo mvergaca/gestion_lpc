@@ -57,6 +57,8 @@ include "conexion.php";
                 </thead>
                 <tbody>
                 <?php
+                $fecha = date('Y')."-01-01";
+
                 $sql = "SELECT * FROM observacion
                         INNER JOIN profesor ON profesor.id_profesor = observacion.id_profesor
                         INNER JOIN alumno ON alumno.id_alumno = observacion.id_alumno
@@ -66,8 +68,8 @@ include "conexion.php";
                         INNER JOIN clase ON clase.id_curso = curso.id_curso
                         INNER JOIN asignatura ON asignatura.id_asignatura = clase.id_asignatura
                         WHERE profesor.rut_usr = '$_SESSION[rut_usr]' AND curso.id_curso = $_GET[curso] AND asignatura.id_asignatura = $_GET[asi]
-                        AND lista.anio = 2017
-                        ORDER BY usuario.nombre_usr, observacion.tipo_obs, observacion.fecha_hora";
+                        AND lista.anio = YEAR(NOW()) AND observacion.fecha > '$fecha'
+                        ORDER BY usuario.nombre_usr, observacion.tipo_obs, observacion.fecha, observacion.hora";
 
                 $res = $dbcon->query($sql);
 
@@ -83,7 +85,7 @@ include "conexion.php";
                         <td>$datos[nombre_usr] $datos[apellido_p_usr] $datos[apellido_m_usr]</td>
                         <td>$datos[observacion]</td>
                         <td>$obs</td>
-                        <td>$datos[fecha_hora]</td>
+                        <td>$datos[fecha] $datos[hora]</td>
                     </tr>
                     ";
                 }

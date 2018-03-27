@@ -24,6 +24,12 @@ include "conexion.php";
         function citacion(ref) {
             window.location.href = "crear_citacion.php?id="+ref;
         }
+        $(document).ready(function () {
+            $("#asistencia").click(function () {
+                var curso = $("#curso").val();
+                window.location.href = "ver_asistencia_ins.php?curso="+curso;
+            });
+        });
     </script>
 
 </head>
@@ -43,7 +49,7 @@ include "conexion.php";
                 INNER JOIN lista ON curso.id_curso = lista.id_curso
                 INNER JOIN alumno ON lista.id_alumno = alumno.id_alumno
                 INNER JOIN usuario ON alumno.rut_usr = usuario.rut_usr
-                WHERE curso.id_curso = $_GET[curso]";
+                WHERE curso.id_curso = $_GET[curso] ORDER BY usuario.nombre_usr";
             $res = $dbcon->query($sql);
 
             $sql3 = "SELECT * FROM curso
@@ -53,7 +59,9 @@ include "conexion.php";
                 echo"<h3>$datos3[nombre_curso]</h3>";
             }
 
-            echo"<table class='table table-borderer table-responsive'>
+            echo"<input type='button' class='btn btn-info' value='Ver asistencia' id='asistencia' style='margin-bottom: 2%'>
+            <input type='hidden' id='curso' value='$_GET[curso]'>
+            <table class='table table-borderer table-responsive'>
                 <thead>
                 <tr>
                     <td style='border: #34a9b6 2px solid;'><label>Alumno</label></td>

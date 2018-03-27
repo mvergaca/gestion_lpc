@@ -17,7 +17,11 @@ include "conexion.php";
     <script src="js/jquery-3.2.1.js"></script>
     <script src="css/bootstrap-3.3.7/js/bootstrap.js"></script>
 
-    <script src="js/justificar.js"></script>
+    <script type="text/javascript">
+        function justificar(ref) {
+            window.location.href="justificar_alumno.php?id="+ref;
+        }
+    </script>
 
 </head>
 <body>

@@ -13,6 +13,13 @@ $(document).ready(function () {
         var mes = date.getMonth()+1;
         var anio = date.getFullYear();
 
+        if(mes < 10){
+            mes = "0"+mes;
+        }
+        if(dia < 10){
+            dia = "0"+dia;
+        }
+
         var f_actual = anio+"-"+mes+"-"+dia;
 
         if(f_actual <= fecha) {

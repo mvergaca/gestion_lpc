@@ -29,6 +29,7 @@
 
                         while($dato = mysqli_fetch_array($res)){
                             echo "
+                            
                             <li><a href='ver_curso.php?curso=$dato[id_curso]'>$dato[nombre_curso]</a></li>
                             ";
                         }

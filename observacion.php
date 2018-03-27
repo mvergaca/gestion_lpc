@@ -69,7 +69,7 @@ include "conexion.php";
                 $sql2 = "SELECT * FROM alumno
                       INNER JOIN usuario ON usuario.rut_usr = alumno.rut_usr
                       INNER JOIN lista ON lista.id_alumno = alumno.id_alumno
-                      WHERE lista.id_curso = $curso";
+                      WHERE lista.id_curso = $curso ORDER BY usuario.nombre_usr";
                 $res2 = $dbcon->query($sql2);
                 while($datos2 = mysqli_fetch_array($res2)){
                     echo"<option value='$datos2[id_alumno]'>$datos2[nombre_usr] $datos2[apellido_p_usr] $datos2[apellido_m_usr]</option>";

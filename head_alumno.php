@@ -19,6 +19,13 @@
 
             <ul class="nav navbar-nav navbar-left navbar-header" style="margin-left: 3%">
                 <li><a href="inicio_alumno.php" style="color: #0f0f0f"><b>Inicio</b></a></li>
+                <?php
+                $sql2 = "SELECT * FROM alumno WHERE rut_usr = '$_SESSION[rut_usr]'";
+                $res2 = $dbcon -> query($sql2);
+                while($datos2 = mysqli_fetch_array($res2)){
+                    echo"<li><a href=\"ver_notas.php?id=$datos2[id_alumno]\" style=\"color: #0f0f0f\"><b>Notas</b></a></li>";
+                }
+                ?>
                 <li class="dropdown" >
                     <a href="#" class="dropdown-toggle" style="color: #0f0f0f" data-toggle="dropdown"
                        role="button" aria-haspopup="true" aria-expanded="false"><b>Asignaturas</b>
@@ -40,7 +47,6 @@
                             echo "
                         <li class=\"dropdown-submenu\"><a>$dato[nombre_asignatura]</a>
                             <ul class=\"dropdown-menu\">
-                                <li><a href=\"ver_notas.php?id=$dato[id_alumno]\">Notas</a></li>
                                 <li><a href=\"material_estudiantil.php?asig=$dato[id_asignatura]\">Material de estudio</a></li>
                                 <li><a href=\"mensaje_clase.php?asig=$dato[id_asignatura]\">Mensajes</a></li>
                             </ul>
