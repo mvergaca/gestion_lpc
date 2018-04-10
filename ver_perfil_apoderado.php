@@ -89,7 +89,7 @@ include "conexion.php";
                 ?>
             </table>
             <div class="col-sm-offset-0 col-sm-12" style="margin-bottom: 2%">
-                <input type="button" class="btn btn-success" value="Editar informacion">
+                <input type="button" class="btn btn-success" id="editar" value="Editar informacion">
             </div>
         </div>
     </div>

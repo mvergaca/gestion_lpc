@@ -19,32 +19,44 @@ $(document).ready(function () {
         for (var i = 1; i <= num; i++) {
             var est = $("#est_" + i).val();
             var nota = $("#nota_" + i).val();
-            if (nota > 7) {
-                nota = 7;
+
+            if (nota > 7.0) {
+                alert("Verifique que las notas esten entre 1.0 y 7.0");
+                break;
             }
-            if (nota < 1) {
-                nota = 1;
+            else{
+
+                if (nota < 1) {
+                    alert("Verifique que las notas esten entre 1.0 y 7.0");
+                    break;
+                }
+                else{
+
+                    if (i != num) {
+                        if (detalle == "") {
+                            var det = null;
+                            consulta = consulta + "(" + asig + "," + est + "," + nota + "," + det + ",'" + fecha + "',"+ semestre +"),";
+                        }
+                        else {
+                            var det = detalle;
+                            consulta = consulta + "(" + asig + "," + est + "," + nota + ",'" + det + "','" + fecha + "',"+ semestre +"),";
+                        }
+                    }
+                    else {
+                        if (detalle == "") {
+                            var det = null;
+                            consulta = consulta + "(" + asig + "," + est + "," + nota + "," + det + ",'" + fecha + "',"+ semestre +");";
+                        }
+                        else {
+                            var det = detalle;
+                            consulta = consulta + "(" + asig + "," + est + "," + nota + ",'" + det + "','" + fecha + "',"+ semestre +");";
+                        }
+                    }
+
+                }
+
             }
-            if (i != num) {
-                if (detalle == "") {
-                    var det = null;
-                    consulta = consulta + "(" + asig + "," + est + "," + nota + "," + det + ",'" + fecha + "',"+ semestre +"),";
-                }
-                else {
-                    var det = detalle;
-                    consulta = consulta + "(" + asig + "," + est + "," + nota + ",'" + det + "','" + fecha + "',"+ semestre +"),";
-                }
-            }
-            else {
-                if (detalle == "") {
-                    var det = null;
-                    consulta = consulta + "(" + asig + "," + est + "," + nota + "," + det + ",'" + fecha + "',"+ semestre +");";
-                }
-                else {
-                    var det = detalle;
-                    consulta = consulta + "(" + asig + "," + est + "," + nota + ",'" + det + "','" + fecha + "',"+ semestre +");";
-                }
-            }
+
         }
 
         $.ajax({
@@ -52,7 +64,14 @@ $(document).ready(function () {
             url: "insertar_notas.php",
             data: {"consulta": consulta},
             success: function (data) {
-                $(location).attr('href', 'ver_notas_asignatura.php?curso=' + curso + '&asig=' + asig);
+                datos = data.split(";");
+
+                if(datos[1] == 1) {
+                    $(location).attr('href', 'ver_notas_asignatura.php?curso=' + curso + '&asig=' + asig);
+                }
+                else{
+                    alert("No se han ingresado las notas");
+                }
             }
         });
 

@@ -42,7 +42,7 @@ include "conexion.php";
                 INNER JOIN usuario ON usuario.rut_usr = alumno.rut_usr
                 INNER JOIN lista ON lista.id_alumno = alumno.id_alumno
                 INNER JOIN curso ON curso.id_curso = lista.id_curso
-                WHERE asistencia.estado = 0 AND asistencia.justificacion = 1
+                WHERE asistencia.estado = 1 AND asistencia.justificacion = 1
                 ORDER BY curso.id_curso, usuario.nombre_usr";
 
     $res = $dbcon->query($sql);

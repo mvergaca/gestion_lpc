@@ -81,7 +81,7 @@ include "conexion.php";
                     echo"<tr>
                             <td>$i</td>
                             <td>$datos[nombre_asignatura]</td>
-                            <td>";if($datos['promediable'] == 1){echo"Si";}else{echo"No";}echo"</td>
+                            <td>";if($datos['promediable'] == 0){echo"Si";}else{echo"No";}echo"</td>
                             <td><input type='button' class='btn btn-info' value='Editar' onclick='editar_asignatura($datos[id_asignatura], $i);'></td>
                             <td><input type='button' class='btn btn-danger' value='Eliminar' onclick='eliminar_asignatura($datos[id_asignatura], $i);'></td>
                          </tr>";

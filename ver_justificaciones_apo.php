@@ -17,12 +17,6 @@ include "conexion.php";
     <script src="js/jquery-3.2.1.js"></script>
     <script src="css/bootstrap-3.3.7/js/bootstrap.js"></script>
 
-    <script type="text/javascript">
-        function mostrar(ref) {
-            window.location.href = "ver_alumno_apo.php?id="+ref;
-        }
-    </script>
-
 </head>
 <body>
 
@@ -35,33 +29,43 @@ include "conexion.php";
 <section id="principal">
     <div class="col-sm-offset-0 col-sm-12">
         <div class="col-sm-offset-2 col-sm-8" style="background-color: #f7ecb5;">
-
-            <h3>Alumnos</h3>
-
             <?php
             $sql = "SELECT * FROM alumno
-                    inner join apoderado on apoderado.id_apoderado = alumno.id_apoderado
-                    inner join usuario on usuario.rut_usr = alumno.rut_usr
-                    where apoderado.rut_usr = '$_SESSION[rut_usr]'";
+                        inner join usuario on usuario.rut_usr = alumno.rut_usr
+                        where alumno.id_alumno = $_GET[id]";
             $res = $dbcon->query($sql);
             while($datos = mysqli_fetch_array($res)){
-                echo"<div class='col-sm-offset-0 col-sm-12' style='margin-top: 2%'>
-                        <input class='btn btn-info' value='$datos[nombre_usr] $datos[apellido_p_usr] $datos[apellido_m_usr]' onclick='mostrar($datos[id_alumno])' style='margin-bottom: 2%'>
-                     </div>";
+                echo"<h4>$datos[nombre_usr] $datos[apellido_p_usr] $datos[apellido_m_usr]</h4>";
             }
 
-            $sql2 = "SELECT * FROM alumno
-                     inner join apoderado on apoderado.id_apoderado = alumno.id_suplente
-                     inner join usuario on usuario.rut_usr = alumno.rut_usr
-                     where apoderado.rut_usr = '$_SESSION[rut_usr]'";
+            $sql2 = "select * from asistencia
+                     inner join asignatura on asignatura.id_asignatura = asistencia.id_asignatura
+                     where asistencia.id_alumno = $_GET[id] and asistencia.estado = 1 
+                     and asistencia.justificacion = 1 order by asistencia.id_asistencia asc limit 1";
             $res2 = $dbcon->query($sql2);
-            while($datos2 = mysqli_fetch_array($res2)){
-                echo"<div class='col-sm-offset-0 col-sm-12' style='margin-top: 2%'>
-                        <input class='btn btn-info' value='$datos2[nombre_usr] $datos2[apellido_p_usr] $datos2[apellido_m_usr]' onclick='mostrar($datos2[id_alumno])' style='margin-bottom: 2%'>
-                     </div>";
-            }
-            ?>
 
+            echo"<table class='table table-responsive table-bordered'>
+                    <thead>
+                        <tr>
+                            <td class='col-sm-7'><label>Asignatura</label></td>
+                            <td class='col-sm-3'><label>Fecha</label></td>
+                            <td class='col-sm-2'><label>Hora</label></td>
+                        </tr>   
+                    </thead>
+                    <tbody>";
+            while($datos2 = mysqli_fetch_array($res2)){
+                echo"
+                <tr>
+                    <td>$datos2[nombre_asignatura]</td>
+                    <td>$datos2[fecha]</td>
+                    <td>$datos2[hora]</td>
+                </tr>
+                ";
+            }
+            echo"</tbody>
+            </table>";
+
+            ?>
         </div>
     </div>
 </section>

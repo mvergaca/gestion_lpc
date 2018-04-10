@@ -123,7 +123,7 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si"){
                 INNER JOIN usuario ON usuario.rut_usr = alumno.rut_usr
                 INNER JOIN lista ON lista.id_alumno = alumno.id_alumno
                 INNER JOIN curso ON curso.id_curso = lista.id_curso
-                WHERE asistencia.estado = 0 AND asistencia.justificacion = 0 AND lista.anio = YEAR(NOW())
+                WHERE asistencia.estado = 0 AND asistencia.justificacion = 1 AND lista.anio = YEAR(NOW())
                 ORDER BY curso.id_curso, usuario.nombre_usr";
 
     $res = $dbcon->query($sql);

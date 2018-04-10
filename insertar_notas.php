@@ -6,6 +6,13 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si") {
 
     $resu = $dbcon ->query($consulta);
 
+    if($resu){
+        echo";1;;";
+    }
+    else{
+        echo";-1;;";
+    }
+
     $resu->close();
     include "cerrar_conexion.php";
 }

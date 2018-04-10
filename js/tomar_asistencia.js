@@ -33,13 +33,13 @@ if(asig != "") {
         }
 
         if (i != num) {
-            consulta = consulta + "(" + usu + "," + est + "," + asig + "," + estado + ",'"+fecha_Actual+"','" + hora_actual + "',0),";
+            consulta = consulta + "(" + usu + "," + est + "," + asig + "," + estado + ",'"+fecha_Actual+"','" + hora_actual + "',1),";
         }
         else {
-            consulta = consulta + "(" + usu + "," + est + "," + asig + "," + estado + ",'"+fecha_Actual+"','" + hora_actual + "',0);";
+            consulta = consulta + "(" + usu + "," + est + "," + asig + "," + estado + ",'"+fecha_Actual+"','" + hora_actual + "',1);";
         }
     }
-alert(consulta);
+
     $.ajax({
         type: "POST",
         url: "insertar_asistencia.php",
@@ -47,7 +47,7 @@ alert(consulta);
         success: function (data) {
             datos = data.split(";");
             if (datos[1] == 1) {
-                window.location.href="ver_asistencia.php?curso="+curso+"&asi="+asig;
+                window.location.href="ver_asistencia_prof.php?curso="+curso+"&asi="+asig;
 
             }
             else {

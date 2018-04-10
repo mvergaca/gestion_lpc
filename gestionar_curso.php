@@ -12,16 +12,12 @@ include "conexion.php";
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Inicio Utp</title>
 
-    <script src="js/jquery-3.2.1.js"></script>
-    <script src="css/bootstrap-3.3.7/js/bootstrap.js"></script>
     <link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.7/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/estilos.css">
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="css/bootstrap-3.3.7/js/bootstrap.js"></script>
 
-    <script>
-        function ver_alumno(ref) {
-            window.location.href = "ver_alumno_utp.php?id="+ref;
-        }
-    </script>
+    <script src="js/gestionar_curso.js"></script>
 
 </head>
 <body>
@@ -34,13 +30,14 @@ include "conexion.php";
 
 <section id="principal">
     <div class="col-sm-offset-0 col-sm-12">
-        <div class="col-sm-offset-2 col-sm-8" style='background-color: #f7ecb5;'>
+        <div class="col-sm-offset-2 col-sm-8" style="background-color: #f7ecb5;">
+
             <?php
             $sql = "SELECT * FROM curso
                 INNER JOIN lista ON curso.id_curso = lista.id_curso
                 INNER JOIN alumno ON lista.id_alumno = alumno.id_alumno
                 INNER JOIN usuario ON alumno.rut_usr = usuario.rut_usr
-                WHERE curso.id_curso = $_GET[curso] and lista.anio = YEAR(NOW()) ORDER BY usuario.nombre_usr";
+                WHERE curso.id_curso = $_GET[curso] ORDER BY usuario.nombre_usr";
             $res = $dbcon->query($sql);
 
             $sql3 = "SELECT * FROM curso
@@ -50,13 +47,33 @@ include "conexion.php";
                 echo"<h3>$datos3[nombre_curso]</h3>";
             }
 
-            echo"<table class='table table-borderer table-responsive'>
+            echo"
+            <div class='col-sm-offset-0 col-sm-12'>
+                <div class='col-sm-offset-4 col-sm-1'>
+                    <label>Curso</label>
+                </div>
+                <div class='col-sm-3' style='margin-bottom: 2%'>
+                    <select id='curso' class='form-control'>
+                        <option value=''> - - - </option>";
+                    $sql5 = "SELECT * FROM curso";
+                    $res5 = $dbcon->query($sql5);
+                    while($datos5 = mysqli_fetch_array($res5)){
+                        echo"<option value='$datos5[id_curso]'>$datos5[nombre_curso]</option>";
+                    }
+                    echo"<option value='100'>Graduar</option>";
+                    echo"</select>
+                </div>
+            </div>
+
+            <div class='col-sm-offset-0 col-sm-12 table-responsive'>
+            <table class='table table-borderer table-responsive'>
                 <thead>
                 <tr>
-                    <td style='border: #34a9b6 2px solid;'><label>Alumno</label></td>
-                    <td style='border: #34a9b6 2px solid;'><label>% Asistencia</label></td>
-                    <td style='border: #34a9b6 2px solid;'><label>Promedio</label></td>
-                    <td style='border: #34a9b6 2px solid;'><label>Ver</label></td>
+                    <td class='col-sm-7' style='border: #34a9b6 2px solid;'><label>Alumno</label></td>
+                    <td class='col-sm-2' style='border: #34a9b6 2px solid;'><label>% asistencia</label></td>
+                    <td class='col-sm-1' style='border: #34a9b6 2px solid;'><label>Promedio</label></td>
+                    <td class='col-sm-1' style='border: #34a9b6 2px solid;'><label>Aprobar</label></td>
+                    <td class='col-sm-1' style='border: #34a9b6 2px solid;'><label>Reprobar</label></td>
                 </tr>
                 </thead>
                 <tbody>";
@@ -66,7 +83,10 @@ include "conexion.php";
             while($datos = mysqli_fetch_array($res)){
                 echo"
         <tr>
-            <td style='border: #34a9b6 2px solid;'>$datos[nombre_usr] $datos[apellido_p_usr] $datos[apellido_m_usr]</td>
+            <td style='border: #34a9b6 2px solid;'>
+                $datos[nombre_usr] $datos[apellido_p_usr] $datos[apellido_m_usr]
+            </td>
+            
             <td style='border: #34a9b6 2px solid;'>";
                 $sql2 = "SELECT * FROM asistencia WHERE id_alumno = $datos[id_alumno] AND fecha > '$date' AND fecha <= NOW()";
                 $res2 = $dbcon->query($sql2);
@@ -86,12 +106,13 @@ include "conexion.php";
                 echo round($por)."%";
 
                 echo"</td>
+            
             <td style='border: #34a9b6 2px solid;'>";
                 $sql4 = "SELECT * FROM nota
                           INNER JOIN alumno ON alumno.id_alumno = nota.id_alumno
                           INNER JOIN asignatura ON asignatura.id_asignatura = nota.id_asignatura
                           INNER JOIN semestre ON semestre.id_semestre = nota.id_semestre
-                          WHERE (asignatura.id_asignatura <> 14 OR asignatura.id_asignatura <> 15 OR asignatura.id_asignatura <> 16 OR asignatura.id_asignatura <> 12) 
+                          WHERE asignatura.promediable = 0 
                           AND alumno.id_alumno = $datos[id_alumno] AND semestre.anio = YEAR(NOW())";
 
                 $res4 = $dbcon->query($sql4);
@@ -113,16 +134,23 @@ include "conexion.php";
 
                 echo"$general2";
                 echo"</td>
-                <td style='border: #34a9b6 2px solid;'><input type='button' value='Ver' class='btn btn-success' onclick='ver_alumno($datos[id_alumno])'></td>
+                <td style='border: #34a9b6 2px solid;'>
+                <input type='button' class='btn btn-success' value='Aprobar' onclick='aprobar($datos[id_alumno])'>
+
+                </td>
+                <td style='border: #34a9b6 2px solid;'>
+                <input type='button' class='btn btn-danger' value='Reprobar' onclick='reprobar($datos[id_alumno])'>
+                
+                </td>
         </tr>
         ";
             }
 
             echo"</tbody>
             </table>
-
+            </div>
             <div class='col-sm-offset-0 col-sm-12' style='margin-bottom: 1%'>
-                <a href='reporte_curso.php?curso=$_GET[curso]'><button class='btn btn-info'>Reporte curso</button></a>
+                
             </div>
             ";
             ?>
@@ -132,7 +160,7 @@ include "conexion.php";
     </div>
 </section>
 
-<section id="pie" class="col-sm-offset-0 col-sm-12">
+<section id="pie">
     <?php
     include "footer.php";
     ?>

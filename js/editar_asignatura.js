@@ -4,9 +4,9 @@ $(document).ready(function () {
         var id = $("#id_as").val();
 
         if($("#si").is(":checked")){
-            var promediable = 1;
-        }else{
             var promediable = 0;
+        }else{
+            var promediable = 1;
         }
 
         $.ajax({

@@ -35,7 +35,8 @@ include "conexion.php";
                 INNER JOIN lista ON curso.id_curso = lista.id_curso
                 INNER JOIN alumno ON lista.id_alumno = alumno.id_alumno
                 INNER JOIN usuario ON alumno.rut_usr = usuario.rut_usr
-                WHERE profesor.rut_usr = '$_SESSION[rut_usr]' AND lista.anio = YEAR(NOW())";
+                WHERE profesor.rut_usr = '$_SESSION[rut_usr]' AND lista.anio = YEAR(NOW())
+                ORDER BY usuario.nombre_usr";
         $res = $dbcon->query($sql);
 
         $sql3 = "SELECT * FROM curso

@@ -33,10 +33,10 @@ $(document).ready(function () {
                 }
 
                 if (i != num) {
-                    consulta = consulta + "(" + usu + "," + est + "," + asig + "," + estado + ",'"+fecha_actual+"','" + hora_actual + "',0),";
+                    consulta = consulta + "(" + usu + "," + est + "," + asig + "," + estado + ",'"+fecha_actual+"','" + hora_actual + "',1),";
                 }
                 else {
-                    consulta = consulta + "(" + usu + "," + est + "," + asig + "," + estado + ",'"+fecha_actual+"','" + hora_actual + "',0);";
+                    consulta = consulta + "(" + usu + "," + est + "," + asig + "," + estado + ",'"+fecha_actual+"','" + hora_actual + "',1);";
                 }
             }
             alert(consulta);

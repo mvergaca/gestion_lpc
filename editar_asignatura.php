@@ -54,14 +54,14 @@ include "conexion.php";
                     <div class="col-sm-offset-0 col-sm-12" style="margin-bottom: 1%">
                         <label class="col-sm-offset-4 col-sm-3">Promediable</label>
                         <div class="col-sm-1">
-                            <input type="radio" name="prom" id="si" <?php if($prome == 1){echo"checked";}?>>
+                            <input type="radio" name="prom" id="si" <?php if($prome == 0){echo"checked";}?>>
                         </div>
                     </div>
 
                     <div class="col-sm-offset-0 col-sm-12" style="margin-bottom: 1%">
                         <label class="col-sm-offset-4 col-sm-3">No Promediable</label>
                         <div class="col-sm-1">
-                            <input type="radio" name="prom" id="no" <?php if($prome == 0){echo"checked";}?>>
+                            <input type="radio" name="prom" id="no" <?php if($prome == 1){echo"checked";}?>>
                         </div>
                     </div>
 

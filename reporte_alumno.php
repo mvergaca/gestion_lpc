@@ -49,6 +49,38 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si") {
         $titulosColumnas = array('Asignaturas', 'Nota 1', 'Nota 2', 'Nota 3', 'Nota 4', 'Nota 5', 'Nota 6', 'Nota 7', 'Nota 8', 'Nota 9', 'Nota 10', 'Promedio');
 
 
+        $estilo1 = array(
+            'borders' => array(
+                'outline' => array(
+                    'style' => PHPExcel_Style_Border::BORDER_THIN
+                )
+            )
+        );
+
+        $estilo2 = array(
+            'borders' => array(
+                'outline' => array(
+                    'style' => PHPExcel_Style_Border::BORDER_THIN
+                )
+            ),
+            'alignment' => array(
+                'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER
+            ),
+            'font'  => array(
+                'bold'  => true
+            )
+        );
+
+        $estilo3 = array(
+            'alignment' => array(
+                'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER
+            ),
+            'font'  => array(
+                'bold'  => true
+            )
+        );
+
+
         // Se combinan las celdas A1 hasta D1, para colocar ahí el titulo del reporte
         $objPHPExcel->setActiveSheetIndex(0)
             ->mergeCells('B2:X2')
@@ -221,6 +253,19 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si") {
                 $div_sem = $notas_sem/$num_sem;
                 $prom_sem = number_format($div_sem,1,".",",");
                 $objPHPExcel->setActiveSheetIndex(0)->setCellValue('L27', $prom_sem);
+
+                //Estilos delsemestre
+                $objPHPExcel->getActiveSheet()->getStyle('A7:L7')->applyFromArray($estilo2);
+                $objPHPExcel->getActiveSheet()->getStyle('A10:L10')->applyFromArray($estilo2);
+
+                $i=$i-1;
+
+                $objPHPExcel->getActiveSheet()->getStyle('A11:A'.$i)->applyFromArray($estilo1);
+                $objPHPExcel->getActiveSheet()->getStyle('B11:L'.$i)->applyFromArray($estilo1);
+
+                $objPHPExcel->getActiveSheet()->getStyle('J27:K27')->applyFromArray($estilo1);
+                $objPHPExcel->getActiveSheet()->getStyle('L27')->applyFromArray($estilo1);
+
 
             }
             else{
@@ -397,6 +442,22 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si") {
                 $objPHPExcel->setActiveSheetIndex(0)->setCellValue('X27',$prom_sem);
 
 
+                $objPHPExcel->getActiveSheet()->getStyle('N7:Y7')->applyFromArray($estilo2);
+                $objPHPExcel->getActiveSheet()->getStyle('N10:Y10')->applyFromArray($estilo2);
+
+                $i=$i-1;
+
+                $objPHPExcel->getActiveSheet()->getStyle('N11:N'.$i)->applyFromArray($estilo1);
+                $objPHPExcel->getActiveSheet()->getStyle('O11:Y'.$i)->applyFromArray($estilo1);
+
+                $objPHPExcel->getActiveSheet()->getStyle('AA10')->applyFromArray($estilo2);
+                $objPHPExcel->getActiveSheet()->getStyle('AA11:AA'.$i)->applyFromArray($estilo1);
+
+                $objPHPExcel->getActiveSheet()->getStyle('V27:W27')->applyFromArray($estilo1);
+                $objPHPExcel->getActiveSheet()->getStyle('X27')->applyFromArray($estilo1);
+
+                $objPHPExcel->getActiveSheet()->getStyle('AA27')->applyFromArray($estilo1);
+
             }//if asignaturas semestre
 
             //promedio anual
@@ -423,6 +484,18 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si") {
             $objPHPExcel->setActiveSheetIndex(0)->mergeCells('E29:G29')->setCellValue('E29', 'Asistencia');
             $objPHPExcel->setActiveSheetIndex(0)->mergeCells('H29:J29')->setCellValue('H29', 'N° dias inasistencia');
             $objPHPExcel->setActiveSheetIndex(0)->mergeCells('K29:M29')->setCellValue('K29', '% asistencia');
+
+    //Estilos asistencias
+            $objPHPExcel->getActiveSheet()->getStyle('B29:D29')->applyFromArray($estilo1);
+            $objPHPExcel->getActiveSheet()->getStyle('E29:G29')->applyFromArray($estilo1);
+            $objPHPExcel->getActiveSheet()->getStyle('H29:J29')->applyFromArray($estilo1);
+            $objPHPExcel->getActiveSheet()->getStyle('K29:M29')->applyFromArray($estilo1);
+
+            $objPHPExcel->getActiveSheet()->getStyle('B30:D30')->applyFromArray($estilo1);
+            $objPHPExcel->getActiveSheet()->getStyle('E30:G30')->applyFromArray($estilo1);
+            $objPHPExcel->getActiveSheet()->getStyle('H30:J30')->applyFromArray($estilo1);
+            $objPHPExcel->getActiveSheet()->getStyle('K30:M30')->applyFromArray($estilo1);
+
 
             $sql7 = "SELECT DISTINCT fecha FROM asistencia 
                       WHERE asistencia.id_alumno = $_GET[id] AND asistencia.fecha >= '$datos2[inicio_semestre]' 
@@ -457,6 +530,16 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si") {
             $objPHPExcel->setActiveSheetIndex(0)->mergeCells('B33:E33')->setCellValue('B33', 'Observaciones positivas');
             $objPHPExcel->setActiveSheetIndex(0)->mergeCells('B34:E34')->setCellValue('B34', 'Firma conocimiento');
 
+        //estilos observaciones
+            $objPHPExcel->getActiveSheet()->getStyle('B32:E32')->applyFromArray($estilo1);
+            $objPHPExcel->getActiveSheet()->getStyle('B33:E33')->applyFromArray($estilo1);
+            $objPHPExcel->getActiveSheet()->getStyle('B34:E34')->applyFromArray($estilo1);
+
+            $objPHPExcel->getActiveSheet()->getStyle('F32')->applyFromArray($estilo1);
+            $objPHPExcel->getActiveSheet()->getStyle('F33')->applyFromArray($estilo1);
+            $objPHPExcel->getActiveSheet()->getStyle('F34')->applyFromArray($estilo1);
+
+
             $sql9 = "SELECT * FROM observacion
                       WHERE observacion.id_alumno = $_GET[id] AND observacion.fecha >= $datos2[inicio_semestre]
                       AND observacion.fecha <= $datos2[fin_semestre]";
@@ -486,6 +569,7 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si") {
                 $objPHPExcel->setActiveSheetIndex(0)->mergeCells('B37:F37')->setCellValue('B37', $datos10['nombre_usr'].' '.$datos10['apellido_p_usr'].' '.$datos10['apellido_m_usr']);
             }
             $objPHPExcel->setActiveSheetIndex(0)->mergeCells('B38:F38')->setCellValue('B38', 'Profesor(a) Jefe');
+            $objPHPExcel->getActiveSheet()->getStyle('B38:F38')->applyFromArray($estilo3);
 
             $sql11 = "SELECT usuario.nombre_usr, usuario.apellido_p_usr, usuario.apellido_m_usr FROM director
                       INNER JOIN usuario ON usuario.rut_usr = director.rut_usr";
@@ -494,6 +578,7 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si") {
                 $objPHPExcel->setActiveSheetIndex(0)->mergeCells('I37:M37')->setCellValue('I37', $datos11['nombre_usr'].' '.$datos11['apellido_p_usr'].' '.$datos11['apellido_m_usr']);
             }
             $objPHPExcel->setActiveSheetIndex(0)->mergeCells('I38:M38')->setCellValue('I38', 'Director');
+            $objPHPExcel->getActiveSheet()->getStyle('I38:M38')->applyFromArray($estilo3);
 
             //fin firmas
         }// while semestres

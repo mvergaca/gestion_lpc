@@ -35,9 +35,32 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si") {
         ->setCategory("Reporte excel"); //Categorias
 
 //----------------------------------------------------------------------------------------------------------------------------------
+//Primera hoja
 
         $tituloReporte = array('Alumnos', 'Observaciones', 'Asistencia a reunion', 'Asistencia');
         $titulosColumnas = array('Nota 1', 'Nota 2', 'Nota 3', 'Nota 4', 'Nota 5', 'Nota 6', 'Nota 7', 'Nota 8', 'Nota 9', 'Nota 10', 'Promedio');
+
+        $estilo = array(
+            'borders' => array(
+                'outline' => array(
+                    'style' => PHPExcel_Style_Border::BORDER_THIN
+                )
+            )
+        );
+
+        $estilo2 = array(
+            'borders' => array(
+                'outline' => array(
+                    'style' => PHPExcel_Style_Border::BORDER_THIN
+                )
+            ),
+            'alignment' => array(
+                'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER
+            ),
+            'font'  => array(
+                'bold'  => true
+            )
+        );
 
         $objPHPExcel->setActiveSheetIndex(0)
             ->setCellValue('B1',$nombre_curso)
@@ -45,7 +68,7 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si") {
 
         // Se combinan las celdas A1 hasta D1, para colocar ahí el titulo del reporte
         $objPHPExcel->setActiveSheetIndex(0)
-            ->mergeCells('D2:F2')
+            ->mergeCells('D3:F3')
             ->mergeCells('H3:J3')
             ->mergeCells('L4:P4');
 
@@ -78,11 +101,21 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si") {
             $objPHPExcel->setActiveSheetIndex(0)
                 ->setCellValue('B'.$f,$datos2['nombre_usr'].' '.$datos2['apellido_p_usr'].' '.$datos2['apellido_m_usr']);
 
-
-
             $f++;
         }
 
+        $f = $f-1;
+//Estilos a las tablas
+        $objPHPExcel->getActiveSheet()->getStyle('B4')->applyFromArray($estilo2);
+        $objPHPExcel->getActiveSheet()->getStyle('D3:F3')->applyFromArray($estilo2);
+        $objPHPExcel->getActiveSheet()->getStyle('H3:J3')->applyFromArray($estilo2);
+        $objPHPExcel->getActiveSheet()->getStyle('L3')->applyFromArray($estilo2);
+
+        $objPHPExcel->getActiveSheet()->getStyle('B5:B'.$f)->applyFromArray($estilo);
+
+        $objPHPExcel->getActiveSheet()->getStyle('D4:F'.$f)->applyFromArray($estilo);
+
+        $objPHPExcel->getActiveSheet()->getStyle('H4:J'.$f)->applyFromArray($estilo);
 
         // Se asigna el nombre a la hoja
         $objPHPExcel->getActiveSheet()->setTitle('Lista');
@@ -94,6 +127,8 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si") {
             $objPHPExcel->getActiveSheet()->getColumnDimension($columnas[$i])->setAutoSize(true);
         }
 
+//----------------------------------------------------------------------------------------------
+//asignaturas
 
         $sql3 = "SELECT * FROM asignatura
                 INNER JOIN clase ON clase.id_asignatura = asignatura.id_asignatura
@@ -213,6 +248,9 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si") {
                                 $objPHPExcel->setActiveSheetIndex($p)->setCellValue('M'.$f,$prom);
                         }
 
+                        $objPHPExcel->getActiveSheet()->getStyle('C3:M3')->applyFromArray($estilo2);
+                        $objPHPExcel->getActiveSheet()->getStyle('C4:M4')->applyFromArray($estilo2);
+
                     }
                     else{
                         $objPHPExcel->setActiveSheetIndex($p)
@@ -294,13 +332,36 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si") {
                         $prom_total = $prom = number_format($div_total,1,".",",");
                         $objPHPExcel->setActiveSheetIndex($p)->setCellValue('AA'.$f,$prom_total);
 
+
+                        $objPHPExcel->getActiveSheet()->getStyle('O3:Y3')->applyFromArray($estilo2);
+                        $objPHPExcel->getActiveSheet()->getStyle('O4:Y4')->applyFromArray($estilo2);
+
+                        $objPHPExcel->getActiveSheet()->getStyle('AA4')->applyFromArray($estilo2);
+
                     }
 
 
                 }
 
                 $f++;
+
+
             }
+
+            //Estilos en las notas
+            $f=$f-1;
+            $objPHPExcel->getActiveSheet()->getStyle('B4')->applyFromArray($estilo2);
+
+            $objPHPExcel->getActiveSheet()->getStyle('B5:B'.$f)->applyFromArray($estilo);
+
+            $objPHPExcel->getActiveSheet()->getStyle('C5:L'.$f)->applyFromArray($estilo);
+            $objPHPExcel->getActiveSheet()->getStyle('M5:M'.$f)->applyFromArray($estilo);
+
+            $objPHPExcel->getActiveSheet()->getStyle('O5:X'.$f)->applyFromArray($estilo);
+            $objPHPExcel->getActiveSheet()->getStyle('Y5:Y'.$f)->applyFromArray($estilo);
+
+            $objPHPExcel->getActiveSheet()->getStyle('AA5:AA'.$f)->applyFromArray($estilo);
+
 
             $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
             $objPHPExcel->getActiveSheet()->setTitle($datos3['nombre_asignatura']);
@@ -331,7 +392,7 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si") {
         exit;
     }
     else{
-        print_r("no hay resusltados que mostrar");
+        print_r("no hay resultados que mostrar");
     }
     include "cerrar_conexion.php";
 }

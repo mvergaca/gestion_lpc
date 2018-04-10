@@ -39,7 +39,7 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si") {
                             <td>";
                             $sql3 = "SELECT * FROM asistencia
                                     WHERE id_asignatura = $asignatura AND id_alumno = $datos[id_alumno] 
-                                    AND fecha = CURRENT_DATE()";
+                                    AND fecha = CURRENT_DATE() order  by id_asistencia asc limit 1";
                             $res3 = $dbcon->query($sql3);
                             $estado = "";
                             if(mysqli_num_rows($res3) < 1){

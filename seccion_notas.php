@@ -65,7 +65,7 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si") {
                     <tr>
                     <input type='hidden' id='est_$i' value='$datos[id_alumno]'>
                         <td align='center'>$datos[nombre_usr] $datos[apellido_p_usr] $datos[apellido_m_usr]</td>
-                        <td align='center'><input name='nota' type='number' min='1' max='7' id='nota_$i' value='1' style='width: auto'></td>
+                        <td align='center'><input name='nota' type='number' step='0.1' min='1.0' max='7.0' id='nota_$i' value='1' style='width: auto'></td>
                     </tr>
                 ";
                 $i++;

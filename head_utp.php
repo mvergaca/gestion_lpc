@@ -30,7 +30,12 @@
                         while($dato = mysqli_fetch_array($res)){
                             echo "
                             
-                            <li><a href='ver_curso.php?curso=$dato[id_curso]'>$dato[nombre_curso]</a></li>
+                            <li class='dropdown-submenu'><a>$dato[nombre_curso]</a>
+                                <ul class='dropdown-menu'>
+                                    <li><a href='ver_curso.php?curso=$dato[id_curso]'>Ver curso</a></li>
+                                    <li><a href='gestionar_curso.php?curso=$dato[id_curso]'>Gestionar curso</a></li>
+                                </ul>
+                            </li>
                             ";
                         }
                         $res->close();

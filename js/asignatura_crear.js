@@ -3,9 +3,9 @@ $(document).ready(function () {
         var nombre = $("#asig").val();
 
         if($("#si").is(":checked")){
-            var promediable = 1;
-        }else{
             var promediable = 0;
+        }else{
+            var promediable = 1;
         }
 
         if(nombre != "") {
