@@ -10,7 +10,7 @@ include "conexion.php";
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Inicio Profesor</title>
+    <title>Inicio Administrador</title>
 
     <script src="js/jquery-3.2.1.js"></script>
     <script src="css/bootstrap-3.3.7/js/bootstrap.js"></script>
@@ -30,6 +30,8 @@ include "conexion.php";
 </section>
 
 <section id="principal">
+    <div class="col-sm-offset-0 col-sm-12">
+        <div class="col-sm-offset-2 col-sm-8" style="background-color: #f7ecb5;">
     <?php
     $con = "select * from curso 
             INNER JOIN clase ON clase.id_curso = curso.id_curso
@@ -41,10 +43,10 @@ include "conexion.php";
     }
     $res_con->close();
     $dia = date('Y');
-    $año="$dia-01-01";
+    $año=$dia."-01-01";
     ?>
-    <div align="center">
-        <table id="ingresar" class="table-bordered table-responsive" style="background-color: #f7ecb5;">
+
+        <table id="ingresar" class="table table-bordered table-responsive">
             <thead>
             <tr>
                 <td align="center" style='border: #34a9b6 2px solid;'><b>Alumnos</b></td>
@@ -58,7 +60,7 @@ include "conexion.php";
            INNER JOIN curso ON lista.id_curso = curso.id_curso
            INNER JOIN alumno ON lista.id_alumno = alumno.id_alumno
            INNER JOIN usuario ON alumno.rut_usr = usuario.rut_usr
-           WHERE curso.id_curso = $id_curso ORDER BY usuario.nombre_usr";
+           WHERE curso.id_curso = $id_curso and lista.anio = YEAR(NOW()) ORDER BY usuario.nombre_usr";
             $res = $dbcon->query($sql);
             $i = 1;
             while ($datos = mysqli_fetch_array($res)){
@@ -90,6 +92,7 @@ include "conexion.php";
             $res->close();
             ?>
         </table>
+    </div>
     </div>
 </section><br>
 

@@ -35,7 +35,7 @@ $(document).ready(function () {
 });
 
 function editar_clase(ref) {
-    alert(ref);
+
     var curso = $("#curso").val();
     window.location.href = "editar_clase.php?curso="+curso+"&id="+ref;
 }

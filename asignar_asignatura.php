@@ -39,7 +39,8 @@ else {
                     INNER JOIN clase ON clase.id_asignatura = asignatura.id_asignatura
                     INNER JOIN profesor ON profesor.id_profesor = clase.id_profesor
                     INNER JOIN usuario ON usuario.rut_usr = profesor.rut_usr
-                    WHERE clase.id_curso = $curso AND anio = $anio";
+                    WHERE clase.id_curso = $curso AND anio = YEAR(NOW())
+                    order by asignatura.nombre_asignatura";
         $res4 = $dbcon->query($sql4);
         $i = 1;
         while ($datos4 = mysqli_fetch_array($res4)) {

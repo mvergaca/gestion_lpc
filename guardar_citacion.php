@@ -14,7 +14,15 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si") {
     $res = $dbcon->query($sql);
 
     if($res){
-        echo";1;;";
+        $sql2 = "SELECT * FROM citacion 
+                  where id_alumno = $alumno and fecha = '$fecha'
+                  order by id_citacion desc limit 1";
+        $res2 = $dbcon->query($sql2);
+        while($datos2 = mysqli_fetch_array($res2)){
+            $id = $datos2['id_citacion'];
+        }
+
+        echo";1;$id;";
     }
     else{
         echo";-1;;";

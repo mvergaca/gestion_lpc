@@ -20,9 +20,6 @@ $(document).ready(function () {
 
         var actual = anio_actual+"-"+mes_actual+"-"+dia_actual;
 
-
-alert(actual+"| |"+fecha);
-
         if(fecha != "" && hora != "" && detalle != ""){
            if(fecha > actual) {
                 $.ajax({
@@ -38,7 +35,7 @@ alert(actual+"| |"+fecha);
                     success: function (data) {
                         datos = data.split(";");
                         if (datos[1] == 1) {
-
+                            window.location.href = "ver_citacion.php?id="+datos[2];
                         }
                         else {
                             alert("Error al crear la citacion");

@@ -38,6 +38,10 @@ include "conexion.php";
                 var alumno = $("#alumno").val()
                 window.location.href="ver_observaciones_apo.php?id="+alumno;
             });
+            $("#citaciones").click(function () {
+                var alumno = $("#alumno").val();
+                window.location.href="ver_citaciones_apo.php?id="+alumno;
+            });
         });
     </script>
 
@@ -64,16 +68,19 @@ include "conexion.php";
             }
             ?>
             <div class="col-sm-offset-0 col-sm-12" style="margin-top: 1%">
-                <input type="button" class="btn btn-success" value="Notas" id="notas" style="margin-bottom: 1%">
+                <input type="button" class="btn btn-default" value="Notas" id="notas" style="margin-bottom: 1%">
             </div>
             <div class="col-sm-offset-0 col-sm-12" style="margin-top: 1%">
-                <input type="button" class="btn btn-info" value="Mensajes" id="mensajes" style="margin-bottom: 1%">
+                <input type="button" class="btn btn-success" value="Mensajes" id="mensajes" style="margin-bottom: 1%">
             </div>
             <div class="col-sm-offset-0 col-sm-12" style="margin-top: 1%">
-                <input type="button" class="btn btn-warning" value="Justificaciones" id="justificaciones" style="margin-bottom: 1%">
+                <input type="button" class="btn btn-info" value="Justificaciones" id="justificaciones" style="margin-bottom: 1%">
             </div>
             <div class="col-sm-offset-0 col-sm-12" style="margin-top: 1%">
-                <input type="button" class="btn btn-danger" value="Observaciones" id="observaciones" style="margin-bottom: 2%">
+                <input type="button" class="btn btn-warning" value="Observaciones" id="observaciones" style="margin-bottom: 1%">
+            </div>
+            <div class="col-sm-offset-0 col-sm-12" style="margin-top: 1%">
+                <input type="button" class="btn btn-danger" value="Citaciones" id="citaciones" style="margin-bottom: 2%">
             </div>
         </div>
     </div>

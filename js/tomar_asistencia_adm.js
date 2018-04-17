@@ -26,10 +26,10 @@ $(document).ready(function () {
                 var verif = $("#asistencia_" + i).prop('checked');
 
                 if (verif) {
-                    estado = 1;
+                    estado = 0;
                 }
                 else {
-                    estado = 0;
+                    estado = 1;
                 }
 
                 if (i != num) {
@@ -39,7 +39,7 @@ $(document).ready(function () {
                     consulta = consulta + "(" + usu + "," + est + "," + asig + "," + estado + ",'"+fecha_actual+"','" + hora_actual + "',1);";
                 }
             }
-            alert(consulta);
+
             $.ajax({
                 type: "POST",
                 url: "insertar_asistencia.php",

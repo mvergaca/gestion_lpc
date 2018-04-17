@@ -340,11 +340,9 @@ if(isset($_SESSION['conectado']) && $_SESSION['conectado'] == "si") {
 
                     }
 
-
                 }
 
                 $f++;
-
 
             }
 

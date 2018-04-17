@@ -18,7 +18,15 @@
 
                 <li><a href="inicio_inspector.php" style="color: #0f0f0f"><b>Inicio</b></a></li>
 
-                <li><a href="buscar_usuario_ins.php" style="color: #0f0f0f"><b>Buscar</b></a></li>
+                <li class="dropdown" >
+                    <a href="#" class="dropdown-toggle" style="color: #0f0f0f" data-toggle="dropdown"
+                       role="button" aria-haspopup="true" aria-expanded="false"><b>Buscar</b>
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="buscar_usuario_ins.php" style="color: #0f0f0f">Buscar usuario</a></li>
+                        <li><a href="buscar_citaciones_ins.php" style="color: #0f0f0f">Buscar citaciones</a></li>
+                    </ul>
+                </li>
 
                 <li class="dropdown" >
                     <a href="#" class="dropdown-toggle" style="color: #0f0f0f" data-toggle="dropdown"
@@ -87,6 +95,8 @@
                     <ul class="dropdown-menu">
                         <li><a href='retirar_alumno_ins.php'>Retirar</a></li>
                         <li><a href='ver_retiros.php'>Retiros del dia</a></li>
+                        <li><a href="buscar_retiros_ins.php">Buscar retiros</a></li>
+                        <li><a href="buscar_inasistencias_ins.php">Buscar inasistencias</a></li>
                     </ul>
                 </li>
 

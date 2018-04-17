@@ -34,7 +34,7 @@ include "conexion.php";
 
 <section id="principal">
     <div class="col-sm-offset-0 col-sm-12">
-        <div class="col-sm-offset-3 col-sm-6" style="background-color: #f7ecb5;">
+        <div class="col-sm-offset-2 col-sm-8" style="background-color: #f7ecb5;">
     <?php
     $con = "select profesor.id_profesor , curso.nombre_curso from profesor 
             INNER JOIN curso ON curso.id_profesor = profesor.id_profesor

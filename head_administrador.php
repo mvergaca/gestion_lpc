@@ -43,7 +43,11 @@
                         <li role="separator" class="divider"></li>
                         <li><a href="crear_lista.php">Crear Listas</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Establecimiento</a></li>
+                        <li><a href="buscar_asistencia.php">Buscar asistencia</a></li>
+                        <li><a href="buscar_citaciones_adm.php">Buscar citaciones</a></li>
+                        <li><a href="buscar_inasistencias_adm.php">Buscar inasistencia</a></li>
+                        <li><a href="buscar_mensajes_adm.php">Buscar mensajes</a></li>
+                        <li><a href="buscar_retiros_adm.php">Buscar retiros</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">

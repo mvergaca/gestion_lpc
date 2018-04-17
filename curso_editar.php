@@ -83,7 +83,7 @@ while ($dat = mysqli_fetch_array($re_con)){
                         <option value='$dat[id_profesor]' >$dat[nombre_usr] $dat[apellido_p_usr] $dat[apellido_m_usr]</option>";
 
                         $sql3 = "SELECT * FROM profesor
-                             INNER JOIN usuario ON usuario.rut_usr = profesor.rut_usr";
+                             INNER JOIN usuario ON usuario.rut_usr = profesor.rut_usr order by usuario.nombre_usr";
                         $res3 = $dbcon->query($sql3);
                         while ($datos3 = mysqli_fetch_array($res3)){
                             echo"<option value='$datos3[id_profesor]' >$datos3[nombre_usr] $datos3[apellido_p_usr] $datos3[apellido_m_usr]</option>";

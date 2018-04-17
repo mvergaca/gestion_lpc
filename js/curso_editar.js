@@ -28,7 +28,6 @@ $(document).ready(function () {
             success: function (data) {
                 datos = data.split(";");
                 if(datos[1] == 1){
-                    alert(datos[2]);
                     alert("Curso modificado exitosamente");
                     window.location.href = "cursos_ver.php";
                 }
